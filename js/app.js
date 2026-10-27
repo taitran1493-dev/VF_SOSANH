@@ -1,6 +1,7 @@
 /**
- * Main Application Logic for VinFast Smart Car Comparison Platform
- * Executive High-Contrast UI & Intelligent Line-by-Line Spec Formatting
+ * Main Application Controller for VinFast Smart Car Comparison Platform
+ * Pure 100% Official VinFast Portfolio (15 Models, 19 Variants)
+ * Apple Design UI/UX • Tactile Feedback • High-Contrast Readability
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // State
   const state = {
-    selectedCarIds: ['herio_green', 'vf5_plus', 'toyota_wigo_g'],
+    selectedCarIds: ['vf3', 'vf5_plus', 'vf6_plus'],
     showDiffOnly: false,
     highlightAdvantages: true,
     searchQuery: '',
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Render Top Car Header Cards
+   * Render Top Car Header Cards with Apple Frosted Acrylic & Micro-Interactions
    */
   function renderCarHeaders() {
     const cars = getSelectedCars();
@@ -84,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (colors.length > 0) {
         colorChipsHtml = `
           <div class="mt-2.5 flex items-center justify-center gap-1.5 flex-wrap">
-            <span class="text-[10px] text-[var(--text-muted)] font-semibold mr-1">Màu sơn:</span>
+            <span class="text-[10px] text-[var(--text-muted)] font-bold mr-1">Màu sơn:</span>
             ${colors.map(col => `
               <button 
                 class="color-chip w-4 h-4 rounded-full border border-slate-400/60 shadow-sm ${col.image === currentColorImg ? 'active' : ''}" 
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <!-- Name & Price -->
-          <div class="text-center mb-3">
+          <div class="text-center mb-2">
             <h3 class="text-lg font-black text-[var(--text-primary)] tracking-tight leading-snug">${car.name}</h3>
             <div class="text-base font-extrabold text-emerald-600 dark:text-emerald-400 mt-0.5">${car.priceText}</div>
             <div class="text-[11px] font-medium text-[var(--text-muted)]">${car.batteryFeeText || car.fuelType}</div>
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <!-- Color Selector -->
           ${colorChipsHtml}
 
-          <!-- Highlights & Brochure Source -->
+          <!-- Highlights & Official Link -->
           <div class="mt-4 pt-3 border-t border-[var(--border-subtle)]">
             <div class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-1.5 flex items-center gap-1">
               <i data-lucide="sparkles" class="w-3 h-3 text-amber-500"></i>
@@ -144,10 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </li>
               `).join('')}
             </ul>
-            ${car.brochureRef ? `
-              <div class="mt-2.5 pt-2 border-t border-[var(--border-subtle)] text-[10px] text-blue-600 dark:text-cyan-400 font-semibold flex items-center gap-1 truncate" title="${car.brochureRef}">
-                <i data-lucide="file-check" class="w-3 h-3 flex-shrink-0"></i>
-                <span class="truncate">${car.brochureRef.split('(')[0]}</span>
+            ${car.officialLink ? `
+              <div class="mt-2.5 pt-2 border-t border-[var(--border-subtle)] flex items-center justify-between text-[11px]">
+                <a href="${car.officialLink}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-cyan-400 font-semibold hover:underline flex items-center gap-1">
+                  <i data-lucide="external-link" class="w-3 h-3"></i>
+                  <span>Trang chủ VinFast</span>
+                </a>
+                <span class="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold">100% Thuần Điện</span>
               </div>
             ` : ''}
           </div>
@@ -217,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return;
 
     if (diffCounter) {
-      diffCounter.textContent = `${cars.length} XE SO SÁNH`;
+      diffCounter.textContent = `${cars.length} XE ĐANG SO SÁNH`;
     }
 
     container.innerHTML = cars.map(car => `
@@ -249,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Render Main Specs Table with Clean Line-by-Line Formatting
+   * Render Main Specs Table with 7 Official Categories
    */
   function renderSpecsTable() {
     const cars = getSelectedCars();
@@ -279,7 +283,6 @@ document.addEventListener('DOMContentLoaded', () => {
       filteredSpecs.forEach(spec => {
         const diffInfo = window.ComparisonEngine.analyzeDifferences(cars, cat.id, spec.key);
 
-        // If user chose "Chỉ hiện điểm khác biệt" and this row has NO difference, skip it
         if (state.showDiffOnly && !diffInfo.isDifferent) {
           return;
         }
@@ -292,7 +295,6 @@ document.addEventListener('DOMContentLoaded', () => {
           const rawVal = diffInfo.values[idx];
           const isWinner = state.highlightAdvantages && diffInfo.bestIndex === idx;
 
-          // Format value nicely using ComparisonEngine.formatSpecValue
           const formattedHtml = window.ComparisonEngine.formatSpecValue(rawVal, spec.type, isWinner);
 
           colsHtml += `
@@ -378,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <i data-lucide="cpu" class="w-5 h-5 text-white"></i>
             </div>
             <div>
-              <div class="text-[10px] font-extrabold uppercase tracking-widest text-blue-500">SMART ANALYSIS ENGINE • BROCHURE VERIFIED</div>
+              <div class="text-[10px] font-extrabold uppercase tracking-widest text-blue-500">SMART ANALYSIS ENGINE • MASTER PORTFOLIO</div>
               <h2 class="text-xl font-black text-[var(--text-primary)]">${summary.title}</h2>
             </div>
           </div>
@@ -387,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
-            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">Dữ liệu Brochure 2026</span>
+            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">100% Thuần Điện VinFast</span>
           </div>
         </div>
 
@@ -420,49 +422,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Render Preset Quick Comparison Buttons
+   * Render Preset Quick Comparison Scenarios (Curated for the 15 official VinFast models)
    */
   function renderPresets() {
     const presets = [
       {
-        label: '🔥 Phân khúc A Đô Thị (Bộ Data gốc)',
-        desc: 'Herio Green vs VF 5 Plus vs Wigo vs Morning vs i10',
-        carIds: ['herio_green', 'vf5_plus', 'toyota_wigo_g', 'kia_morning_xline', 'hyundai_i10_at']
+        label: '⚡ Minicar Đô Thị Phổ Thông',
+        desc: 'VF 2 vs VF 3 vs Minio Green (Giá từ 188 triệu)',
+        carIds: ['vf2', 'vf3', 'minio_green']
       },
       {
-        label: '⚡ VF 3: Eco vs Plus',
-        desc: 'VinFast VF 3 Eco vs VinFast VF 3 Plus',
-        carIds: ['vf3_eco', 'vf3_plus']
+        label: '🚀 Cặp Đôi Hạng B & C Thể Thao',
+        desc: 'VF 6 Plus (201 hp) vs VF 7 Plus AWD (349 hp)',
+        carIds: ['vf6_plus', 'vf7_plus']
       },
       {
-        label: '🚀 VF 6: Eco vs Plus (Hạng B)',
-        desc: 'VF 6 Eco (174 HP) vs VF 6 Plus (201 HP)',
-        carIds: ['vf6_eco', 'vf6_plus']
+        label: '👑 D-SUV & E-SUV Đẳng Cấp Flagship',
+        desc: 'VF 8 All-New 2026 vs VF 9 Plus (6 chỗ VIP)',
+        carIds: ['vf8_all_new', 'vf9_plus']
       },
       {
-        label: '🏎️ VF 7: Eco vs Plus FWD vs Plus AWD',
-        desc: 'VF 7 Eco vs VF 7 Plus FWD vs VF 7 Plus AWD (349 HP)',
-        carIds: ['vf7_eco', 'vf7_plus_fwd', 'vf7_plus_awd']
+        label: '🚖 Đội Xe Dịch Vụ Vận Tải Green',
+        desc: 'Herio Green vs Nerio Green vs Limo Green (7 chỗ)',
+        carIds: ['herio_green', 'nerio_green', 'limo_green']
       },
       {
-        label: '👑 VF 8: Eco vs Plus vs Thế Hệ Mới',
-        desc: 'VF 8 Eco CATL vs VF 8 Plus CATL vs VF 8 Thế hệ mới',
-        carIds: ['vf8_eco_catl', 'vf8_plus_catl', 'vf8_the_he_moi']
+        label: '🏕️ Chuyên Dụng & Độc Bản',
+        desc: 'Bán tải VF WILD vs VF MPV 7 vs Tải van ECVAN',
+        carIds: ['vf_wild', 'vf_mpv7', 'ecvan']
       },
       {
-        label: '🏰 VF 9: Eco vs Plus (Chủ tịch)',
-        desc: 'VF 9 Eco (626 km) vs VF 9 Plus (Ghế thương gia massage)',
-        carIds: ['vf9_eco_catl', 'vf9_plus_catl']
-      },
-      {
-        label: '🚚 Dòng EC Van Chở Hàng',
-        desc: 'Tiêu chuẩn vs Nâng cao vs Cửa trượt',
-        carIds: ['ec_van_standard', 'ec_van_advanced', 'ec_van_sliding']
-      },
-      {
-        label: '🏕️ Bán Tải Wild vs MPV 7 Chỗ',
-        desc: 'VF Wild (EREV > 1.000km) vs VF MPV 7 (Gia đình)',
-        carIds: ['vf_wild', 'vf_mpv7']
+        label: '🔋 Bộ Ba SUV Gia Đình Bán Chạy',
+        desc: 'VF 5 Plus vs VF 6S vs VF 7S (Giá từ 468 - 850 triệu)',
+        carIds: ['vf5_plus', 'vf6_s', 'vf7_s']
       }
     ];
 
@@ -507,16 +499,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let cars = window.CARS_DATABASE;
 
     if (filterSegment !== 'all') {
-      if (filterSegment === 'vinfast') {
-        cars = cars.filter(c => c.brand === 'VinFast');
-      } else if (filterSegment === 'xang') {
-        cars = cars.filter(c => c.category.includes('xăng'));
+      if (filterSegment === 'urban') {
+        cars = cars.filter(c => c.category === 'Đô thị & Minicar' || c.id === 'minio_green' || c.id === 'vf2' || c.id === 'vf3' || c.id === 'vf5_plus');
       } else if (filterSegment === 'suv') {
-        cars = cars.filter(c => c.segment.toLowerCase().includes('suv') || c.name.toLowerCase().includes('vf'));
-      } else if (filterSegment === 'dịch vụ') {
-        cars = cars.filter(c => c.segment.toLowerCase().includes('dịch vụ') || c.segment.toLowerCase().includes('van') || c.segment.toLowerCase().includes('mpv'));
-      } else {
-        cars = cars.filter(c => c.segment.toLowerCase().includes(filterSegment.toLowerCase()) || c.name.toLowerCase().includes(filterSegment.toLowerCase()));
+        cars = cars.filter(c => c.category === 'SUV Cỡ Lớn & Thể Thao' || c.segment.toLowerCase().includes('suv'));
+      } else if (filterSegment === 'green') {
+        cars = cars.filter(c => c.category === 'Dịch Vụ Green Series' || c.id.includes('green'));
+      } else if (filterSegment === 'utility') {
+        cars = cars.filter(c => c.category === 'Bán Tải & Chuyên Dụng' || c.id === 'vf_wild' || c.id === 'vf_mpv7' || c.id === 'ecvan');
       }
     }
 
@@ -645,10 +635,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const km = parseInt(slider.value, 10);
       label.textContent = `${km.toLocaleString('vi-VN')} km`;
 
-      const evMonthly = km * 400;
+      const evMonthly = km * 380;
       const evYearly = evMonthly * 12;
 
-      const iceMonthly = km * 1560;
+      const iceMonthly = km * 1550;
       const iceYearly = iceMonthly * 12;
 
       const diffYearly = iceYearly - evYearly;

@@ -185,7 +185,7 @@ window.ExportManager = (function () {
 
         <!-- Footer -->
         <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-          <div>* Dữ liệu được trích xuất và đối chiếu chuẩn xác 100% từ hồ sơ kỹ thuật và Catalogue chính thức của các hãng xe.</div>
+          <div>* Dữ liệu được trích xuất và đối chiếu chuẩn xác 100% từ hồ sơ kỹ thuật và Catalogue chính thức VinFast (vinfastauto.com/vn_vi).</div>
           <div class="text-blue-400 font-semibold">vinfastauto.com/vn_vi • VinFast Smart Compare</div>
         </div>
       </div>

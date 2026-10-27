@@ -1,8 +1,14 @@
 /**
  * Comparison Engine for VinFast Smart Car Comparison Platform
- * Highly structured 9 categories with atomic specs, smart difference detection,
- * and intelligent multi-line formatting that breaks long grouped specs into clean,
- * readable bullet points and interactive tags.
+ * 7 Official Categories aligned with VinFast Master Specifications
+ * Features:
+ *  - Atomic spec definitions across 7 official categories
+ *  - Smart difference detection (isDifferent) and advantage winner highlight (bestIndex)
+ *  - Apple-grade clean multiline formatting (no squeezed long strings)
+ *  - Safety acronym badges (ABS, EBD, ESC, TCS, HSA...)
+ *  - Structured trunk breakdown (Standard, Folded, Frunk)
+ *  - Responsive radar chart with dynamic Dark/Light theming
+ *  - Intelligent AI summary highlighting key metrics
  */
 
 window.ComparisonEngine = (function () {
@@ -11,114 +17,112 @@ window.ComparisonEngine = (function () {
   const SPEC_CATEGORIES = [
     {
       id: 'cat1_dimensions',
-      title: 'I. KÍCH THƯỚC & TRỌNG LƯỢNG',
+      title: 'I. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC',
       icon: 'maximize-2',
       specs: [
         { key: 'd_r_c', label: 'Dài x Rộng x Cao (mm)', type: 'dimension' },
+        { key: 'segment', label: 'Phân khúc & Cấu hình chỗ', type: 'badge' },
         { key: 'wheelbase', label: 'Chiều dài cơ sở (mm)', type: 'number_higher_better' },
         { key: 'groundClearance', label: 'Khoảng sáng gầm xe không tải (mm)', type: 'number_higher_better' },
-        { key: 'turningRadius', label: 'Bán kính quay đầu tối thiểu (m)', type: 'number_lower_better' },
-        { key: 'weight', label: 'Trọng lượng không tải (kg)', type: 'split_lines' },
-        { key: 'payload', label: 'Tải trọng chở hàng / người (kg)', type: 'split_lines' },
-        { key: 'trunk', label: 'Dung tích khoang hành lý / cốp xe', type: 'trunk_breakdown' },
-        { key: 'cargoBed', label: 'Kích thước thùng hàng / khoang chứa', type: 'split_lines' }
+        { key: 'turningRadius', label: 'Bán kính quay vòng tối thiểu (m)', type: 'number_lower_better' },
+        { key: 'weight', label: 'Khối lượng bản thân không tải (kg)', type: 'split_lines' },
+        { key: 'grossWeight', label: 'Khối lượng toàn tải cho phép (kg)', type: 'split_lines' },
+        { key: 'dragCoeff', label: 'Hệ số cản khí động học (Cd)', type: 'text' },
+        { key: 'offroadAngles', label: 'Góc vượt địa hình & Lội nước', type: 'split_lines' }
       ]
     },
     {
-      id: 'cat2_engine',
-      title: 'II. HIỆU SUẤT & ĐỘNG CƠ',
+      id: 'cat2_storage',
+      title: 'II. KHÔNG GIAN CHỨA ĐỒ & CỐP XE',
+      icon: 'package',
+      specs: [
+        { key: 'trunkStandard', label: 'Thể tích cốp tiêu chuẩn (Lít)', type: 'trunk_breakdown' },
+        { key: 'trunkMax', label: 'Thể tích khi gập hàng ghế sau (Lít)', type: 'trunk_breakdown' },
+        { key: 'frunk', label: 'Cốp trước Frunk (Lít)', type: 'badge' },
+        { key: 'cargoBed', label: 'Thùng hàng / Khoang chứa tải', type: 'split_lines' },
+        { key: 'trunkUtility', label: 'Tiện ích cốp sau (Đóng mở điện/Đá cốp)', type: 'badge' }
+      ]
+    },
+    {
+      id: 'cat3_powertrain',
+      title: 'III. VẬN HÀNH, ĐỘNG CƠ & PIN ĐIỆN',
       icon: 'zap',
       specs: [
-        { key: 'engineType', label: 'Loại động cơ / Số motor', type: 'text' },
-        { key: 'drivetrain', label: 'Hệ dẫn động', type: 'badge' },
-        { key: 'maxPower', label: 'Công suất tối đa', type: 'power_compare' },
+        { key: 'motorDrivetrain', label: 'Động cơ & Hệ dẫn động', type: 'split_lines' },
+        { key: 'maxPower', label: 'Công suất tối đa (kW / hp)', type: 'power_compare' },
         { key: 'maxTorque', label: 'Mô-men xoắn cực đại (Nm)', type: 'text' },
         { key: 'acceleration', label: 'Tăng tốc 0–100 km/h (s)', type: 'accel_compare' },
-        { key: 'maxSpeed', label: 'Tốc độ tối đa (km/h)', type: 'split_lines' },
-        { key: 'driveModes', label: 'Chế độ lái', type: 'badge_list' },
+        { key: 'batteryType', label: 'Loại pin & Công nghệ pack pin', type: 'split_lines' },
+        { key: 'batteryCapacity', label: 'Dung lượng pin khả dụng (kWh)', type: 'text' },
+        { key: 'range', label: 'Quãng đường di chuyển 1 lần sạc', type: 'range_compare' },
+        { key: 'fastCharge', label: 'Sạc siêu nhanh DC (10% - 70%)', type: 'split_lines' },
+        { key: 'acCharge', label: 'Sạc chậm AC gia đình', type: 'split_lines' },
         { key: 'suspension', label: 'Hệ thống treo trước / sau', type: 'split_lines' },
-        { key: 'waterWading', label: 'Khả năng lội nước', type: 'text' }
+        { key: 'brakes', label: 'Hệ thống phanh trước / sau', type: 'split_lines' },
+        { key: 'wheels', label: 'Kích thước mâm & lốp', type: 'split_lines' }
       ]
     },
     {
-      id: 'cat3_battery',
-      title: 'III. PIN & SẠC ĐIỆN',
-      icon: 'battery-charging',
-      specs: [
-        { key: 'batteryType', label: 'Loại pin công nghệ', type: 'split_lines' },
-        { key: 'batteryCapacity', label: 'Dung lượng pin khả dụng', type: 'text' },
-        { key: 'range', label: 'Quãng đường di chuyển / 1 lần sạc', type: 'range_compare' },
-        { key: 'fastChargeTime', label: 'Thời gian sạc nhanh nhất (10% - 70%)', type: 'split_lines' },
-        { key: 'acCharge', label: 'Công suất sạc AC', type: 'text' },
-        { key: 'dcCharge', label: 'Công suất sạc DC tối đa', type: 'text' },
-        { key: 'regenBraking', label: 'Hệ thống phanh tái sinh', type: 'badge' },
-        { key: 'v2l', label: 'Cấp điện ngoài V2L (Vehicle-to-Load)', type: 'badge' }
-      ]
-    },
-    {
-      id: 'cat4_exterior',
-      title: 'IV. NGOẠI THẤT & TRANG BỊ NGOÀI',
+      id: 'cat4_equipment',
+      title: 'IV. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT',
       icon: 'sparkles',
       specs: [
         { key: 'headlights', label: 'Đèn chiếu sáng phía trước', type: 'split_lines' },
-        { key: 'wheels', label: 'Mâm & Lốp (La-zăng)', type: 'split_lines' },
+        { key: 'brandLighting', label: 'Dải LED cánh chim VinFast & Đèn hậu', type: 'split_lines' },
         { key: 'mirrors', label: 'Gương chiếu hậu ngoài', type: 'split_lines' },
-        { key: 'wipers', label: 'Gạt mưa trước', type: 'text' },
-        { key: 'tailgate', label: 'Cốp sau (Đóng / mở)', type: 'badge' },
-        { key: 'exteriorList', label: 'Trang bị ngoại thất chi tiết', type: 'bullet_list' }
+        { key: 'seating', label: 'Chất liệu ghế & Cấu hình ghế', type: 'split_lines' },
+        { key: 'seatAdjustment', label: 'Chức năng ghế (Chỉnh điện/Thông gió/Massage)', type: 'split_lines' },
+        { key: 'gearShifter', label: 'Cần số điều khiển & Phanh đỗ điện tử', type: 'split_lines' },
+        { key: 'climate', label: 'Hệ thống điều hòa & Màng lọc Combi 1.0', type: 'split_lines' },
+        { key: 'sunroof', label: 'Cửa sổ trời toàn cảnh Panoramic', type: 'badge' },
+        { key: 'doors', label: 'Cửa xe & Kính cách âm', type: 'split_lines' }
       ]
     },
     {
-      id: 'cat5_interior',
-      title: 'V. NỘI THẤT & TIỆN NGHI CABIN',
-      icon: 'layout',
+      id: 'cat5_tech',
+      title: 'V. CÔNG NGHỆ THÔNG MINH & TIỆN ÍCH VF CONNECT',
+      icon: 'cpu',
       specs: [
-        { key: 'seating', label: 'Số chỗ ngồi & Chất liệu ghế', type: 'split_lines' },
-        { key: 'frontSeats', label: 'Ghế lái & Ghế phụ', type: 'split_lines' },
-        { key: 'rearSeats', label: 'Hàng ghế sau / Ghế VIP', type: 'split_lines' },
-        { key: 'infotainment', label: 'Màn hình giải trí cảm ứng', type: 'text' },
-        { key: 'hud', label: 'Màn hình HUD kính lái', type: 'badge' },
-        { key: 'sound', label: 'Hệ thống âm thanh / Loa', type: 'split_lines' },
-        { key: 'climate', label: 'Điều hòa & Lọc bụi Combi 1.0', type: 'split_lines' },
-        { key: 'shifter', label: 'Cần số & Phanh đỗ điện tử', type: 'split_lines' },
-        { key: 'interiorList', label: 'Tiện nghi cabin chi tiết', type: 'bullet_list' }
+        { key: 'driverDisplay', label: 'Màn hình thông tin lái (Dashboard)', type: 'split_lines' },
+        { key: 'infotainment', label: 'Màn hình cảm ứng giải trí trung tâm', type: 'text' },
+        { key: 'hud', label: 'Màn hình hiển thị trên kính lái (HUD)', type: 'badge' },
+        { key: 'sound', label: 'Hệ thống âm thanh & Loa giải trí', type: 'split_lines' },
+        { key: 'viviAI', label: 'Trợ lý ảo ViVi điều khiển giọng nói AI', type: 'badge' },
+        { key: 'connectivity', label: 'Kết nối không dây & Cổng sạc điện thoại', type: 'split_lines' },
+        { key: 'smartFeatures', label: 'Tính năng thông minh & Cập nhật OTA', type: 'bullet_list' },
+        { key: 'appControl', label: 'Ứng dụng quản lý xe trên Smartphone', type: 'bullet_list' }
       ]
     },
     {
       id: 'cat6_safety',
-      title: 'VI. AN TOÀN TIÊU CHUẨN',
+      title: 'VI. AN TOÀN TIÊU CHUẨN & GÓI TRỢ LÁI ADAS',
       icon: 'shield-check',
       specs: [
         { key: 'airbags', label: 'Số túi khí an toàn', type: 'airbag_compare' },
-        { key: 'standardSafety', label: 'Hệ thống phanh & Cân bằng điện tử', type: 'safety_acronym_badges' },
-        { key: 'safetyList', label: 'Danh mục an toàn tiêu chuẩn', type: 'bullet_list' }
+        { key: 'activeSafety', label: 'Hệ thống an toàn chủ động (ABS, ESC, TCS...)', type: 'safety_acronym_badges' },
+        { key: 'adasPackage', label: 'Cấp độ trợ lái thông minh ADAS', type: 'badge' },
+        { key: 'highwayAssist', label: 'Hỗ trợ di chuyển ùn tắc & Cao tốc', type: 'badge' },
+        { key: 'laneKeep', label: 'Cảnh báo chệch làn & Giữ làn khẩn cấp', type: 'badge' },
+        { key: 'cruiseControl', label: 'Kiểm soát hành trình thích ứng (ACC)', type: 'badge' },
+        { key: 'autoBrake', label: 'Phanh tự động khẩn cấp trước/sau (AEB)', type: 'badge' },
+        { key: 'blindSpot', label: 'Cảnh báo điểm mù & Cắt ngang khi lùi', type: 'badge' },
+        { key: 'cameraSensors', label: 'Camera quan sát & Cảm biến hỗ trợ đỗ xe', type: 'split_lines' },
+        { key: 'smartParking', label: 'Hỗ trợ đỗ xe tự động thông minh', type: 'badge' },
+        { key: 'batterySafety', label: 'Tiêu chuẩn an toàn pin & Kháng nước IP67', type: 'split_lines' }
       ]
     },
     {
-      id: 'cat7_adas',
-      title: 'VII. HỆ THỐNG TRỢ LÁI NÂNG CAO (ADAS)',
-      icon: 'cpu',
-      specs: [
-        { key: 'adasSummary', label: 'Tổng quan gói trợ lái', type: 'badge' },
-        { key: 'adasList', label: 'Chi tiết các tính năng ADAS', type: 'adas_badges' }
-      ]
-    },
-    {
-      id: 'cat8_economics',
-      title: 'VIII. CHI PHÍ VẬN HÀNH & BẢO HÀNH',
+      id: 'cat7_economics',
+      title: 'VII. CHI PHÍ, BẢO HÀNH & HẬU MÃI CHÍNH HÃNG',
       icon: 'trending-up',
       specs: [
-        { key: 'fuelCost1000km', label: 'Chi phí nhiên liệu / 1.000 km', type: 'text' },
-        { key: 'maintenance', label: 'Chi phí bảo dưỡng định kỳ', type: 'split_lines' },
-        { key: 'warranty', label: 'Chính sách bảo hành chính hãng', type: 'split_lines' }
-      ]
-    },
-    {
-      id: 'cat9_reference',
-      title: 'IX. HỒ SƠ BROCHURE KIỂM CHỨNG',
-      icon: 'file-check',
-      specs: [
-        { key: 'source', label: 'Tài liệu Catalogue / Brochure', type: 'text' }
+        { key: 'price', label: 'Giá niêm yết chính hãng (VNĐ)', type: 'split_lines' },
+        { key: 'energyCost', label: 'Chi phí sạc điện ước tính / 1.000 km', type: 'text' },
+        { key: 'warrantyCar', label: 'Chính sách bảo hành xe mới', type: 'split_lines' },
+        { key: 'warrantyBattery', label: 'Chính sách bảo hành bộ pin cao áp', type: 'split_lines' },
+        { key: 'maintenance', label: 'Bảo dưỡng định kỳ & Chi phí phụ tùng', type: 'split_lines' },
+        { key: 'chargingNetwork', label: 'Hệ thống trạm sạc V-GREEN toàn quốc', type: 'split_lines' },
+        { key: 'officialLink', label: 'Website chính thức VinFast', type: 'official_link' }
       ]
     }
   ];
@@ -147,15 +151,14 @@ window.ComparisonEngine = (function () {
     const first = stringReps[0];
     const isDifferent = stringReps.some(v => v !== first && v !== '—' && v !== '');
 
-    // Winner detection
     let bestIndex = -1;
 
-    // Power
+    // Power (higher hp is better)
     if (specKey === 'maxPower') {
       let maxHp = -1;
       cars.forEach((c, idx) => {
         const val = String(values[idx]);
-        const hpMatch = val.match(/(\d+)\s*hp/i);
+        const hpMatch = val.match(/(\d+)\s*(?:hp|HP)/i);
         const kwMatch = val.match(/(\d+)\s*kW/i);
         let hp = 0;
         if (hpMatch) hp = parseInt(hpMatch[1], 10);
@@ -166,7 +169,7 @@ window.ComparisonEngine = (function () {
         }
       });
     }
-    // Acceleration (lower is better)
+    // Acceleration (lower seconds is better)
     else if (specKey === 'acceleration') {
       let minSec = 999;
       cars.forEach((c, idx) => {
@@ -181,22 +184,7 @@ window.ComparisonEngine = (function () {
         }
       });
     }
-    // Airbags
-    else if (specKey === 'airbags') {
-      let maxAir = -1;
-      cars.forEach((c, idx) => {
-        const val = String(values[idx]);
-        const m = val.match(/(\d+)\s*túi/i);
-        if (m) {
-          const num = parseInt(m[1], 10);
-          if (num > maxAir) {
-            maxAir = num;
-            bestIndex = idx;
-          }
-        }
-      });
-    }
-    // Range
+    // Range (higher km is better)
     else if (specKey === 'range') {
       let maxR = -1;
       cars.forEach((c, idx) => {
@@ -211,7 +199,22 @@ window.ComparisonEngine = (function () {
         }
       });
     }
-    // Wheelbase / Ground clearance
+    // Airbags (higher count is better)
+    else if (specKey === 'airbags') {
+      let maxAir = -1;
+      cars.forEach((c, idx) => {
+        const val = String(values[idx]);
+        const m = val.match(/(\d+)\s*túi/i);
+        if (m) {
+          const num = parseInt(m[1], 10);
+          if (num > maxAir) {
+            maxAir = num;
+            bestIndex = idx;
+          }
+        }
+      });
+    }
+    // Wheelbase or Ground clearance (higher is better)
     else if (specKey === 'wheelbase' || specKey === 'groundClearance') {
       let maxNum = -1;
       cars.forEach((c, idx) => {
@@ -238,14 +241,18 @@ window.ComparisonEngine = (function () {
         }
       });
     }
-    // ADAS Count
-    else if (specKey === 'adasList') {
-      let maxCount = 0;
+    // Standard Trunk (higher is better)
+    else if (specKey === 'trunkStandard' || specKey === 'trunkMax') {
+      let maxL = -1;
       cars.forEach((c, idx) => {
-        const list = Array.isArray(values[idx]) ? values[idx] : [];
-        if (list.length > maxCount) {
-          maxCount = list.length;
-          bestIndex = idx;
+        const val = String(values[idx]);
+        const m = val.match(/(\d+[\.,]?\d*)\s*L/i);
+        if (m) {
+          const num = parseInt(m[1].replace(/\D/g, ''), 10);
+          if (num > maxL) {
+            maxL = num;
+            bestIndex = idx;
+          }
         }
       });
     }
@@ -254,12 +261,12 @@ window.ComparisonEngine = (function () {
   }
 
   /**
-   * Helper: Split string avoiding cutting inside parentheses
+   * Helper: Split string avoiding cutting inside parentheses.
+   * Splits by semicolons, pipes, or newlines outside parens.
    */
   function splitRespectingParens(text) {
     if (!text || text === '—') return [];
-    // Split by semicolons, or commas outside parens, or slashes outside parens
-    const parts = text.split(/[,;\n]+(?![^\(]*\))/).map(p => p.trim()).filter(Boolean);
+    const parts = text.split(/[;\n|]+(?![^\(]*\))/).map(p => p.trim()).filter(Boolean);
     return parts;
   }
 
@@ -270,48 +277,58 @@ window.ComparisonEngine = (function () {
     const str = String(val);
     if (!str || str === '—') return `<span class="text-subtle font-medium text-xs">—</span>`;
 
-    // Extract any descriptive header before parenthesis
-    let headerText = '';
-    const headerMatch = str.match(/^([^\(]+)\s*\((.+)\)$/);
-    let acronymsStr = str;
+    const recognized = ['ABS', 'EBD', 'BA', 'ESC', 'TCS', 'HSA', 'ROM', 'ESS', 'dTPMS', 'TPMS', 'AutoHold', 'HBA', 'LKA', 'LDW', 'FCW', 'AEB', 'ACC', 'BSW', 'BSM', 'RCTA', 'DOW'];
+    
+    const parts = str.split(/[;\n]+/).map(p => p.trim()).filter(Boolean);
+    let descParts = [];
+    let foundAcronyms = [];
 
-    if (headerMatch) {
-      headerText = headerMatch[1].trim();
-      acronymsStr = headerMatch[2].trim();
-    }
+    parts.forEach(p => {
+      const tokens = p.split(/[,;\/\s\(\)]+/).map(t => t.trim()).filter(Boolean);
+      const acronymMatches = tokens.filter(t => 
+        recognized.includes(t) || 
+        (/^[A-Z0-9\+\-]{2,6}$/.test(t) && t !== 'FULL' && t !== 'LED' && t !== 'SUV' && t !== 'AWD' && t !== 'FWD' && t !== 'RWD')
+      );
 
-    // Known acronym list or extract capitalized tokens
-    const tokens = acronymsStr.split(/[,;\/\s]+/).map(t => t.trim()).filter(Boolean);
-    const validAcronyms = tokens.filter(t => /^[A-Z0-9\+\-]+$/i.test(t) && t.length >= 2);
+      if (acronymMatches.length >= 2 || (tokens.length <= 4 && acronymMatches.length >= 1)) {
+        acronymMatches.forEach(ac => {
+          if (!foundAcronyms.includes(ac)) foundAcronyms.push(ac);
+        });
+        const remaining = tokens.filter(t => !acronymMatches.includes(t) && !recognized.includes(t)).join(' ');
+        if (remaining && remaining.length > 3) descParts.push(remaining);
+      } else {
+        descParts.push(p);
+      }
+    });
 
-    if (validAcronyms.length === 0) {
+    if (foundAcronyms.length === 0) {
       return renderSplitLines(str);
     }
 
     return `
       <div class="flex flex-col gap-2 w-full text-left">
-        ${headerText ? `
-          <div class="text-xs font-bold text-primary flex items-center gap-1.5 leading-snug">
-            <svg class="w-3.5 h-3.5 text-blue-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-            <span>${headerText}</span>
+        ${descParts.length > 0 ? `
+          <div class="text-xs font-bold text-primary flex items-start gap-1.5 leading-snug">
+            <svg class="w-3.5 h-3.5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <span>${descParts.join('; ')}</span>
           </div>
         ` : ''}
         <div class="flex flex-wrap gap-1.5 pt-0.5">
-          ${validAcronyms.map(ac => `<span class="spec-tag">${ac}</span>`).join('')}
+          ${foundAcronyms.map(ac => `<span class="spec-tag">${ac}</span>`).join('')}
         </div>
       </div>
     `;
   }
 
   /**
-   * 2. Render Trunk Breakdown
+   * 2. Render Trunk Breakdown (Only for trunk specs)
    */
   function renderTrunkBreakdown(val) {
     const str = String(val);
     if (!str || str === '—') return `<span class="text-subtle font-medium text-xs">—</span>`;
 
-    // Case 1: "36 L / 285 L"
-    if (str.includes('/')) {
+    // Only split if it contains / between liter numbers like "36 L / 285 L"
+    if (str.includes('/') && /\d+\s*L/i.test(str)) {
       const parts = str.split('/').map(p => p.trim()).filter(Boolean);
       return `
         <div class="flex flex-col gap-1.5 w-full text-left">
@@ -325,7 +342,6 @@ window.ComparisonEngine = (function () {
       `;
     }
 
-    // Case 2: "376 L (tăng lên 1.373 L khi gập hàng ghế thứ 2)"
     const match = str.match(/^(\d+[\.,]?\d*\s*L?)\s*\((.+)\)$/i);
     if (match) {
       return `
@@ -368,9 +384,8 @@ window.ComparisonEngine = (function () {
     return `
       <div class="spec-bullet-list">
         ${parts.map(part => {
-          // If part has colon like "Ghế lái: Chỉnh điện 12 hướng"
           const colonIdx = part.indexOf(':');
-          if (colonIdx > 0 && colonIdx < 30) {
+          if (colonIdx > 0 && colonIdx < 35) {
             const label = part.substring(0, colonIdx).trim();
             const rest = part.substring(colonIdx + 1).trim();
             return `
@@ -401,7 +416,6 @@ window.ComparisonEngine = (function () {
     const str = String(item).trim();
     if (!str) return '';
 
-    // Check for label prefix with colon (e.g. "Đèn pha: Halogen")
     const colonIdx = str.indexOf(':');
     if (colonIdx > 0 && colonIdx < 35) {
       const label = str.substring(0, colonIdx).trim();
@@ -431,7 +445,6 @@ window.ComparisonEngine = (function () {
   function renderMetricValue(val, specType) {
     const str = String(val);
 
-    // Dimension: 4.545 x 1.890 x 1.635 mm
     if (specType === 'dimension') {
       return `
         <div class="font-extrabold text-sm text-primary text-left tracking-tight">
@@ -440,7 +453,6 @@ window.ComparisonEngine = (function () {
       `;
     }
 
-    // Power: "150 kW / 201 hp" or "300 kW (402 hp)"
     if (specType === 'power_compare') {
       const hpMatch = str.match(/(\d+)\s*(?:hp|HP)/i);
       const kwMatch = str.match(/(\d+)\s*kW/i);
@@ -455,14 +467,13 @@ window.ComparisonEngine = (function () {
               <span class="text-xs font-bold text-muted uppercase">hp</span>
               <span class="text-xs font-semibold text-subtle">(${kwVal} kW)</span>
             </div>
-            ${str.toLowerCase().includes('2 motor') ? '<div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">2 Motor điện AWD</div>' : ''}
+            ${str.toLowerCase().includes('2 motor') || str.toLowerCase().includes('awd') ? '<div class="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">2 Motor điện AWD</div>' : ''}
           </div>
         `;
       }
       return `<div class="font-extrabold text-sm text-primary text-left">${str}</div>`;
     }
 
-    // Range: "215 km (NEDC)" or "450 km"
     if (specType === 'range_compare') {
       const kmMatch = str.match(/(\d+[\.,]?\d*)\s*km/i);
       const noteMatch = str.match(/\((.+)\)/);
@@ -479,7 +490,6 @@ window.ComparisonEngine = (function () {
       }
     }
 
-    // Airbags
     if (specType === 'airbag_compare') {
       const match = str.match(/(\d+)\s*túi/i);
       const extra = str.includes('(') ? str.replace(/^[^\(]+/, '').replace(/[\(\)]/g, '') : '';
@@ -496,7 +506,6 @@ window.ComparisonEngine = (function () {
       }
     }
 
-    // Default
     return `
       <div class="font-semibold text-xs text-primary text-left leading-relaxed">
         ${str}
@@ -505,70 +514,64 @@ window.ComparisonEngine = (function () {
   }
 
   /**
-   * Master Value Formatter: breaks long multi-item specs into clean bullet lines & badges
+   * Master Value Formatter
    */
   function formatSpecValue(val, specType = 'text', isWinner = false) {
     if (!val || val === '—' || val === 'Chưa công bố' || (Array.isArray(val) && val.length === 0)) {
       return `<span class="text-subtle font-medium text-xs tracking-wide">—</span>`;
     }
 
-    // 1. Safety Acronym Badges
+    // Official Link
+    if (specType === 'official_link') {
+      const link = String(val).trim();
+      return `
+        <a href="${link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 text-xs font-bold border border-blue-500/30 transition-all active:scale-95">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          <span>Xem tại VinFast</span>
+        </a>
+      `;
+    }
+
+    // Safety Acronym Badges
     if (specType === 'safety_acronym_badges') {
       return renderSafetyAcronyms(val);
     }
 
-    // 2. ADAS Badges grid
-    if (specType === 'adas_badges' || (Array.isArray(val) && specType === 'adas')) {
-      const items = Array.isArray(val) ? val : String(val).split(/[,;]+/);
-      const cleanItems = items.map(i => i.trim()).filter(Boolean);
-      if (cleanItems.length === 0) return `<span class="text-subtle text-xs">—</span>`;
-
-      return `
-        <div class="flex flex-col gap-1.5 text-left w-full">
-          ${cleanItems.map(item => `
-            <div class="flex items-start gap-2 p-2 rounded-xl bg-blue-500/10 dark:bg-blue-500/15 border border-blue-500/20 text-xs font-semibold text-blue-700 dark:text-blue-300 leading-snug">
-              <svg class="w-3.5 h-3.5 text-blue-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
-              <span>${item}</span>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    }
-
-    // 3. Trunk Breakdown
-    if (specType === 'trunk_breakdown' || (typeof val === 'string' && (val.includes('/') || val.toLowerCase().includes('khi gập') || val.toLowerCase().includes('cốp xe')))) {
+    // Trunk Breakdown
+    if (specType === 'trunk_breakdown') {
       return renderTrunkBreakdown(val);
     }
 
-    // 4. Multiline List (Array or semicolon separated)
+    // Multiline List
     if (specType === 'bullet_list' || Array.isArray(val)) {
       const items = Array.isArray(val) ? val : String(val).split(';').map(p => p.trim()).filter(Boolean);
-      // Filter out redundant giant ADAS blocks from safety list
-      const filtered = items.filter(it => !it.toLowerCase().startsWith('adas') && !it.toLowerCase().startsWith('trợ lái'));
-      const renderItems = filtered.length > 0 ? filtered : items;
-      if (renderItems.length === 0) return `<span class="text-subtle text-xs">—</span>`;
+      if (items.length === 0) return `<span class="text-subtle text-xs">—</span>`;
 
       return `
         <div class="spec-bullet-list">
-          ${renderItems.map(item => renderBulletItem(item)).join('')}
+          ${items.map(item => renderBulletItem(item)).join('')}
         </div>
       `;
     }
 
-    // 5. Split Lines
+    // Split Lines
     if (specType === 'split_lines') {
       return renderSplitLines(val);
     }
 
-    // 6. Badge style
+    // Badge style
     if (specType === 'badge') {
       const str = String(val);
-      const isPositive = str.toLowerCase().includes('có') || str.toLowerCase().includes('awd') || str.toLowerCase().includes('rwd') || str.toLowerCase().includes('điện');
+      const isPositive = str.toLowerCase().includes('có') || str.toLowerCase().includes('awd') || str.toLowerCase().includes('rwd') || str.toLowerCase().includes('điện') || str.toLowerCase().includes('level') || str.toLowerCase().includes('chuẩn');
+      const isNegative = str.toLowerCase().includes('không') || str.toLowerCase() === '—';
+      
       return `
         <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold ${
-          isPositive 
-            ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400' 
-            : 'bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+          isNegative
+            ? 'bg-slate-200 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-300 dark:border-slate-700'
+            : isPositive 
+              ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400' 
+              : 'bg-blue-500/15 border border-blue-500/30 text-blue-600 dark:text-blue-400'
         }">
           ${isPositive ? '<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>' : ''}
           <span>${str}</span>
@@ -576,26 +579,12 @@ window.ComparisonEngine = (function () {
       `;
     }
 
-    // 7. Drive modes (badge list)
-    if (specType === 'badge_list') {
-      const str = String(val);
-      if (str.includes('/')) {
-        const modes = str.split('/').map(m => m.trim()).filter(Boolean);
-        return `
-          <div class="flex flex-wrap gap-1.5 text-left">
-            ${modes.map(m => `<span class="spec-tag">${m}</span>`).join('')}
-          </div>
-        `;
-      }
-      return `<div class="font-semibold text-xs text-primary text-left">${str}</div>`;
-    }
-
-    // 8. Auto-detect if string has multiple comma-separated clauses outside parens
+    // Auto-detect if string has multiple semicolon clauses
     if (typeof val === 'string' && (val.includes(';') || (val.match(/,/g) || []).length >= 2)) {
       return renderSplitLines(val);
     }
 
-    // 9. Default single metric
+    // Default single metric
     return renderMetricValue(val, specType);
   }
 
@@ -615,7 +604,7 @@ window.ComparisonEngine = (function () {
 
     // Power
     const powerList = cars.map(c => {
-      const pStr = c.specs?.cat2_engine?.maxPower || '';
+      const pStr = c.specs?.cat3_powertrain?.maxPower || '';
       const kw = pStr.match(/(\d+)\s*kW/i);
       const hp = pStr.match(/(\d+)\s*hp/i);
       let num = 0;
@@ -624,22 +613,18 @@ window.ComparisonEngine = (function () {
       return { car: c, hp: num, text: pStr };
     }).sort((a, b) => b.hp - a.hp);
 
-    if (powerList[0].hp > powerList[powerList.length - 1].hp) {
+    if (powerList[0].hp > 0) {
       takeaways.push({
         icon: 'zap',
         color: 'emerald',
         title: 'Sức Mạnh & Khả Năng Tăng Tốc',
-        content: `<strong>${powerList[0].car.shortName}</strong> dẫn đầu về công suất với <strong>${powerList[0].text}</strong>. ${
-          powerList[0].car.fuelType.includes('Điện') 
-            ? 'Động cơ điện cho mô-men xoắn tức thời cực đại, giúp xe bốc và vượt dốc cực kỳ thoát xe.' 
-            : 'Động cơ đốt trong truyền thống.'
-        }`
+        content: `<strong>${powerList[0].car.shortName}</strong> dẫn đầu về công suất với <strong>${powerList[0].text}</strong>. Động cơ điện đạt mô-men xoắn tức thời cực đại, giúp bứt tốc êm ái, đầm chắc và vượt dốc thoát xe vượt trội.`
       });
     }
 
     // Range
     const rangeList = cars.map(c => {
-      const rStr = c.specs?.cat3_battery?.range || '';
+      const rStr = c.specs?.cat3_powertrain?.range || '';
       const m = rStr.match(/(\d+)\s*km/i);
       return { car: c, km: m ? parseInt(m[1], 10) : 0, text: rStr };
     }).sort((a, b) => b.km - a.km);
@@ -649,11 +634,11 @@ window.ComparisonEngine = (function () {
         icon: 'battery-charging',
         color: 'blue',
         title: 'Tầm Vận Hành & Tốc Độ Sạc',
-        content: `<strong>${rangeList[0].car.shortName}</strong> có tầm di chuyển lên tới <strong>${rangeList[0].text}</strong> sau 1 lần sạc đầy. Sạc siêu nhanh DC từ 10% đến 70% chỉ trong 25 - 36 phút tại hơn 150.000 cổng sạc V-GREEN phủ khắp toàn quốc.`
+        content: `<strong>${rangeList[0].car.shortName}</strong> có cự ly di chuyển ấn tượng lên tới <strong>${rangeList[0].text}</strong> sau 1 lần sạc đầy. Công nghệ sạc siêu nhanh DC đạt 10% - 70% chỉ từ 24 - 36 phút tại 150.000+ cổng sạc V-GREEN phủ kín 63 tỉnh thành.`
       });
     }
 
-    // Space
+    // Space / Wheelbase
     const wbList = cars.map(c => {
       const wbStr = c.specs?.cat1_dimensions?.wheelbase || '';
       const num = parseInt(wbStr.replace(/\D/g, ''), 10) || 0;
@@ -665,28 +650,21 @@ window.ComparisonEngine = (function () {
         icon: 'maximize-2',
         color: 'purple',
         title: 'Kích Thước & Trục Cơ Sở',
-        content: `<strong>${wbList[0].car.shortName}</strong> sở hữu chiều dài cơ sở ấn tượng nhất (<strong>${wbList[0].text}</strong>), tạo nên khoang để chân hàng ghế sau rộng rãi nhất trong phân khúc so sánh.`
+        content: `<strong>${wbList[0].car.shortName}</strong> sở hữu trục cơ sở dài nhất (<strong>${wbList[0].text} mm</strong>), mang lại không gian để chân rộng rãi tối ưu cho cả 2 hàng ghế.`
       });
     }
 
-    // Cost & Fuel Efficiency
-    const hasEV = cars.some(c => c.fuelType.includes('Điện'));
-    const hasICE = cars.some(c => c.fuelType.includes('Xăng'));
-
-    if (hasEV && hasICE) {
-      takeaways.push({
-        icon: 'trending-up',
-        color: 'emerald',
-        title: 'Chi Phí Vận Hành (Điện vs Xăng)',
-        content: `Xe điện VinFast chỉ tốn khoảng <strong>300 - 450 đ/km</strong> chi phí sạc pin, trong khi xe xăng cùng cỡ tiêu tốn từ <strong>1.300 - 1.650 đ/km</strong>. Trung bình mỗi năm chạy 18.000 km, xe điện giúp tiết kiệm từ <strong>18 - 25 triệu VNĐ</strong>.`
-      });
-    }
+    // Economics & Cost
+    takeaways.push({
+      icon: 'trending-up',
+      color: 'amber',
+      title: 'Chi Phí Vận Hành & Bảo Hành',
+      content: `Xe điện VinFast chỉ tốn khoảng <strong>300 - 450 đ/km</strong> tiền điện (rẻ hơn 3 - 4 lần xe xăng), miễn 100% lệ phí trước bạ và chính sách bảo hành chính hãng từ <strong>7 đến 10 năm</strong> vượt xa tiêu chuẩn ngành.`
+    });
 
     return {
       title: `Phân tích so sánh giữa ${cars.map(c => c.shortName).join(' vs ')}`,
-      conclusion: hasEV && hasICE
-        ? 'Dòng xe thuần điện VinFast vượt trội hoàn toàn về công suất tức thời, chi phí nhiên liệu rẻ hơn gấp 3 lần và bảo hành tới 10 năm.'
-        : 'Mỗi phiên bản đều có ưu thế riêng về trang bị công nghệ, tầm hoạt động và mức giá tương ứng với nhu cầu sử dụng.',
+      conclusion: '100% dải sản phẩm thuần điện VinFast đều được trang bị khung gầm cứng vững tiêu chuẩn quốc tế, công nghệ trợ lái thông minh và hưởng hệ sinh thái trạm sạc lớn nhất Việt Nam.',
       takeaways
     };
   }

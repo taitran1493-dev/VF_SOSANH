@@ -1,0 +1,666 @@
+HỆ THỐNG DANH MỤC & BẢNG SO SÁNH TẤT CẢ 15 DÒNG XE Ô TÔ ĐIỆN VINFAST,,,,,,,,,,,,,
+STT,Dòng Xe,Phân Khúc / Định Vị,DxRxC (mm),Trục Cơ Sở (mm),Khoảng Sáng Gầm (mm),Hệ Dẫn Động & Mô-tơ,Công Suất (kW / HP),Mô-men Xoắn (Nm),Dung Lượng Pin (kWh),Tầm Hoạt Động (km),Sạc Nhanh DC (10-70%),Giá Tham Khảo (VNĐ),Liên Kết Chính Thức
+1,VF 2,Minicar 4 chỗ cá nhân,3.090 x 1.496 x 1.663,2065,155,RWD (Cầu sau),30 kW (~40 HP),65 Nm,"18,3 LFP",210 km (NEDC),34 phút,188 triệu (kèm pin),Xem trên VinFast Auto
+2,VF 3,Mini-SUV việt dã cá tính,3.190 x 1.679 x 1.622,2075,175,RWD (Cầu sau),32 kW (~43 HP),110 Nm,"18,64 LFP",215 km (NEDC),36 phút,240 - 322 triệu,Xem trên VinFast Auto
+3,VF 5 Plus,A-SUV đô thị đa dụng,3.967 x 1.723 x 1.578,2514,168,FWD (Cầu trước),100 kW (~134 HP),135 Nm,"37,23 LFP",326 km (NEDC),30 phút,468 - 548 triệu,Xem trên VinFast Auto
+4,VF 6 (S / Plus),B-SUV thời thượng gia đình,4.238 x 1.820 x 1.594,2730,170,FWD (Cầu trước),130 - 150 kW (174 - 201 HP),250 - 310 Nm,"59,6 LFP",381 - 399 km (WLTP),"24,6 phút",675 - 855 triệu,Xem trên VinFast Auto
+5,VF 7 (S / Plus),C-SUV thể thao tương lai,4.545 x 1.890 x 1.635,2840,190,FWD / AWD (2 mô-tơ),130 - 260 kW (174 - 349 HP),250 - 500 Nm,"59,6 LFP / 75,3 NMC",375 - 431 km (WLTP),24 phút,"850 tr - 1,199 tỷ",Xem trên VinFast Auto
+6,VF 8 (Eco / Plus),D-SUV 5 chỗ đẳng cấp,4.750 x 1.934 x 1.667,2950,179,AWD (2 mô-tơ toàn thời gian),260 - 300 kW (349 - 402 HP),500 - 620 Nm,"87,7 CATL",457 - 471 km (WLTP),31 phút,"1,079 - 1,349 tỷ",Xem trên VinFast Auto
+7,VF 8 All-New 2026,D-SUV thế hệ mới (SDV & FSD),4.750 x 1.934 x 1.667,2950,179,FWD / AWD (Treo FSD),170 kW (~228 HP),350 Nm,Pin thế hệ mới ITM,~500 km (WLTP),22 - 25 phút,~899 triệu,Xem trên VinFast Auto
+8,VF 9 (Eco / Plus),E-SUV Full-size Flagship,5.118 x 2.070 x 1.696,3150,197,AWD (Treo khí nén thích ứng),300 kW (402 HP),620 Nm,123 CATL,602 - 626 km (WLTP),35 phút,"1,589 - 2,314 tỷ",Xem trên VinFast Auto
+9,VF WILD,Bán tải điện cỡ trung (REEV),5.376 x 2.069 x 1.873,3258,222,4WD / RWD (Mô-tơ + 1.5L xăng),160 kW (~218 HP),280 Nm,"46,4 LFP",>250 km EV / >1.000 km tổng,32 phút,Dự kiến 700 - 900 tr,Xem trên VinFast Auto
+10,VF MPV 7,MPV 7 chỗ gia đình,4.740 x 1.872 x 1.734,2840,170,FWD (Treo sau đa liên kết),150 kW (~201 HP),280 Nm,"60,13 LFP",450 km (NEDC),30 phút,"~682,5 triệu",Xem trên VinFast Auto
+11,Minio Green,Minicar dịch vụ taxi đô thị,3.090 x 1.496 x 1.625,2065,160,RWD (Cầu sau),20 kW (~27 HP),65 Nm,"14,7 - 18,3 LFP",170 - 210 km (NEDC),34 phút,~269 triệu,Xem trên VinFast Auto
+12,Herio Green,A-SUV dịch vụ phổ thông,3.967 x 1.723 x 1.579,2514,160,FWD (Nền tảng VF 5),100 kW (~134 HP),135 Nm,"37,23 LFP",326 km (NEDC),33 phút,~499 triệu,Xem trên VinFast Auto
+13,Nerio Green,C-SUV dịch vụ cao cấp,4.300 x 1.768 x 1.615,2611,165,"FWD (Cốp điện, cam 360)",110 kW (~147 HP),242 Nm,"41,9 LFP","318,6 km (NEDC)",27 phút,~628 triệu,Xem trên VinFast Auto
+14,Limo Green,MPV 7 chỗ dịch vụ vận tải,4.740 x 1.872 x 1.728,2840,170,"FWD (Sàn phẳng, cửa gió riêng)",150 kW (~201 HP),280 Nm,"60,13 LFP",450 km (NEDC),30 phút,~699 triệu,Xem trên VinFast Auto
+15,ECVAN,Tải van điện đô thị 2 chỗ,3.767 x 1.680 x 1.790,2520,165,RWD (Treo sau nhíp lá),30 kW (~40 HP),110 Nm,"17 - 18,23 LFP",150 - 175 km (NEDC),42 phút,~285 triệu,Xem trên VinFast Auto
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 2,,
+Định vị: Minicar đô thị 2 cửa 4 chỗ | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-vf2,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Chi Tiết,Ghi Chú & Điểm Nổi Bật
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),"3.090 x 1.496 x 1.663,2 mm","Thiết kế minicar 2 cửa, 4 chỗ siêu nhỏ gọn"
+Phân khúc định vị,Minicar đô thị hạng siêu nhỏ,"Thay thế xe máy, linh hoạt trong ngõ hẹp"
+Chiều dài cơ sở (Trục cơ sở),2.065 mm,Không gian cabin vừa vặn 4 người ngồi
+Khoảng sáng gầm xe,155 mm,"Leo lề tốt, hạn chế cạ gầm trong phố"
+Bán kính vòng quay tối thiểu,"4,45 m","Cực kỳ cơ động, quay đầu dễ dàng ở đường hẹp"
+Các góc vượt địa hình,Góc tới: ~20° | Góc thoát: ~28°,Đầu và đuôi xe ngắn giúp thoát dốc dễ dàng
+Trọng lượng không tải (Curb weight),810 kg,"Nhẹ nhàng, tối ưu hóa năng lượng tiêu thụ"
+Trọng lượng toàn tải (Gross weight),1.150 kg,Tải trọng chở người và hành lý ~340 kg
+Hệ số cản gió (Cd),"~0,35",Mũi xe vuốt cong giảm lực cản không khí
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU,,
+Thể tích cốp tiêu chuẩn,30 Lít,"Vừa túi xách, balo khi chở đủ 4 người"
+Thể tích cốp tối đa (Gập ghế),250 Lít,Hàng ghế sau gập tỷ lệ 50:50 chứa được vali to
+Cốp trước (Frunk),Không trang bị,Khoang đặt cụm trợ lực lái và hệ thống điện
+Tiện ích khoang hành lý,Cửa hậu mở cơ trợ lực ty thủy lực,Cổng sạc nguồn 12V tiện lợi phía trước
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (SỨC MẠNH CỐT LÕI)",,
+Loại mô-tơ điện & Vị trí,01 mô-tơ điện đặt tại cầu sau (RWD),Dẫn động cầu sau đẩy xe khỏe khoắn
+Công suất cực đại,30 kW (~40 mã lực),Tốc độ tối đa giới hạn an toàn 80 km/h
+Mô-men xoắn cực đại,65 Nm,"Đạt tức thì từ 0 vòng/phút, đề-pa lẹ làng"
+Chế độ lái,Eco / Normal,Tùy chọn tiết kiệm điện hoặc tăng tốc tiêu chuẩn
+Loại pin & Nhà sản xuất,Lithium Iron Phosphate (LFP),"Pin chống cháy nổ, tuổi thọ chu kỳ sạc cao"
+Dung lượng pin khả dụng,"18,3 kWh",Bảo hành pin lâu dài
+Quãng đường di chuyển (Range),210 km (chuẩn NEDC),Dư dả đi lại 3 - 5 ngày trong thành phố
+Thời gian sạc nhanh DC (10% - 70%),34 phút,Trạm sạc nhanh V-Green trên toàn quốc
+Thời gian sạc thường AC tại nhà,"5 - 6 giờ (Bộ sạc di động 3,3 kW)",Cắm sạc qua đêm tại nhà tiện lợi
+Hệ thống khung gầm & Dẫn động,RWD (Cầu sau),Khung gầm liền khối chắc chắn
+Hệ thống treo,Trước: MacPherson | Sau: Dầm xoắn,Êm dịu và tiết kiệm không gian gầm
+Hệ thống phanh,Trước: Đĩa | Sau: Tang trống,Tích hợp phanh tái sinh nạp lại điện
+Mâm & Lốp,13 - 14 inch vành hợp kim/thép,"Lốp dày êm ái, chi phí thay thế rẻ"
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,
+Hệ thống đèn chiếu sáng,Halogen / LED phản xạ,Đồ họa cánh chim chữ V nhận diện VinFast
+Gương chiếu hậu,Chỉnh cơ / Chỉnh điện cơ bản,Góc quan sát rộng
+Gạt mưa,Cơ bản 2 nấc tốc độ,Gạt sạch kính lái
+Chất liệu ghế & Bố cục,Bọc nỉ / Giả da kháng bẩn cao cấp,Bố trí 2 cửa 4 chỗ ngồi linh hoạt
+Điều chỉnh ghế,Ghế lái & phụ chỉnh cơ 4 hướng,"Dễ thao tác, cơ cấu gập trượt vào hàng sau"
+Vô lăng,2 chấu D-cut thể thao,Trợ lực điện EPS nhẹ nhàng khi vần lái
+Hệ thống điều hòa,Chỉnh cơ 1 vùng làm mát nhanh,Có màng lọc gió điều hòa ngăn bụi bẩn
+Tiện nghi phanh tay,Phanh tay cơ truyền thống,"Đơn giản, bền bỉ và chi phí sửa chữa thấp"
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,
+Màn hình hiển thị,Màn hình kỹ thuật số 7 inch sau vô lăng,"Hiển thị tốc độ, lượng pin, chế độ lái"
+Màn hình giải trí,Tích hợp vào màn hình trung tâm thông tin,Giao diện tiếng Việt trực quan
+Hệ thống âm thanh,2 loa công suất lớn,Nghe Radio FM/AM và nhạc qua Bluetooth
+Kết nối di động,"Bluetooth, cổng USB sạc điện thoại",Dễ dàng đồng bộ điện thoại thông minh
+Quản lý thông minh từ xa,Ứng dụng điện thoại VinFast App,"Kiểm tra dung lượng pin, định vị xe, trạng thái sạc"
+6. AN TOÀN,,
+Số lượng túi khí,01 túi khí,Bảo vệ vị trí người lái
+Hệ thống phanh an toàn,"ABS, EBD",Chống bó cứng và phân phối lực phanh điện tử
+Kiểm soát lực kéo,TCS (Traction Control),Chống trượt bánh khi tăng tốc trên đường trơn
+Hỗ trợ đỗ xe,Cảm biến lùi phía sau,Cảnh báo khoảng cách vật cản âm thanh
+An toàn pin,Tự ngắt nguồn khi có va chạm,Chuẩn chống nước cụm pin IP67
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,
+Giá niêm yết,188.000.000 VNĐ,Đã bao gồm pin (Kỷ lục giá xe điện rẻ nhất)
+Chi phí năng lượng,~250 đồng / km,"Tiêu hao ~9 kWh/100km, rẻ hơn xe máy tay ga"
+Chính sách trạm sạc,Miễn phí sạc pin V-Green theo giai đoạn,Hệ thống trạm sạc phủ khắp 63 tỉnh thành
+Thời hạn bảo hành xe,5 năm hoặc 130.000 km,Dẫn đầu phân khúc xe đô thị giá rẻ
+Thời hạn bảo hành pin,7 năm hoặc 160.000 km,An tâm tuyệt đối về chất lượng pin
+Bảo dưỡng định kỳ,Mỗi 12.000 km hoặc 1 năm,Chi phí mỗi lần bảo dưỡng chỉ ~300.000 VNĐ
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 3,,
+Định vị: Mini-SUV việt dã đô thị 4 chỗ | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Chi Tiết,Ghi Chú & Điểm Nổi Bật
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),3.190 x 1.679 x 1.622 mm,Thiết kế mini-SUV hình hộp việt dã cá tính
+Phân khúc định vị,"Mini-SUV đô thị 2 cửa, 4 chỗ",Dòng xe quốc dân tạo cơn sốt toàn quốc
+Chiều dài cơ sở (Trục cơ sở),2.075 mm,Bố trí 4 bánh sát góc tối ưu lòng cabin
+Khoảng sáng gầm xe,175 mm,"Rất cao, thoải mái leo lề và lội nước mưa phố"
+Bán kính vòng quay tối thiểu,"~4,5 m","Cực kỳ linh hoạt, quay đầu nhẹ nhàng"
+Các góc vượt địa hình,Góc tới: ~23° | Góc thoát: ~31°,Dáng SUV giúp leo dốc cao không cạ gầm
+Trọng lượng không tải (Curb weight),857 kg,Đã bao gồm bộ pin LFP
+Trọng lượng toàn tải (Gross weight),1.207 kg,Tải trọng chịu được 350 kg
+Hệ số cản gió (Cd),"~0,38",Dáng vuông góc cạnh (Boxy design)
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU,,
+Thể tích cốp tiêu chuẩn,36 Lít,Đủ chứa balo hoặc đồ dùng mua sắm nhỏ
+Thể tích cốp tối đa (Gập ghế),285 Lít,Hàng ghế sau gập phẳng hoàn toàn chứa vali lớn
+Cốp trước (Frunk),Không trang bị,Khoang chứa động cơ điện phụ trợ và ắc quy
+Tiện ích khoang hành lý,Cửa cốp mở lật lên cao trợ lực,Dễ dàng bốc xếp đồ đạc cồng kềnh
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (SỨC MẠNH CỐT LÕI)",,
+Loại mô-tơ điện & Vị trí,01 mô-tơ điện đặt tại cầu sau (RWD),"Cầu sau đẩy xe bốc, vượt dốc khỏe"
+Công suất cực đại,32 kW (~43 mã lực),"Tốc độ tối đa 100 km/h, vận hành linh hoạt"
+Mô-men xoắn cực đại,110 Nm,"Rất ấn tượng cho xe mini, gia tốc 0-50 km/h nhanh"
+Loại pin & Dung lượng,"Lithium Iron Phosphate (LFP) 18,64 kWh",Pin siêu bền chống cháy nổ tuyệt đối
+Quãng đường di chuyển (Range),215 km (chuẩn NEDC),Đáp ứng trọn vẹn nhu cầu đi lại cả tuần
+Thời gian sạc nhanh DC (10% - 70%),36 phút,Sạc nhanh tại toàn bộ trạm V-Green
+Thời gian sạc thường AC tại nhà,"~5 giờ với bộ sạc 3,3 kW",Chi phí sạc tại nhà rẻ hơn tiền xăng
+Hệ thống treo,Trước: MacPherson | Sau: Dầm xoắn,Cân bằng tốt giữa độ êm ái và sự đầm chắc
+Hệ thống phanh,Trước: Đĩa | Sau: Tang trống,Hỗ trợ phanh tái sinh năng lượng
+Kích thước mâm & Lốp,16 inch (Lốp 175/75 R16),"Vành to dáng hầm hố, lốp dày êm ái"
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,
+Hệ thống đèn pha,Halogen cỡ lớn phản xạ đa chiều,Đèn chiếu sáng gom sáng tốt ban đêm
+Nhận diện thương hiệu,Cánh chim VinFast mạ chrome/sơn bạc,Điểm nhấn sang trọng ở đầu và đuôi xe
+Gương chiếu hậu,"Chỉnh cơ, mặt gương to","Góc nhìn bao quát, hạn chế điểm mù"
+Chất liệu ghế & Bố cục,Bọc nỉ cao cấp phối 2 tông màu,Ghế ngồi thoải mái cho 4 người lớn
+Cần số điện tử,Cần gạt điện tử sau vô lăng,Tối ưu không gian bệ tì tay cực kỳ thoáng
+Điều hòa,Chỉnh cơ 1 vùng làm mát sâu,Luồng gió mát thổi nhanh đều cabin
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,
+Màn hình cảm ứng trung tâm,Màn hình cảm ứng 10 inch,"Độ nét cao, giao diện tiếng Việt thân thiện"
+Kết nối thông minh,Apple CarPlay / Android Auto không dây,"Dẫn đường Google Maps, nghe nhạc Spotify"
+Hệ thống âm thanh,2 loa công suất cao,"Âm thanh rõ ràng, trung thực"
+App VinFast,Quản lý xe từ xa qua smartphone,"Định vị xe, theo dõi pin, lịch sử sạc"
+6. AN TOÀN,,
+Túi khí,01 túi khí cho người lái,Bảo vệ an toàn khi va chạm trực diện
+Hệ thống phanh,"ABS, EBD, BA","Chống bó cứng, phân bổ và hỗ trợ phanh khẩn cấp"
+Hỗ trợ đỗ xe,Cảm biến lùi và Camera lùi,Hiển thị vạch căn khoảng cách lên màn hình 10 inch
+Ngắt điện tự động,Rơ-le an toàn ngắt cao áp khi có sự cố,Tiêu chuẩn an toàn điện cao cấp
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,
+Giá niêm yết thuê pin,Khoảng 240.000.000 VNĐ,Chi phí đầu tư ban đầu cực kỳ nhẹ nhàng
+Giá niêm yết kèm pin,Khoảng 322.000.000 VNĐ,Sở hữu trọn đời pin không lo cước tháng
+Chi phí điện năng,~250 - 300 đồng / km,Tiết kiệm hàng triệu đồng tiền xăng mỗi tháng
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,Chính sách bảo hành vượt trội
+Thời hạn bảo hành pin,8 năm không giới hạn km,Đẳng cấp cam kết chất lượng của VinFast
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 5 PLUS,,
+Định vị: A-SUV đô thị 5 chỗ đa dụng | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf5,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Chi Tiết,Ghi Chú & Điểm Nổi Bật
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),3.967 x 1.723 x 1.578 mm,"A-SUV 5 cửa, 5 chỗ ngồi rộng rãi"
+Phân khúc định vị,A-SUV đô thị gầm cao,Lựa chọn số 1 của gia đình trẻ và taxi
+Chiều dài cơ sở (Trục cơ sở),2.514 mm,Không gian để chân hàng ghế sau rất thoáng
+Khoảng sáng gầm xe,168 mm (Không tải 182 mm),Leo vỉa hè và lội ngập nội đô dễ dàng
+Bán kính vòng quay tối thiểu,"5,0 m",Xoay xở linh hoạt trong phố xá đông đúc
+Trọng lượng không tải (Curb weight),1.360 kg,Đầm chắc vượt trội so với xe xăng cùng hạng A
+Trọng lượng toàn tải (Gross weight),1.665 kg,Tải trọng chở người và hành lý 325 kg
+Hệ số cản gió (Cd),"~0,32",Thân xe bo tròn tối ưu luồng khí
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU,,
+Thể tích cốp tiêu chuẩn,260 Lít,Xếp thoải mái 2 - 3 vali xách tay
+Thể tích cốp tối đa (Gập ghế),900 Lít,Hàng ghế 2 gập 60:40 mở rộng không gian lớn
+Cốp trước (Frunk),Không trang bị,Khu vực bố trí mô-tơ điện và hệ thống biến tần
+Tiện ích khoang hành lý,"Cửa hậu mở góc rộng, sàn cốp sâu",Có khay che hành lý tháo rời
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (SỨC MẠNH CỐT LÕI)",,
+Loại mô-tơ điện & Dẫn động,01 mô-tơ điện đặt tại cầu trước (FWD),Dẫn động cầu trước bám đường tốt
+Công suất cực đại,100 kW (~134 mã lực),Mạnh gấp rưỡi xe xăng phân khúc A (thường 80 HP)
+Mô-men xoắn cực đại,135 Nm,"Tăng tốc mượt mà, phản hồi chân ga tức thì"
+Chế độ lái,Eco / Sport,Tùy chọn di chuyển tiết kiệm hoặc lái bốc
+Loại pin & Dung lượng,"Lithium Iron Phosphate (LFP) 37,23 kWh",Pin công nghệ mới không suy hao dung lượng
+Quãng đường di chuyển (Range),326 km (chuẩn NEDC),Đi liên tỉnh Hà Nội - Hải Phòng hoặc TP.HCM - Vũng Tàu khứ hồi
+Thời gian sạc nhanh DC (10% - 70%),30 phút,Chỉ cần nghỉ ngơi 30 phút là tiếp tục hành trình
+Thời gian sạc thường AC tại nhà,6 - 9 giờ,Sạc qua đêm với bộ sạc treo tường
+Hệ thống treo,Trước: MacPherson | Sau: Dầm xoắn,Ổn định thân xe và chống rung lắc
+Hệ thống phanh,"Phanh đĩa tản nhiệt trước, phanh đĩa sau",Trang bị phanh đĩa 4 bánh vượt trội phân khúc A
+Kích thước mâm & Lốp,17 inch (Lốp 205/55 R17),Mâm hợp kim phay bóng thể thao
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,
+Hệ thống đèn pha,Halogen Projector tự động bật/tắt,Có thấu kính gom sáng rõ rệt
+Đèn nhận diện,Dải trang trí tạo hình cánh chim chữ V,Đặc trưng nhận diện thương hiệu VinFast
+Gương chiếu hậu,"Chỉnh điện, tích hợp đèn báo rẽ",Gập điện tiện lợi khi đỗ xe
+Chất liệu ghế,Bọc da giả da cao cấp 2 tông màu,"Êm ái, sang trọng và dễ vệ sinh"
+Cần số,Núm xoay điện tử thông minh,Thiết kế hiện đại trên bệ trung tâm
+Hệ thống điều hòa,Chỉnh điện tích hợp màng lọc PM2.5,Bảo vệ đường hô hấp cho gia đình và trẻ nhỏ
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,
+Màn hình sau vô lăng,Màn hình kỹ thuật số 7 inch,Hiển thị sắc nét đầy đủ thông tin lái
+Màn hình giải trí,Màn hình cảm ứng trung tâm 8 inch,"Cảm ứng mượt mà, tích hợp trợ lý ViVi"
+Trợ lý ảo tiếng Việt ViVi,Điều khiển bằng giọng nói tự nhiên,"Hỏi đáp thông tin, mở nhạc, tra cứu thời tiết"
+Cập nhật phần mềm,FOTA (Firmware Over The Air),Tự động nâng cấp tính năng mới từ xa
+VinFast App,Kiểm soát xe toàn diện,"Định vị, cảnh báo xâm nhập, đặt lịch bảo dưỡng"
+6. AN TOÀN,,
+Số lượng túi khí,06 túi khí,"Bảo vệ toàn diện phía trước, hông và rèm"
+Hệ thống phanh an toàn,"ABS, EBD, BA",Kiểm soát phanh chính xác
+Hệ thống cân bằng điện tử,ESC (Electronic Stability Control),Ổn định thân xe khi đánh lái gấp
+Kiểm soát lực kéo & Khởi hành ngang dốc,"TCS, HSA",Chống trượt bánh và chống trôi dốc
+Cảnh báo điểm mù & Cắt ngang,BSW & RCTA,Tính năng cao cấp hiếm có trong phân khúc A
+Giám sát lốp & Hỗ trợ đỗ xe,"Cảm biến áp suất lốp dTPMS, Camera lùi, Cảm biến lùi",Cảnh báo áp suất từng bánh xe
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,
+Giá niêm yết thuê pin,468.000.000 VNĐ,Lựa chọn kinh tế tối ưu chi phí mua
+Giá niêm yết kèm pin,548.000.000 VNĐ,Sở hữu đứt pin không lo phí thuê
+Chi phí vận hành,~330 đồng / km,"Tiêu hao ~12 kWh/100km, tiết kiệm 70% so với xe xăng"
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,An tâm sử dụng dài lâu
+Thời hạn bảo hành pin,8 năm không giới hạn km,Được đổi pin mới nếu dung lượng dưới 70%
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 6,,,
+Định vị: B-SUV thời thượng gia đình (Bản S & Plus) | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf6,,,
+Hạng Mục / Tiêu Chuẩn,Phiên Bản VF 6S (Base),Phiên Bản VF 6 Plus,Ghi Chú & So Sánh
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,,
+Kích thước tổng thể (Dài x Rộng x Cao),4.238 x 1.820 x 1.594 mm,4.238 x 1.820 x 1.594 mm,Thiết kế Torino Design phong cách châu Âu
+Phân khúc định vị,B-SUV thời thượng đô thị,B-SUV thời thượng đô thị,"Cạnh tranh trực tiếp với Seltos, Creta, HR-V"
+Chiều dài cơ sở (Trục cơ sở),2.730 mm,2.730 mm,"Dài vượt trội phân khúc B, ngang ngửa xe hạng C"
+Khoảng sáng gầm xe,170 mm,170 mm,Thoải mái leo lề và đi đường mấp mô
+Trọng lượng không tải,1.550 kg,1.743 kg,Bản Plus đầm chắc hơn do pin và mô-tơ lớn
+Hệ số cản gió (Cd),"~0,30","~0,30",Khí động học tối ưu dòng chảy không khí
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU,,,
+Thể tích cốp tiêu chuẩn,350 Lít,350 Lít,Chứa được 3 - 4 vali xách tay
+Thể tích cốp tối đa (Gập ghế),1.275 Lít,1.275 Lít,Hàng ghế 2 gập phẳng 60:40
+Cửa cốp sau,Mở cơ trợ lực,Mở điện thông minh,Bản Plus có cốp đóng mở điện
+Tiện ích khoang hành lý,Khay che hành lý tháo rời,Khay che hành lý tháo rời,Đèn chiếu sáng khoang hành lý
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (SỨC MẠNH CỐT LÕI)",,,
+Hệ thống truyền động & Dẫn động,01 mô-tơ điện cầu trước (FWD),01 mô-tơ điện cầu trước (FWD),Dẫn động cầu trước êm ái linh hoạt
+Công suất cực đại,130 kW (~174 mã lực),150 kW (~201 mã lực),Bản Plus mạnh mẽ ngang động cơ xăng 2.0 Turbo
+Mô-men xoắn cực đại,250 Nm,310 Nm,Lực kéo vượt trội ngay từ vòng tua đầu
+Dung lượng pin khả dụng,"59,6 kWh (Pin LFP)","59,6 kWh (Pin LFP)",Pin chống cháy nổ an toàn tuyệt đối
+Quãng đường di chuyển (WLTP),399 km / lần sạc,381 km / lần sạc,Thoải mái xuyên tỉnh mà không lo trạm sạc
+Thời gian sạc nhanh DC (10% - 70%),"24,6 phút","24,6 phút",Tốc độ sạc siêu nhanh của VinFast
+Hệ thống treo sau,Thanh xoắn (Torsion beam),Độc lập đa liên kết (Multi-link),Bản Plus trang bị treo đa liên kết cực kỳ êm ái
+Kích thước mâm & Lốp,17 inch (Lốp 215/60 R17),19 inch (Lốp 235/45 R19),Bản Plus mâm 19 inch đa chấu phay thể thao
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,,
+Đèn chiếu sáng trước,Full LED tự động,Full LED Projector tự động,Tự động bật tắt và điều chỉnh góc chiếu
+Dải đèn nhận diện,Cánh chim chữ V trước & sau,Cánh chim LED phát sáng ban đêm,Biểu tượng nhận diện kiêu hãnh của VinFast
+Chất liệu ghế ngồi,Ghế bọc giả da cao cấp,Ghế bọc da Vegan cao cấp,"Da mềm mại, thoáng mát và sang trọng"
+Chỉnh ghế lái,Chỉnh cơ 6 hướng,Chỉnh điện 8 hướng,Bản Plus chỉnh điện tiện nghi
+Hệ thống điều hòa,Tự động 1 vùng,Tự động 2 vùng độc lập,Có cửa gió hàng ghế sau và lọc bụi PM2.5
+Gạt mưa,Chỉnh cơ gián đoạn,Cảm biến gạt mưa tự động,Tự gạt khi trời đổ mưa
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,,
+Màn hình cảm ứng trung tâm,"12,9 inch xoay về người lái","12,9 inch xoay về người lái","Độ nét cao, phủ lớp chống chói"
+Hiển thị kính lái (HUD),Không trang bị,Trang bị HUD màu cao cấp,Hắt thông tin tốc độ và dẫn đường lên kính lái
+Hệ thống âm thanh,6 loa chất lượng cao,8 loa cao cấp,"Âm trầm chắc nịch, âm cao trong trẻo"
+Kết nối thông minh,CarPlay / Android Auto không dây,CarPlay / Android Auto không dây,Tích hợp cổng sạc USB-C công suất cao
+Trợ lý ảo ViVi & OTA,Có đầy đủ,Có đầy đủ,Ra lệnh giọng nói tiếng Việt mượt mà
+6. AN TOÀN & GÓI HỖ TRỢ LÁI ADAS,,,
+Số lượng túi khí,04 túi khí,08 túi khí toàn diện,Bản Plus bảo vệ tối đa 8 vị trí
+Gói an toàn chủ động ADAS,Cơ bản,ADAS Cấp Độ 2 Toàn Diện,Chỉ có trên bản VF 6 Plus
+Hỗ trợ giữ làn & Chệch làn,Không,LKA & LDW,Tự động đánh lái giữ xe ở giữa làn
+Ga tự động thích ứng (ACC),Không (Chỉ Cruise Control),ACC Stop & Go,Tự bám theo xe phía trước khi tắc đường
+Phanh khẩn cấp tự động (AEB),Không,AEB nhận diện người đi bộ/xe,Tự động phanh khi phát hiện nguy cơ va chạm
+Cảnh báo điểm mù & Mở cửa,Có BSW,BSW & DOW & RCTA,Cảnh báo phương tiện cắt ngang và mở cửa
+Hệ thống Camera,Camera lùi sắc nét,Camera 360 độ mô phỏng 3D,Quan sát toàn cảnh sắc nét quanh xe
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,,
+Giá niêm yết thuê pin,Khoảng 675.000.000 VNĐ,Khoảng 765.000.000 VNĐ,Giá rất cạnh tranh so với xe xăng hạng B
+Giá niêm yết kèm pin,Khoảng 765.000.000 VNĐ,Khoảng 855.000.000 VNĐ,Miễn 100% lệ phí trước bạ cho xe điện
+Chi phí điện năng,~400 đồng / km,~420 đồng / km,"Tiêu hao ~14,5 kWh/100km"
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,7 năm hoặc 160.000 km,Bảo hành lâu nhất phân khúc B
+Thời hạn bảo hành pin,8 năm không giới hạn km,8 năm không giới hạn km,Chính sách bảo hành pin an tâm tuyệt đối
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 7,,,
+Định vị: C-SUV thể thao tương lai (Bản S & Plus AWD) | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf7,,,
+Hạng Mục / Tiêu Chuẩn,Phiên Bản VF 7S (Base),Phiên Bản VF 7 Plus (AWD),Ghi Chú & So Sánh
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,,
+Kích thước tổng thể (Dài x Rộng x Cao),4.545 x 1.890 x 1.635 mm,4.545 x 1.890 x 1.635 mm,Thiết kế phi thuyền tiêm kích Torino Design
+Phân khúc định vị,C-SUV thể thao phong cách tương lai,C-SUV thể thao phong cách tương lai,Khuấy đảo phân khúc CUV hạng C
+Chiều dài cơ sở (Trục cơ sở),2.840 mm,2.840 mm,Trục cơ sở dài tương đương xe hạng D
+Khoảng sáng gầm xe,190 mm,190 mm,"Gầm xe rất cao, dáng thể thao bệ vệ"
+Trọng lượng không tải,1.850 kg,2.085 kg,Bản Plus nặng hơn do 2 mô-tơ và pin to
+Hệ số cản gió (Cd),"~0,28","~0,28",Tay nắm cửa ẩn phẳng thân xe tối ưu khí động
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU,,,
+Thể tích cốp tiêu chuẩn,~400 Lít,~400 Lít,Chứa thoải mái 4 - 5 vali cỡ lớn
+Thể tích cốp tối đa (Gập ghế),~1.300 Lít,~1.300 Lít,Gập phẳng hàng ghế sau 60:40
+Tiện ích cốp sau,Mở điện,Mở điện + Đá cốp rảnh tay,Bản Plus có đá cốp và nhớ vị trí góc mở
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (SỨC MẠNH CỐT LÕI)",,,
+Cấu hình mô-tơ & Dẫn động,01 mô-tơ cầu trước (FWD),02 mô-tơ độc lập AWD 4 bánh,Bản Plus dẫn động 4 bánh toàn thời gian
+Công suất cực đại,130 kW (~174 mã lực),260 kW (349 mã lực),Bản Plus mạnh tương đương xe thể thao hạng sang
+Mô-men xoắn cực đại,250 Nm,500 Nm,"Gia tốc dính ghế, vượt xe an toàn chớp mắt"
+Tăng tốc 0 - 100 km/h,"Khoảng 8,5 giây","5,8 giây",Tăng tốc cực nhanh vượt xa mọi xe xăng hạng C
+Loại pin & Dung lượng,"Pin LFP 59,6 kWh","Pin Lithium Ternary (NMC) 75,3 kWh",Bản Plus trang bị pin NMC mật độ năng lượng cao
+Quãng đường di chuyển (WLTP),375 km / lần sạc,431 km / lần sạc,Thoải mái cho mọi hành trình liên tỉnh
+Thời gian sạc nhanh DC (10% - 70%),24 phút,24 phút,Sạc siêu nhanh công nghệ tiên tiến
+Hệ thống treo,Trước: MacPherson | Sau: Đa liên kết,Trước: MacPherson | Sau: Đa liên kết,Treo độc lập trước sau cho cảm giác lái đầm chắc
+Kích thước mâm & Lốp,19 inch (Lốp 235/50 R19),20 inch (Lốp 245/45 R20),Bản Plus mâm 20 inch thể thao siêu đẹp
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,,
+Đèn chiếu sáng trước,Full LED tự động,Full LED Matrix thông minh,Matrix tự động chia luồng chống chói xe ngược chiều
+Gương chiếu hậu,"Chỉnh/gập điện, sấy","Chỉnh/gập điện, sấy, tự cụp lùi",Tự động cụp mặt gương khi vào số lùi
+Chất liệu ghế,Da nhân tạo cao cấp,Da Vegan cao cấp phối màu thể thao,Chất liệu thân thiện môi trường sang trọng
+Chỉnh ghế & Tiện nghi ghế,Ghế lái chỉnh điện 8 hướng,Ghế lái điện 8 hướng + Thông gió/Sưởi,Bản Plus có làm mát và sưởi ấm lưng ghế
+Cần số,Cần số nút bấm phím đàn Piano,Cần số nút bấm phím đàn Piano,Thiết kế vị trí bệ trung tâm cực kỳ đẳng cấp
+Trần kính toàn cảnh,Không trang bị,Trần kính Panorama (Tùy chọn),Tầm nhìn khoáng đạt như khoang lái máy bay
+Hệ thống điều hòa,Tự động 2 vùng Combi 1.0,Tự động 2 vùng Combi 1.0,Lọc sạch bụi mịn PM2.5 và khử mùi nấm mốc
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,,
+Màn hình cảm ứng trung tâm,"12,9 inch hướng tài xế","12,9 inch hướng tài xế",Độ phân giải 2K sắc nét vượt trội
+Hiển thị kính lái (HUD),Không có,HUD đa sắc màu,Chiếu thông số vận tốc lên kính lái
+Hệ thống âm thanh,8 loa cao cấp,8 loa cao cấp,Chất lượng âm thanh vòm sống động
+Sạc & Kết nối,"Sạc không dây, USB-C 65W","Sạc không dây, USB-C 65W",Sạc nhanh trực tiếp cho cả laptop qua Type-C
+6. AN TOÀN & GÓI HỖ TRỢ LÁI ADAS,,,
+Số lượng túi khí,08 túi khí,08 túi khí toàn diện,Bảo vệ tối ưu tất cả các vị trí
+Gói ADAS Cấp Độ 2,Cơ bản,Trọn bộ ADAS Cấp Độ 2,Hệ thống hỗ trợ lái hiện đại nhất
+Kiểm soát hành trình thích ứng,Cruise Control cơ bản,ACC Stop & Go từ 0 - 130 km/h,Tự giữ khoảng cách và bám xe phía trước
+Cảnh báo & Hỗ trợ làn đường,LDW,LDW & LKA (Hỗ trợ giữ làn),Cảnh báo và tự chỉnh vô lăng giữa làn
+Phanh khẩn cấp & Va chạm,Cơ bản,AEB trước/sau + Nhận diện người đi bộ,Giảm thiểu tối đa nguy cơ tai nạn giao thông
+Hệ thống quan sát quanh xe,Camera lùi + Cảm biến,Camera 360 độ 3D sắc nét,Giả lập 3D quanh xe cực kỳ chân thực
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,,
+Giá niêm yết thuê pin,Khoảng 850.000.000 VNĐ,Khoảng 999.000.000 VNĐ,Mức giá cực kỳ hấp dẫn cho SUV 349 mã lực
+Giá niêm yết kèm pin,Khoảng 999.000.000 VNĐ,Khoảng 1.199.000.000 VNĐ,Được miễn 100% lệ phí trước bạ
+Chi phí điện năng,~420 đồng / km,~480 đồng / km,Tiêu hao ~15 - 16 kWh/100km
+Thời hạn bảo hành xe,10 năm hoặc 200.000 km,10 năm hoặc 200.000 km,Chính sách bảo hành 10 năm kỷ lục
+Thời hạn bảo hành pin,10 năm không giới hạn km,10 năm không giới hạn km,Bảo hành pin 10 năm tuyệt đối an tâm
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 8 (HIỆN HÀNH),,,
+Định vị: D-SUV 5 chỗ đẳng cấp (Bản Eco & Plus) | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-vf8,,,
+Hạng Mục / Tiêu Chuẩn,Phiên Bản VF 8 Eco,Phiên Bản VF 8 Plus,Ghi Chú & So Sánh
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,,
+Kích thước tổng thể (Dài x Rộng x Cao),4.750 x 1.934 x 1.667 mm,4.750 x 1.934 x 1.667 mm,Thiết kế Pininfarina đẳng cấp quốc tế
+Phân khúc định vị,D-SUV 5 chỗ hạng trung cao cấp,D-SUV 5 chỗ hạng trung cao cấp,"Mẫu xe toàn cầu đã xuất khẩu sang Mỹ, Canada, Châu Âu"
+Chiều dài cơ sở (Trục cơ sở),2.950 mm,2.950 mm,"Trục cơ sở cực dài, khoang sau rộng thênh thang"
+Khoảng sáng gầm xe,179 mm,179 mm,Vận hành đầm chắc trên cao tốc và đường trường
+Trọng lượng không tải (Curb weight),2.540 kg,2.600 kg,"Khung gầm và thân vỏ siêu cứng vững, đầm chắc"
+Trọng lượng toàn tải (Gross weight),3.030 kg,3.030 kg,Tải trọng xe trên 450 kg
+Hệ số cản gió (Cd),"0,28","0,28",Hốc chia gió cản trước và cánh gió mui xe
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU,,,
+Thể tích cốp tiêu chuẩn,376 Lít,376 Lít,Để vừa 3 bộ túi gậy Golf hoặc 4 vali lớn
+Thể tích cốp tối đa (Gập ghế),1.373 Lít,1.373 Lít,Gập phẳng hàng ghế thứ 2 thành mặt sàn lớn
+Cốp trước (Frunk),"77,6 Lít","77,6 Lít",Khoang chứa đồ dưới nắp capo độc quyền xe điện
+Tiện ích khoang hành lý,Cốp điện thông minh,Cốp điện + Đá cốp rảnh tay + Nhớ vị trí,Cổng sạc nguồn 12V tiện dụng trong cốp
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (SỨC MẠNH CỐT LÕI)",,,
+Cấu hình mô-tơ & Dẫn động,02 mô-tơ điện AWD toàn thời gian,02 mô-tơ điện AWD toàn thời gian,Dẫn động 4 bánh toàn thời gian thông minh
+Công suất cực đại,260 kW (349 mã lực),300 kW (402 mã lực),Sức mạnh tương đương động cơ V6 / V8 xe sang
+Mô-men xoắn cực đại,500 Nm,620 Nm,Lực kéo khủng khiếp tăng tốc không độ trễ
+Tăng tốc 0 - 100 km/h,"5,9 giây","5,5 giây",Khả năng bứt tốc ấn tượng trên xa lộ
+Loại pin & Dung lượng,"CATL 87,7 kWh","CATL 87,7 kWh",Pin dung lượng lớn công nghệ cao của CATL
+Quãng đường di chuyển (WLTP),471 km / lần sạc,457 km / lần sạc,Tự tin xuyên Việt cùng mạng lưới trạm sạc V-Green
+Thời gian sạc nhanh DC (10% - 70%),31 phút,31 phút,Sạc công suất cao 150 kW - 250 kW
+Hệ thống treo,Trước: Độc lập MacPherson | Sau: Đa liên kết,Trước: Độc lập MacPherson | Sau: Đa liên kết,"Vận hành êm ái, vào cua vững chãi không văng đuôi"
+Kích thước mâm & Lốp,19 inch (Lốp 245/45 R19),20 inch (Lốp 245/45 R20),Bản Plus mâm 20 inch phay kim cương thể thao
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,,
+Đèn chiếu sáng,Full LED thông minh,Full LED Matrix thông minh,Đèn pha tự động chống lóa và mở rộng góc chiếu
+Kính xe,Kính cách âm 2 lớp,Kính cách âm 2 lớp tối màu chống UV,Khoang cabin tĩnh lặng tiêu chuẩn xe sang
+Chất liệu ghế ngồi,Giả da cao cấp,Da thật / Da Nappa cao cấp,Ghế công thái học nâng đỡ cột sống tuyệt vời
+Điều chỉnh ghế trước,Ghế lái chỉnh điện 8 hướng,Ghế lái điện 12 hướng nhớ vị trí + Ghế phụ điện 10 hướng,Bộ nhớ ghế liên kết với hồ sơ người lái
+Tiện nghi làm mát / Sưởi ghế,Sưởi ấm hàng ghế trước,Sưởi ấm & Làm mát cả 2 hàng ghế trước/sau,Làm mát lưng ghế cực kỳ dễ chịu trong mùa hè
+Trần xe,Trần kim loại tiêu chuẩn,Cửa sổ trời toàn cảnh Panorama chỉnh điện,Mang lại không gian thoáng đạt đẳng cấp
+Hệ thống điều hòa,Tự động 2 vùng lọc bụi PM2.5,Tự động 2 vùng tích hợp Ionizer lọc PM2.5,Ion âm khử khuẩn làm sạch không khí
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,,
+Màn hình trung tâm,"Cảm ứng 15,6 inch độ nét 2K","Cảm ứng 15,6 inch độ nét 2K",Thay thế hoàn toàn cụm đồng hồ cơ truyền thống
+Hiển thị kính lái (HUD),HUD màu chiếu kính lái,HUD màu chiếu kính lái,"Hiển thị vận tốc, cảnh báo ADAS và dẫn đường"
+Hệ thống âm thanh,8 loa cao cấp,10 loa cao cấp có Subwoofer rời,Âm thanh rạp hát di động
+Trợ lý ảo ViVi,Giọng nói tiếng Việt tự nhiên,Giọng nói tiếng Việt tự nhiên,"Điều khiển điều hòa, cửa kính, gọi điện, tra cứu"
+Chế độ thông minh Smart Mode,"Camp Mode, Pet Mode, Car Wash Mode","Camp Mode, Pet Mode, Car Wash Mode",Chế độ cắm trại giữ điều hòa qua đêm tiện lợi
+Tính năng cấp nguồn V2L,Cung cấp nguồn điện 220V ngoài xe,Cung cấp nguồn điện 220V ngoài xe,Cắm thiết bị điện dã ngoại thoải mái
+6. AN TOÀN 5 SAO QUỐC TẾ (NHTSA & EURO NCAP),,,
+Số lượng túi khí,11 túi khí,11 túi khí,Bảo vệ tối đa bao gồm túi khí đầu gối và giữa 2 ghế
+Hỗ trợ lái trên cao tốc,Highway Assist Level 2,Highway Assist Level 2,"Tự đánh lái, giữ ga và bám làn đường"
+Đỗ xe tự động thông minh,Không,Smart Parking Assist & Remote Parking,Tự động lùi chuồng và ghép xe song song
+Triệu hồi xe thông minh (Summon),Không,Summon (Tiến/lùi xe bằng điện thoại),Rất tiện lợi khi đỗ xe trong garage hẹp
+Hệ thống phanh tự động AEB,Phanh khẩn cấp tự động tốc độ cao,Phanh khẩn cấp tự động tốc độ cao,"Nhận diện người đi bộ, phương tiện và chướng ngại vật"
+Hệ thống Camera & Cảm biến,Camera 360 độ 3D + 12 cảm biến,Camera 360 độ 3D + 12 cảm biến,Giám sát 360 độ xung quanh xe không điểm mù
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,,
+Giá niêm yết thuê pin,Khoảng 1.079.000.000 VNĐ,Khoảng 1.273.000.000 VNĐ,Mức giá cực tốt cho SUV hạng D 402 mã lực
+Giá niêm yết kèm pin,Khoảng 1.149.000.000 VNĐ,Khoảng 1.349.000.000 VNĐ,Không tốn 10% - 12% lệ phí trước bạ
+Chi phí điện năng,~550 đồng / km,~600 đồng / km,Tiêu hao ~19 - 20 kWh/100km
+Thời hạn bảo hành xe,10 năm hoặc 200.000 km,10 năm hoặc 200.000 km,Chính sách bảo hành số 1 thị trường
+Thời hạn bảo hành pin,10 năm không giới hạn km,10 năm không giới hạn km,Cam kết dung lượng pin trên 70%
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 8 ALL-NEW 2026,,
+Định vị: D-SUV thế hệ mới (Kiến trúc SDV & Treo FSD) | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-vf8-the-all-new-2026,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Thế Hệ Mới,Ghi Chú Đột Phá & So Sánh
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),4.750 x 1.934 x 1.667 mm,Phom dáng SUV thể thao bề thế
+Ngôn ngữ thiết kế mới,Dòng chảy công nghệ (Tech Fluid),"Mặt ca-lăng đen bóng trải rộng, dải LED cánh chim thanh thoát hơn"
+Chiều dài cơ sở (Trục cơ sở),2.950 mm,Khoang nội thất rộng rãi hàng đầu phân khúc D
+Khoảng sáng gầm xe,179 mm,Đảm bảo sự đầm chắc ở dải tốc độ cao
+Hệ số cản gió (Cd),"0,265",Tối ưu hóa cản gió gầm phẳng và cánh lướt gió chủ động
+2. KHÔNG GIAN CHỨA ĐỒ & THIẾT KẾ BỆ TRUNG TÂM MỚI,,
+Thể tích cốp sau tiêu chuẩn,~410 Lít,Sâu và rộng hơn so với thế hệ trước
+Thể tích cốp tối đa (Gập ghế),~1.400 Lít,Gập phẳng hàng ghế sau tạo không gian chứa đồ lớn
+Cốp trước (Frunk),75 Lít,Khoang chứa cáp sạc và vật dụng cá nhân
+Thiết kế bệ tì tay trung tâm mới,Bệ trung tâm 2 tầng thông thoáng,Chuyển cần số lên sau vô lăng giúp có thêm hộc để túi xách/laptop rộng rãi
+"3. VẬN HÀNH, ĐỘNG CƠ & CÔNG NGHỆ KHUNG GẦM ĐỘT PHÁ",,
+Loại mô-tơ điện & Dẫn động,Mô-tơ điện hiệu suất cao thế hệ mới (FWD / AWD),Êm ái và tiết kiệm năng lượng hơn
+Công suất cực đại,170 kW (~228 mã lực),Cung cấp sức mạnh mượt mà và bền bỉ
+Mô-men xoắn cực đại,350 Nm,Phản hồi chân ga tức thì không trễ
+Hệ thống treo thích ứng FSD,Frequency Selective Dampers (FSD),"Tự động đổi độ cứng/mềm theo tần số dao động mặt đường, triệt tiêu rung lắc"
+Hệ thống quản lý nhiệt ITM,Integrated Thermal Management (ITM),"Tối ưu nhiệt độ pin và khoang lái, tăng 15% hiệu quả dùng pin"
+Quãng đường di chuyển (Range),~500 km / lần sạc đầy (chuẩn WLTP),Tầm hoạt động mở rộng vượt trội
+Thời gian sạc siêu nhanh DC,22 - 25 phút (10% lên 70%),Đường cong nạp điện tối ưu giúp rút ngắn thời gian chờ tại trạm
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT THẾ HỆ MỚI,,
+Cần số điện tử mới,Cần số lẫy điện tử sau vô lăng (Column shifter),"Thao tác gạt số sang trọng, giải phóng không gian bệ tì tay"
+Ghế ngồi công thái học Ergonomic,Ghế bọc da thân thiện môi trường cao cấp,"Nâng đỡ thắt lưng và vai gáy, chống mỏi mệt khi đi xa"
+Tiện nghi ghế,"Chỉnh điện đa hướng, nhớ vị trí, sưởi và làm mát",Tích hợp đầy đủ các tính năng chăm sóc người ngồi
+Hệ thống điều hòa,Tự động 2 vùng tích hợp lọc Combi 1.0,"Lọc 99% bụi mịn PM2.5, khử nấm mốc và ion hóa không khí"
+5. KIẾN TRÚC PHẦN MỀM TẬP TRUNG SDV & CÔNG NGHỆ,,
+Kiến trúc xe phần mềm (SDV),Software Defined Vehicle với máy tính trung tâm CVC,"Xử lý đa nhiệm siêu nhanh, cập nhật phần mềm liên tục hoàn thiện xe"
+Màn hình giải trí trung tâm,"Cảm ứng OLED 12,9 - 15,6 inch viền mỏng","Tần số quét cao, chống chói và chống bám vân tay"
+Hệ thống âm thanh,8 - 10 loa công nghệ âm thanh vòm kỹ thuật số,Âm thanh sống động và chi tiết
+Trợ lý ảo ViVi AI thế hệ mới,Tích hợp trí tuệ nhân tạo tạo sinh GenAI,"Giao tiếp tự nhiên, thấu hiểu ngữ cảnh phức tạp của tài xế"
+6. AN TOÀN & ADAS NÂNG CẤP,,
+Cảm biến và Radar thế hệ mới,Radar sóng milimet độ nét cao + Camera AI góc rộng,Nhận diện vật cản từ xa chuẩn xác trong mưa lớn và sương mù
+Hỗ trợ đánh lái tránh va chạm khẩn cấp,Emergency Evasive Steering Assist,Tự can thiệp đánh lái an toàn tránh va chạm chướng ngại vật
+Hệ thống kiểm soát hành trình,Adaptive Cruise Control bám đuôi nhịp nhàng hơn,"Phanh và tăng tốc êm dịu, không giật cục"
+Túi khí bảo vệ,11 túi khí tiêu chuẩn an toàn cao nhất,Bảo vệ toàn diện mọi vị trí hành khách
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,
+Giá niêm yết dự kiến,Khoảng 899.000.000 VNĐ,Mức giá cực kỳ hấp dẫn cho một mẫu SUV cỡ D thế hệ mới
+Chính sách ưu đãi,"Chương trình 'Vì tương lai xanh', hỗ trợ lãi suất vay",Ưu đãi sạc pin miễn phí tại V-Green theo chính sách hãng
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,Chính sách hậu mãi uy tín của VinFast
+Thời hạn bảo hành pin,8 năm không giới hạn km,Bảo vệ tài sản lâu dài cho chủ xe
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF 9,,,
+Định vị: E-SUV Full-size Flagship (Bản Eco & Plus Ghế Cơ Trưởng) | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-vf9,,,
+Hạng Mục / Tiêu Chuẩn,Phiên Bản VF 9 Eco (7 chỗ),Phiên Bản VF 9 Plus (6 chỗ VIP),Ghi Chú & So Sánh
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,,
+Kích thước tổng thể (Dài x Rộng x Cao),5.118 x 2.070 x 1.696 mm,5.118 x 2.070 x 1.696 mm,"E-SUV Full-size bề thế, uy nghi chuẩn xe chủ tịch"
+Phân khúc định vị,E-SUV Full-size hạng sang Flagship,E-SUV Full-size hạng sang Flagship,Mẫu SUV điện đầu bảng lớn nhất của VinFast
+Chiều dài cơ sở (Trục cơ sở),3.150 mm,3.150 mm,Khoang nội thất siêu rộng rãi cho 3 hàng ghế
+Khoảng sáng gầm xe,197 mm (Treo khí nén nâng hạ gầm),197 mm (Treo khí nén nâng hạ gầm),"Tự động hạ gầm khi chạy tốc độ cao, nâng gầm khi vượt địa hình"
+Trọng lượng không tải,2.830 kg,2.890 kg,"Khung gầm đồ sộ, cách âm tĩnh lặng tuyệt đối"
+Trọng lượng toàn tải,3.400 kg,3.400 kg,Chở 6 - 7 người lớn cùng đầy đủ hành lý
+Hệ số cản gió (Cd),"0,29","0,29",Hốc thoát gió nắp capo và cánh gió mui khí động học
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU,,,
+Thể tích cốp tiêu chuẩn (Đủ 3 hàng ghế),520 Lít,520 Lít,Xếp thoải mái 3 túi gậy golf hoặc 4 vali lớn
+Thể tích cốp tối đa (Gập hàng 3 & 2),>1.500 Lít,>1.500 Lít,Khoang hành lý mênh mông như xe tải nhỏ
+Cốp trước (Frunk),88 Lít,88 Lít,Khoang chứa đồ rộng rãi dưới nắp capo
+Tiện ích cốp sau,Cốp điện chống kẹt thông minh,Cốp điện + Hạ gầm đuôi xe hỗ trợ bốc đồ nặng,"Cửa cốp mở rảnh tay, nút bấm hạ phuộc sau bốc dỡ hàng"
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN KHỦNG 123 kWh",,,
+Cấu hình mô-tơ & Dẫn động,02 mô-tơ điện AWD toàn thời gian,02 mô-tơ điện AWD toàn thời gian,Dẫn động 4 bánh toàn thời gian siêu khỏe
+Công suất cực đại,300 kW (402 mã lực),300 kW (402 mã lực),Vận hành mạnh mẽ lướt êm ái dù xác xe gần 3 tấn
+Mô-men xoắn cực đại,620 Nm,620 Nm,Sức kéo tức thời vượt dốc đèo nhẹ nhàng
+Hệ thống treo khí nén thích ứng,Treo phuộc hơi điện tử tự cân bằng,Treo phuộc hơi điện tử tự cân bằng,Tự điều chỉnh độ êm ái mềm mượt theo mặt đường
+Dung lượng pin cao cấp CATL,123 kWh,123 kWh,Cụm pin dung lượng khổng lồ hàng đầu thế giới
+Quãng đường di chuyển (WLTP),626 km / lần sạc,602 km / lần sạc,Hành trình xuyên Việt không cần lo lắng về pin
+Thời gian sạc nhanh DC (10% - 70%),35 phút,35 phút,Hỗ trợ công suất sạc cực đại lên tới 250 kW
+Kích thước mâm & Lốp,20 inch (Lốp 275/45 R20),21 inch (Lốp 275/40 R21),Mâm 21 inch đa chấu phay kim cương quyền uy
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT (GHẾ THƯƠNG GIA VIP),,,
+Cấu hình số chỗ ngồi,7 chỗ (Bố trí 2 - 3 - 2),6 chỗ (Bố trí 2 - 2 - 2),Bản 6 chỗ có hàng ghế cơ trưởng Captain Seats
+Hàng ghế cơ trưởng Captain Seats,Không có,Hàng ghế 2 độc lập ngăn bằng bệ tì tay VIP,"Tích hợp massage đa điểm, sưởi ấm, làm mát và chỉnh điện"
+Cửa hít tự động,Có trang bị 4 cánh,Có trang bị 4 cánh,Cửa hít êm ái không gây ồn khoang cabin
+Chất liệu ghế da,Da cao cấp,Da thật thượng hạng Premium Nappa,"Mùi hương da sang trọng, mềm mại tuyệt hảo"
+Trần kính toàn cảnh,Trần kim loại cách nhiệt,Trần kính Panorama toàn cảnh chống UV,Kính phủ lớp phản xạ nhiệt và chống tia tử ngoại
+Hệ thống điều hòa,Tự động 3 vùng độc lập,Tự động 3 vùng độc lập có ion âm,Bảng điều hòa riêng biệt cho hàng ghế VIP phía sau
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,,
+Màn hình cảm ứng trung tâm,"15,6 inch sắc nét 2K","15,6 inch sắc nét 2K",Điều khiển toàn bộ các chức năng của xe
+Màn hình cảm ứng hàng ghế sau,Không có,Màn hình 8 inch ở bệ tì tay VIP,"Dành riêng cho VIP chỉnh ghế, nhạc và điều hòa"
+Hiển thị kính lái (HUD),HUD màu đa thông tin,HUD màu đa thông tin,Chiếu thông tin sắc nét lên kính chắn gió
+Hệ thống âm thanh rạp hát,13 loa cao cấp,13 loa cao cấp có Subwoofer,Âm thanh vòm vòm vĩ đại chân thực
+Trợ lý ảo ViVi đa vùng âm thanh,Phân biệt vị trí người nói,Phân biệt vị trí người nói (Ghế VIP/Tài xế),Chỉ thực hiện lệnh của vị trí phát ra giọng nói
+Kết nối nhà thông minh Smart Home,Có tích hợp điều khiển thiết bị tại nhà,Có tích hợp điều khiển thiết bị tại nhà,"Bật đèn, bật điều hòa nhà trước khi xe về tới nơi"
+6. AN TOÀN TỐI THƯỢNG,,,
+Số lượng túi khí,11 túi khí,11 túi khí,Tiêu chuẩn an toàn 5 sao NHTSA và Euro NCAP
+Gói ADAS cấp độ 2 đỉnh cao,Đầy đủ trọn bộ tính năng,Đầy đủ trọn bộ tính năng,"Hỗ trợ lái trên cao tốc, giữ làn, đổi làn tự động"
+Hỗ trợ khi ùn tắc giao thông,Traffic Jam Assist,Traffic Jam Assist,"Tự động bám đuôi, phanh và dừng nhịp nhàng khi kẹt xe"
+Camera giám sát người lái bằng AI,Giám sát mắt tài xế cảnh báo ngủ gật,Giám sát mắt tài xế cảnh báo ngủ gật,Bảo đảm tài xế luôn tập trung quan sát đường
+Camera quan sát ban đêm 360 3D,Camera 360 độ 3D sắc nét,Camera 360 độ 3D sắc nét,"Giúp xe to 5,1m dễ dàng lùi chuồng và đi phố hẹp"
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,,
+Giá niêm yết thuê pin,Khoảng 1.589.000.000 VNĐ,Khoảng 1.786.000.000 VNĐ,Rẻ hơn 1 nửa so với các dòng SUV full-size xe xăng hạng sang
+Giá niêm yết kèm pin,Khoảng 2.114.000.000 VNĐ,Khoảng 2.314.000.000 VNĐ,Miễn 100% lệ phí trước bạ trị giá hàng trăm triệu đồng
+Chi phí điện năng,~650 đồng / km,~700 đồng / km,Tiêu hao ~22 - 24 kWh/100km
+Thời hạn bảo hành xe,10 năm hoặc 200.000 km,10 năm hoặc 200.000 km,Bảo hành 10 năm vượt trội
+Thời hạn bảo hành pin,10 năm không giới hạn km,10 năm không giới hạn km,Đặc quyền cứu hộ VIP 24/7 chuyên biệt
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF WILD,,
+Định vị: Bán tải điện thông minh cỡ trung (REEV) | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-vf-wild,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Đột Phá,Ghi Chú Độc Bản & Vận Hành
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),5.376 x 2.069 x 1.873 mm,Bán tải cỡ trung (Mid-size pickup) cơ bắp và hiện đại
+Phân khúc định vị,Bán tải điện thông minh mở rộng phạm vi (REEV),"Đối thủ nặng ký của Ford Ranger, Toyota Hilux nhưng dẫn đầu công nghệ điện"
+Chiều dài cơ sở (Trục cơ sở),3.258 mm,Trục cơ sở dài mang lại sự ổn định và đầm chắc
+Khoảng sáng gầm xe,222 mm,Khoảng sáng gầm cực cao chuyên dụng off-road vượt đá hộc
+Các góc vượt địa hình,Góc tới: >30° | Góc thoát: >26° | Góc đỉnh dốc: >23°,Khả năng leo dốc và vượt hố bùn lầy xuất sắc
+Tải trọng chuyên chở thùng,750 kg,"Chuyên chở hàng hóa nặng, vật tư công trình hoặc dụng cụ cắm trại"
+Khả năng kéo rơ-moóc,Lên tới hơn 3 tấn,"Kéo cano, thuyền buồm hoặc nhà di động cắm trại dễ dàng"
+Kích thước lốp & Vành,18 inch (Lốp địa hình All-Terrain 255/70 R18),"Gai lốp sâu bám chắc trên cát, bùn tuyết và đường đá trơn"
+2. KHÔNG GIAN THÙNG HÀNG & CƠ CHẾ GẬP THÔNG CABIN ĐỘC BẢN,,
+Kích thước thùng hàng tiêu chuẩn (DxRxC),1.574 x 1.512 x 509 mm,Thùng hàng rộng rãi vuông vức
+Tính năng gập thông cabin bằng điện,"Mở rộng chiều dài thùng chở từ 1,57 m lên 2,44 m",Vách ngăn sau cabin và kính lưng gập điện phẳng hoàn toàn
+Khả năng chở đồ cồng kềnh,"Chở ván lướt sóng, thuyền kayak, xe cào cào",Có thể trải đệm ngủ cắm trại bên trong xe nối liền thùng
+Tiện ích thùng hàng,"Cửa thùng mở điện đa chế độ, móc chằng chịu lực",Bậc bước chân tích hợp cản sau giúp trèo lên thùng dễ dàng
+Cổng nguồn dã ngoại trong thùng,"Trang bị cổng điện 220V / V2L công suất 3,3 - 6 kW","Cắm trực tiếp bếp nướng điện, tủ lạnh dã ngoại, máy cưa"
+"3. VẬN HÀNH, ĐỘNG CƠ & HỆ TRUYỀN ĐỘNG REEV ĐỘT PHÁ",,
+Công nghệ truyền động REEV,Range-Extended Electric Vehicle (Mở rộng phạm vi),Mô-tơ điện dẫn động bánh xe + Máy xăng 1.5L làm máy phát điện nạp pin
+Công suất mô-tơ điện kéo bánh,160 kW (~218 mã lực),Lực kéo điện tức thì cực khỏe khi leo dốc tải nặng
+Mô-men xoắn cực đại,280 Nm,"Đạt tối đa ngay từ 0 vòng/phút, không lo hụt hơi khi sa lầy"
+Động cơ xăng phụ trợ,1.5L hút khí tự nhiên làm máy phát điện,Hoàn toàn không bao giờ lo hết pin giữa rừng hoặc nơi không có trạm sạc
+Hệ dẫn động & Khung gầm,Dẫn động 4 bánh 4WD có khóa vi sai điện tử,Khung gầm sắt-xi rời Body-on-frame siêu cứng vững
+Dung lượng pin LFP khả dụng,"46,4 kWh (Pin LFP chống cháy nổ)",Pin dung lượng lớn đáp ứng chạy thuần điện hàng ngày
+Quãng đường chạy thuần điện,Hơn 250 km (chuẩn NEDC),Dư sức đi làm và di chuyển đô thị mà không tốn giọt xăng nào
+Tổng quãng đường hỗn hợp (Điện + Xăng),Lên tới 1.000 - 1.100 km,Một lần nạp đầy năng lượng đi xuyên Việt
+Thời gian sạc nhanh DC,Dưới 32 phút (10% lên 70%),Hỗ trợ sạc nhanh DC tại các trạm V-Green
+Hệ thống treo,Trước: Tay đòn kép | Sau: Nhíp lá/Đa liên kết,Chịu tải nặng hàng hóa tốt và đầm xe khi chạy tốc độ cao
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,
+Hệ thống đèn pha,Full LED cường độ cao chiếu xa,Đèn chiếu sáng xuyên đêm trên đường đèo rừng
+Kính chắn gió,Kính lái góc nhìn toàn cảnh nối dài lên trần,Tầm nhìn bao quát toàn bộ khung cảnh thiên nhiên dã ngoại
+Chất liệu ghế ngồi,Bọc da cao cấp chống thấm nước,Dễ lau chùi bùn đất sau các chuyến đi phượt dã ngoại
+Sàn cabin,Lót cao su đúc nguyên khối chống bẩn,Có thể dùng vòi nước xịt rửa sàn xe tiện lợi
+Điều hòa,Tự động 2 vùng làm lạnh sâu,Cửa gió điều hòa mạnh mẽ xua tan cái nóng sa mạc
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH OFF-ROAD,,
+Màn hình cảm ứng trung tâm,Màn hình cỡ lớn hiển thị thông số địa hình chuyên dụng,"Độ dốc, góc nghiêng thân xe, la bàn số, áp suất lốp từng bánh"
+Tính năng V2L (Vehicle-to-Load),Cung cấp nguồn điện 220V công suất lớn,"Cắm thiết bị cắm trại, đèn chiếu sáng khu lều trại"
+Trợ lý ảo ViVi,Hỗ trợ định vị dẫn đường đến các điểm cắm trại,Cập nhật bản đồ vệ tinh không cần sóng 4G qua offline cache
+6. AN TOÀN ĐỊA HÌNH & HỖ TRỢ NGƯỜI LÁI,,
+Cân bằng điện tử kéo rơ-moóc,Trailer Sway Control,Ngăn chặn hiện tượng lắc đuôi khi kéo hàng phía sau
+Hỗ trợ đổ đèo dốc sâu,HDC (Hill Descent Control),Tự động giữ tốc độ an toàn khi xuống dốc đứng trơn trượt
+Camera nhìn xuyên gầm,Transparent Chassis View,Giả lập hình ảnh gầm xe để nhìn rõ đá tảng và rãnh sâu phía dưới
+Hệ thống túi khí,06 - 08 túi khí bảo vệ toàn cabin,Bảo vệ an toàn cho cả gia đình trong mọi tình huống
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,
+Định vị giá bán dự kiến,Khoảng 700 - 900 triệu VNĐ,Cạnh tranh trực tiếp với các dòng bán tải máy dầu truyền thống
+Chi phí nhiên liệu vận hành,Tiết kiệm 50% so với bán tải chạy dầu,Tận dụng tối đa nguồn điện sạc giá rẻ hàng ngày
+Thời hạn bảo hành,7 - 10 năm theo tiêu chuẩn VinFast,Hậu mãi an tâm cho dòng xe việt dã công nghệ cao
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST VF MPV 7,,
+Định vị: MPV 7 chỗ thuần điện gia đình | Link website chính thức: https://vinfastauto.com/vn_vi/dat-coc-xe-vf-mpv7,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Gia Đình,Ghi Chú & Tiện Ích Đột Phá
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),4.740 x 1.872 x 1.734 mm,MPV 7 chỗ cỡ trung chuẩn mực gia đình
+Phân khúc định vị,MPV 7 chỗ thuần điện đô thị & gia đình,"Đối trọng cạnh tranh với Xpander, Innova, Custin nhưng chạy điện"
+Chiều dài cơ sở (Trục cơ sở),2.840 mm,4 bánh xe đẩy sát ra góc tối đa hóa không gian cabin
+Khoảng sáng gầm xe,170 mm,Dễ dàng lên xuống xe cho người già và trẻ nhỏ
+Bán kính quay vòng tối thiểu,"5,4 m",Quay đầu gọn gàng trong phố
+Trọng lượng không tải,~1.900 kg,"Đầm chắc, cách âm gầm tuyệt hảo"
+Trọng lượng toàn tải,2.450 kg,Chở đủ 7 người lớn cùng hành lý
+Hệ số cản gió (Cd),"~0,30",Mũi xe vuốt lướt gió khí động học
+2. KHÔNG GIAN CHỨA ĐỒ & KHẢ NĂNG TỐI ƯU GIA ĐÌNH,,
+Thể tích cốp khi dựng đủ 3 hàng ghế,126 Lít,Để vừa 2 vali xách tay và các túi đồ cá nhân
+Thể tích cốp khi gập hàng ghế thứ 3,580 Lít,Khoang hành lý rộng thênh thang cho 5 người đi du lịch
+Thể tích cốp tối đa (Gập phẳng hàng 2 & 3),1.240 Lít,Tạo thành một mặt phẳng hoàn hảo như chiếc giường ngủ
+Tiện ích khoang hành lý,"Bệ cốp thấp, cửa mở cao","Bốc dỡ đồ nặng, xe đẩy em bé cực kỳ thuận tiện"
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (SỨC MẠNH CỐT LÕI)",,
+Loại mô-tơ điện & Dẫn động,01 mô-tơ điện đặt tại cầu trước (FWD),"Dẫn động cầu trước êm ái, kéo khỏe"
+Công suất cực đại,150 kW (~201 mã lực),Mạnh mẽ vượt trội so với các xe MPV xăng 1.5L (chỉ 105 HP)
+Mô-men xoắn cực đại,280 Nm,Sức kéo tức thời vượt dốc đèo khi xe chở đầy tải 7 người
+Loại pin & Dung lượng khả dụng,"Pin LFP 60,13 kWh",Pin an toàn chống cháy nổ tuyệt đối
+Quãng đường di chuyển (Range),450 km (chuẩn NEDC),Đáp ứng hoàn hảo các chuyến du lịch gia đình xa
+Thời gian sạc nhanh DC (10% - 70%),30 phút,Nghỉ ngơi uống nước là xe đã sạc đầy để đi tiếp 300 km
+Hệ thống treo trước / sau,Trước: MacPherson | Sau: Độc lập đa liên kết,"Treo sau đa liên kết cực êm ái, triệt tiêu say xe cho hàng 2 và 3"
+Hệ thống phanh & Mâm lốp,Phanh đĩa tản nhiệt 4 bánh | Mâm 18 inch,"Phanh an toàn, mâm hợp kim sang trọng"
+4. TIỆN ÍCH & TRANG BỊ NỘI / NGOẠI THẤT,,
+Hệ thống đèn pha,Full LED tự động bật tắt,Dải LED cánh chim đặc trưng thương hiệu VinFast
+Thiết kế sàn xe,Sàn phẳng hoàn toàn (Flat Floor),"Không có gờ lồi ở giữa, di chuyển giữa các ghế dễ dàng"
+Hệ thống điều hòa,Tự động 2 vùng có cửa gió riêng cho từng hàng ghế,Cả 3 hàng ghế đều có cửa gió làm mát nhanh và sâu
+Chất liệu ghế,Bọc da cao cấp êm ái,Đệm ghế dày dặn nâng đỡ tốt
+Tiện nghi cổng sạc,Trang bị cổng sạc USB tại tất cả các vị trí ghế,Mọi thành viên trên xe đều sạc được điện thoại
+5. CÔNG NGHỆ & TƯƠNG TÁC THÔNG MINH,,
+Màn hình cảm ứng trung tâm,"12,9 inch độ nét cao",Hỗ trợ kết nối Apple CarPlay / Android Auto
+Trợ lý ảo ViVi,"Ra lệnh điều khiển điều hòa, nhạc, đóng mở kính",Nhận diện giọng nói đa vùng chuẩn xác
+Hệ thống âm thanh,6 - 8 loa trải đều khoang xe,Âm thanh ấm áp phục vụ cả gia đình
+6. AN TOÀN GIA ĐÌNH,,
+Túi khí bảo vệ,06 túi khí bảo vệ toàn bộ 3 hàng ghế,An tâm tuyệt đối cho trẻ nhỏ và người lớn
+Hệ thống phanh an toàn,"ABS, EBD, BA",Hỗ trợ phanh tối đa khi có tình huống gấp
+Hệ thống cân bằng điện tử & Chống lật,ESC & Chống lật ROM,Giữ xe vững vàng không bị văng đuôi khi vào cua
+Hỗ trợ lùi xe,Camera lùi góc rộng và cảm biến cảnh báo va chạm,Căn chỉnh dễ dàng khi đỗ xe 7 chỗ vào bãi
+7. CHI PHÍ & TRẢI NGHIỆM HẬU MÃI,,
+Giá niêm yết tham khảo,Khoảng 682.500.000 VNĐ,Mức giá cực kỳ hấp dẫn cho một mẫu MPV điện 201 mã lực
+Chi phí điện năng,~420 đồng / km,"Tiêu hao ~15 kWh/100km, tiết kiệm 65% so với MPV xăng"
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,Hậu mãi dẫn đầu thị trường ô tô Việt Nam
+Thời hạn bảo hành pin,8 năm không giới hạn km,Được hỗ trợ sạc pin miễn phí tại V-Green theo giai đoạn
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST MINIO GREEN,,
+Định vị: Minicar dịch vụ taxi đô thị (Green Series) | Link website chính thức: https://vinfastauto.com/vn_vi/minio-green,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Dịch Vụ,Lợi Thế Kinh Doanh Taxi
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),3.090 x 1.496 x 1.625 mm,Mini EV 4 chỗ chuyên chạy dịch vụ nội đô
+Phân khúc định vị,Minicar dịch vụ vận tải đô thị (Green Series),"Thay thế xe ôm công nghệ, chở khách che mưa che nắng"
+Chiều dài cơ sở,2.065 mm,Bố trí 4 chỗ ngồi gọn gàng
+Khoảng sáng gầm xe,155 - 165 mm,Linh hoạt leo lề và xoay xở trong ngõ nhỏ
+Bán kính quay vòng tối thiểu,"4,45 m",Quay đầu xe trong một lần đỏ lái
+Trọng lượng không tải,~800 kg,Xác xe nhẹ giúp tiêu hao ít điện năng
+2. KHÔNG GIAN CHỨA ĐỒ & ĐỘ BỀN VẬN TẢI,,
+Thể tích cốp tiêu chuẩn,~35 Lít,Để vừa balo và đồ đạc của hành khách
+Thể tích cốp tối đa khi gập ghế,~260 Lít,"Gập hàng ghế sau chứa được bưu phẩm, thùng hàng giao nhanh"
+Vật liệu nội thất,Nhựa nhám chống trầy và ghế bọc nỉ/giả da kháng bẩn,"Rất dễ lau chùi, vệ sinh sau mỗi cuốc khách"
+"3. VẬN HÀNH, ĐỘNG CƠ & PIN (TỐI ƯU CHI PHÍ)",,
+Mô-tơ điện & Dẫn động,01 mô-tơ đặt cầu sau (RWD),Cầu sau đẩy khỏe khoắn khi chở đủ 4 người
+Công suất cực đại,20 kW (~27 mã lực),Tốc độ tối đa giới hạn an toàn 80 - 85 km/h
+Mô-men xoắn cực đại,65 Nm,"Khởi hành êm ru, không rung giật máy"
+Dung lượng pin LFP,"14,7 kWh (Bản Eco) / 18,3 kWh (Bản Plus)","Pin bền bỉ, sạc xả hàng nghìn chu kỳ"
+Quãng đường di chuyển (Range),170 km - 210 km (chuẩn NEDC),Thoải mái chạy taxi đón khách cả ngày
+Thời gian sạc nhanh DC,34 phút (10% lên 70%),Tranh thủ giờ nghỉ trưa sạc đầy xe
+Hệ thống phanh & Treo,"Phanh đĩa trước, tang trống sau | Treo MacPherson","Bền bỉ, chi phí thay má phanh cực rẻ"
+4. TIỆN ÍCH DỊCH VỤ & AN TOÀN,,
+Hệ thống điều hòa,Chỉnh cơ công suất lớn,Làm mát cực nhanh và siêu bền bỉ
+Màn hình hiển thị,Đồng hồ điện tử 7 inch,Hiển thị rõ ràng tốc độ và dung lượng pin
+Trang bị an toàn,"Phanh ABS, EBD, cảm biến lùi, túi khí lái",Bảo vệ an toàn cơ bản cho tài xế và khách
+5. BÀI TOÁN KINH TẾ CHO TÀI XẾ KHỞI NGHIỆP,,
+Giá niêm yết tham khảo,Khoảng 269.000.000 VNĐ,Chính sách trả góp chỉ từ 2 - 3 triệu đồng/tháng
+Chi phí điện năng,~250 đồng / km,Tiết kiệm hơn 80% so với chạy xe máy tay ga hay taxi xăng
+Thời hạn bảo hành xe,5 năm hoặc 130.000 km,An tâm cày cuốc dịch vụ
+Thời hạn bảo hành pin,7 năm hoặc 160.000 km,Hỗ trợ gói sạc ưu đãi tại trạm V-Green
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST HERIO GREEN,,
+Định vị: A-SUV dịch vụ taxi công nghệ (Green Series) | Link website chính thức: https://vinfastauto.com/vn_vi/herio-green,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Dịch Vụ,Đánh Giá Hiệu Quả Đầu Tư
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),3.967 x 1.723 x 1.579 mm,A-SUV 5 chỗ tối ưu kinh doanh vận tải
+Phân khúc định vị,A-SUV dịch vụ phổ thông (Green Series),Nền tảng khung gầm VF 5 Plus nhưng tối ưu cho taxi công nghệ
+Chiều dài cơ sở,2.514 mm,Không gian hàng ghế sau rộng rãi cho hành khách
+Khoảng sáng gầm xe,160 mm,Lên xuống vỉa hè đón trả khách tiện lợi
+Trọng lượng không tải,1.340 kg,Khung gầm liền khối đầm chắc
+2. KHÔNG GIAN HÀNH LÝ & NỘI THẤT DỊCH VỤ,,
+Thể tích cốp tiêu chuẩn,260 Lít,Chứa được 2 - 3 vali du lịch của khách
+Thể tích cốp tối đa,900 Lít,Gập hàng ghế sau chở hàng cồng kềnh
+Chất liệu ghế ngồi,Da công nghiệp dày dặn chịu lực ma sát,"Chống rách, chống thấm nước và dễ khử mùi"
+Sàn xe,Lót sàn cao su chống bẩn,Vệ sinh nhanh chóng sau các chuyến đi mưa
+3. VẬN HÀNH & HIỆU SUẤT PIN,,
+Mô-tơ điện & Dẫn động,01 mô-tơ cầu trước (FWD) 100 kW (~134 mã lực),Sức kéo 135 Nm tăng tốc lẹ làng
+Dung lượng pin LFP,"37,23 kWh",Pin siêu bền chống cháy nổ tuyệt đối
+Quãng đường di chuyển,326 km / lần sạc đầy (NEDC),Chạy thoải mái 200 - 250 km dịch vụ mỗi ngày
+Thời gian sạc nhanh DC,33 phút (10% lên 70%),Cắm sạc nhanh chóng tại trạm V-Green
+Mâm & Lốp,16 inch lốp dày êm ái,"Chi phí thay lốp rẻ, tiết kiệm chi phí bảo dưỡng"
+"4. CÔNG NGHỆ, TIỆN NGHI & AN TOÀN",,
+Màn hình điều khiển,Màn hình cảm ứng 8 inch tích hợp app tài xế,Dễ dàng nhận cuốc xe và dẫn đường
+Điều hòa,Công suất lớn làm mát nhanh,Khách lên xe cảm nhận mát lạnh ngay lập tức
+Trang bị an toàn,"Phanh ABS, EBD, BA, ESC, camera lùi, cảm biến lùi, túi khí",Bảo vệ tài xế và hành khách tối đa
+5. BÀI TOÁN KINH TẾ VẬN HÀNH DỊCH VỤ,,
+Giá niêm yết tham khảo,Khoảng 499.000.000 VNĐ,Kèm các gói ưu đãi tài chính và lãi suất hỗ trợ
+Chi phí điện năng,~330 đồng / km,Tiết kiệm 70% chi phí nhiên liệu so với taxi xăng
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,Thời gian bảo hành dài lâu an tâm kinh doanh
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST NERIO GREEN,,
+Định vị: C-SUV dịch vụ cao cấp (Green Series) | Link website chính thức: https://shop.vinfastauto.com/vn_vi/nerio-green.html,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Cao Cấp,Ưu Thế Dịch Vụ Xe Sang
+1. KÍCH THƯỚC & THIẾT KẾ C-SUV,,
+Kích thước tổng thể (Dài x Rộng x Cao),4.300 x 1.768 x 1.615 mm,C-SUV gầm cao 5 chỗ ngồi sang trọng
+Phân khúc định vị,C-SUV dịch vụ cao cấp (Green Series),"Phục vụ đưa đón chuyên gia, khách VIP và xe hợp đồng"
+Chiều dài cơ sở,2.611 mm,"Khoang sau rộng rãi, độ ngả lưng ghế thoải mái"
+Khoảng sáng gầm xe & Mâm,165 mm | Mâm hợp kim 18 inch,"Ngoại hình sang trọng, bệ vệ"
+2. KHÔNG GIAN HÀNH LÝ & CỐP ĐIỆN,,
+Thể tích cốp sau,Khoang chứa đồ rộng chứa 4 vali cỡ lớn,Thích hợp đưa đón khách sân bay
+Tiện ích cốp sau,Cốp sau đóng/mở điện thông minh,Tài xế bấm nút mở cốp từ trong xe rất chuyên nghiệp
+3. VẬN HÀNH & HIỆU SUẤT PIN,,
+Mô-tơ điện & Dẫn động,01 mô-tơ cầu trước (FWD) 110 kW (~147 mã lực),"Mô-men xoắn 242 Nm, 3 chế độ lái Eco/Comfort/Sport"
+Dung lượng pin LFP,"41,9 kWh",Pin LFP an toàn chống cháy nổ
+Quãng đường di chuyển,"318,6 km / lần sạc đầy (NEDC)",Đưa đón khách liên tỉnh thoải mái
+Thời gian sạc nhanh DC,27 phút (10% lên 70%),Tốc độ sạc cực nhanh
+4. TIỆN NGHI CAO CẤP & AN TOÀN,,
+Ngoại thất & Đèn,Full LED Projector tự động,Ánh sáng chiếu xa rõ nét ban đêm
+Nội thất,"Ghế bọc da cao cấp, điều hòa tự động có cửa gió sau",Không gian sang trọng cho khách VIP
+Công nghệ & An toàn,"Màn hình 10 inch, Camera 360 độ 3D, ADAS cảnh báo điểm mù, 6 túi khí",An toàn vượt bậc trên mọi hành trình
+5. CHI PHÍ & BẢO HÀNH,,
+Giá niêm yết tham khảo,Khoảng 628.000.000 VNĐ,Lựa chọn hoàn hảo cho đội xe dịch vụ cao cấp
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,Hậu mãi chính hãng VinFast toàn quốc
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST LIMO GREEN,,
+Định vị: MPV 7 chỗ chuyên chở khách (Green Series) | Link website chính thức: https://vinfastauto.com/vn_vi/limo-green,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Vận Tải,Hiệu Quả Kinh Doanh Tour / Tuyến
+1. KÍCH THƯỚC & THIẾT KẾ MPV 7 CHỖ,,
+Kích thước tổng thể (Dài x Rộng x Cao),4.740 x 1.872 x 1.728 mm,MPV 7 chỗ chuyên chở khách du lịch và taxi 7 chỗ
+Chiều dài cơ sở,2.840 mm,"Khoang cabin dài, người lớn ngồi hàng 3 không bị chạm gối"
+Khoảng sáng gầm xe & Mâm,170 mm | Mâm hợp kim 18 inch,Lên xuống xe nhẹ nhàng cho khách đoàn
+Thiết kế sàn xe,Sàn phẳng hoàn toàn (Flat Floor),"Không có vách ngăn gờ lồi, khách di chuyển rất thoải mái"
+2. KHẢ NĂNG CHỨA ĐỒ ĐA DỤNG,,
+Thể tích cốp chở 7 khách,126 Lít,Vừa vặn xếp các vali xách tay của đoàn khách
+Thể tích cốp gập hàng ghế 3,>1.200 Lít,Biến thành khoang chứa hành lý khổng lồ
+3. VẬN HÀNH & SỨC KÉO MẠNH MẼ,,
+Mô-tơ điện & Dẫn động,01 mô-tơ cầu trước (FWD) 150 kW (~201 mã lực),"Mô-men xoắn 280 Nm, không rung lắc, không mùi xăng gây say xe"
+Dung lượng pin LFP,"60,13 kWh",Pin LFP bền bỉ chu kỳ nạp xả cao
+Quãng đường di chuyển,450 km / lần sạc đầy (NEDC),Chạy tour du lịch Hà Nội - Hạ Long hoặc Sài Gòn - Vũng Tàu dễ dàng
+Thời gian sạc nhanh DC,30 phút (Công suất sạc lên tới 80 kW),Sạc từ 10% lên 70% trong 30 phút
+Hệ thống treo,Trước: MacPherson | Sau: Độc lập đa liên kết,"Treo đa liên kết giúp xe chạy êm, khách ngồi không say"
+4. TIỆN NGHI ĐÓN KHÁCH & AN TOÀN,,
+Hệ thống điều hòa,Cửa gió riêng tại từng hàng ghế,Luồng gió mát lạnh tới từng hành khách
+Cổng sạc điện thoại,Trang bị cổng sạc USB tại tất cả các vị trí,Điểm cộng lớn cho hành khách đi đường dài
+Trang bị an toàn,"ABS, EBD, BA, ESC, ROM chống lật, camera lùi, cảm biến lùi",Đảm bảo an toàn tuyệt đối cho đoàn khách
+5. BÀI TOÁN KINH DOANH VẬN TẢI,,
+Giá niêm yết tham khảo,Khoảng 699.000.000 VNĐ,Mẫu MPV 7 chỗ chạy dịch vụ bán chạy hàng đầu
+Hiệu quả kinh tế,Chi phí năng lượng chỉ ~420 đ/km,Tiết kiệm hàng chục triệu tiền nhiên liệu mỗi tháng so với xe dầu/xăng
+Thời hạn bảo hành xe,7 năm hoặc 160.000 km,Hỗ trợ kỹ thuật 24/7 từ VinFast
+THÔNG SỐ KỸ THUẬT & TRANG BỊ CHI TIẾT: VINFAST EC VAN,,
+Định vị: Xe tải van điện đô thị 2 chỗ chở hàng (2.600L) | Link website chính thức: https://vinfastauto.com/vn_vi/vinfast-ecvan,,
+Hạng Mục / Tiêu Chuẩn,Thông Số Kỹ Thuật Chở Hàng,Hiệu Quả Kinh Tế Giao Hàng
+"1. KÍCH THƯỚC, TRỌNG LƯỢNG & KHÍ ĐỘNG HỌC",,
+Kích thước tổng thể (Dài x Rộng x Cao),3.767 x 1.680 x 1.790 mm,Xe tải Van điện đô thị (City Cargo Van) 2 chỗ ngồi
+Chiều dài cơ sở,2.520 mm,Trục cơ sở dài giúp thùng hàng vuông vức
+Khoảng sáng gầm xe,165 mm,Băng qua ổ gà và gờ giảm tốc dễ dàng
+Bán kính quay vòng tối thiểu,"5,1 m","Cực kỳ cơ động, luồn lách sâu vào các ngõ hẻm giao hàng tận nhà"
+Kích thước lốp & Vành,175/80 R14 vành thép dầy dặn,Vành thép chịu lực va đập tốt khi chở nặng
+2. KHÔNG GIAN THÙNG HÀNG KHỔNG LỒ 2.600 LÍT,,
+Kích thước lọt lòng thùng hàng (DxRxC),1.450 x 1.470 x 1.220 mm,Thùng hàng rộng rãi vuông vức
+Dung tích khoang chứa hàng,"2.600 Lít (2,6 m³)",Tối ưu hóa xếp thùng carton bưu phẩm chuyển phát nhanh
+Tải trọng chuyên chở hàng hóa,Trên 600 kg (600 - 650 kg),Chở hàng hóa nặng thoải mái
+Cơ chế cửa bốc dỡ hàng,Cửa hậu mở lật cao + Cửa trượt bên hông (Sliding door),Cửa trượt hông giúp bốc dỡ hàng trên phố hẹp an toàn
+Vách ngăn an toàn,Vách ngăn kín có ô kính bảo vệ,"Cách ly khoang lái và khoang hàng, chống hàng xô khi phanh gấp"
+3. VẬN HÀNH & KHUNG GẦM NHÍP LÁ CHỊU TẢI,,
+Mô-tơ điện & Dẫn động,01 mô-tơ điện đặt tại cầu sau (RWD),Dẫn động cầu sau tối ưu lực kéo khi chở hàng nặng
+Công suất & Mô-men xoắn,30 kW (~40 mã lực) | 110 Nm,"Sức kéo khỏe ở dải tốc độ thấp, tốc độ tối đa 75 km/h"
+Hệ thống treo sau chịu tải nặng,Phụ thuộc dạng nhíp lá (Leaf Springs),Hệ thống nhíp lá chuyên dụng cho xe tải hàng nặng
+Dung lượng pin LFP,"17 - 18,23 kWh",Pin an toàn chống cháy nổ tuyệt đối
+Quãng đường di chuyển (Range),150 km - 175 km (chuẩn NEDC),Đáp ứng trọn vẹn 1 ngày giao hàng nội thành (80 - 120 km)
+Thời gian sạc nhanh DC,42 phút (10% lên 70%),"Công suất sạc nhanh DC 19,4 kW"
+Thời gian sạc chậm AC tại nhà,Khoảng 6 giờ qua đêm,Sạc điện tại bãi xe công ty hoặc tại nhà
+4. TIỆN NGHI CABIN LÁI & AN TOÀN,,
+Cabin 2 chỗ ngồi,Ghế bọc da công nghiệp chống nước,Êm ái cho tài xế và phụ xe giao hàng
+Hệ thống điều hòa,Làm mát cabin nhanh chóng,Xua tan cái nóng bức ngột ngạt khi giao hàng
+Hệ thống phanh & An toàn,"Phanh ABS, EBD, TCS, tín hiệu khẩn cấp ESS",Bảo vệ an toàn tối đa cho tài xế
+Lợi thế lưu thông đô thị,Không bị cấm giờ tải nội đô,Lưu thông 24/7 theo chính sách ưu tiên xe năng lượng xanh
+5. BÀI TOÁN KINH TẾ CHO DOANH NGHIỆP GIAO VẬN,,
+Giá niêm yết tham khảo,Khoảng 285.000.000 VNĐ,Chi phí đầu tư ban đầu cực kỳ hợp lý
+Chi phí nhiên liệu vận hành,~250 - 300 đồng / km,Tiết kiệm 75% so với xe tải van chạy xăng (1.200 - 1.500 đ/km)
+Thời hạn bảo hành xe,5 năm hoặc 130.000 km,An tâm đầu tư đội xe vận chuyển
+Thời hạn bảo hành pin,7 năm hoặc 160.000 km,Bảo vệ tài sản dài hạn cho doanh nghiệp

@@ -370,19 +370,18 @@
           <input 
             type="text" 
             id="modal-search-input" 
-            placeholder="Tìm theo tên xe (VF 3, VF 5, Herio, Wigo, i10, VF Wild...)" 
+            placeholder="Tìm theo tên xe (VF 3, VF 5, VF 7, Herio, Wild, MPV...)" 
             class="w-full bg-[var(--surface-card)] border border-[var(--border-medium)] rounded-xl pl-9 pr-4 py-2.5 text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
           />
         </div>
 
         <!-- Segment Tabs -->
         <div id="modal-segment-tabs" class="flex gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
-          <button class="active-tab px-3 py-1.5 rounded-lg bg-blue-600 text-white font-semibold flex-shrink-0" data-segment="all">Tất cả xe</button>
-          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="vinfast">VinFast thuần điện</button>
-          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="xang">Xe xăng đối thủ</button>
-          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="hạng a">Phân khúc A</button>
-          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="suv">Dòng SUV</button>
-          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="dịch vụ">Dịch vụ & Tải</button>
+          <button class="active-tab px-3 py-1.5 rounded-xl bg-blue-600 text-white font-bold flex-shrink-0 transition-all" data-segment="all">Tất cả xe (15 dòng)</button>
+          <button class="px-3 py-1.5 rounded-xl bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)] transition-all" data-segment="urban">Đô thị & Minicar</button>
+          <button class="px-3 py-1.5 rounded-xl bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)] transition-all" data-segment="suv">SUV Thể thao (VF 6 - VF 9)</button>
+          <button class="px-3 py-1.5 rounded-xl bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)] transition-all" data-segment="green">Dịch vụ Green Taxi</button>
+          <button class="px-3 py-1.5 rounded-xl bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)] transition-all" data-segment="utility">Bán tải & Chở hàng</button>
         </div>
       </div>
 
