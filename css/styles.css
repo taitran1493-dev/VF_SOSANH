@@ -1,0 +1,309 @@
+/* Custom Styles for VinFast Smart Car Comparison Platform */
+/* Executive Automotive Design System - High Contrast & Crisp Readability */
+/* Designed for Both Dark (Obsidian Showroom) & Light (Architectural Studio) */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  /* VinFast Brand Accents */
+  --vf-blue: #1c52d8;
+  --vf-blue-hover: #1640b0;
+  --vf-cyan: #0284c7;
+  --vf-emerald: #059669;
+  --vf-rose: #e11d48;
+  --vf-amber: #d97706;
+
+  /* LIGHT MODE (Default Architectural Studio) */
+  --bg-page: #f8fafc;
+  --bg-subtle: #f1f5f9;
+  --surface-nav: rgba(255, 255, 255, 0.95);
+  --surface-card: #ffffff;
+  --surface-card-hover: #ffffff;
+  --surface-table-header: #f1f5f9;
+  --surface-sticky-col: #f8fafc;
+  --row-even: #ffffff;
+  --row-odd: #f8fafc;
+  --row-hover: #eff6ff;
+  
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-strong: #94a3b8;
+
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+
+  --diff-bg: #f0f9ff;
+  --diff-border: #0284c7;
+  --diff-badge-bg: #e0f2fe;
+  --diff-badge-text: #0369a1;
+
+  --winner-bg: #ecfdf5;
+  --winner-border: #10b981;
+  --winner-text: #047857;
+
+  --tag-bg: #f1f5f9;
+  --tag-border: #e2e8f0;
+  --tag-text: #1e293b;
+
+  --card-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --card-shadow-hover: 0 12px 30px -4px rgba(15, 23, 42, 0.1);
+  --sticky-shadow: 4px 0 14px -2px rgba(15, 23, 42, 0.06);
+}
+
+html.dark {
+  /* DARK MODE (Executive Obsidian Showroom) */
+  --bg-page: #0b0f19;
+  --bg-subtle: #070a12;
+  --surface-nav: rgba(11, 15, 25, 0.92);
+  --surface-card: #111827;
+  --surface-card-hover: #151e32;
+  --surface-table-header: #162032;
+  --surface-sticky-col: #131b2e;
+  --row-even: #111827;
+  --row-odd: #0d1320;
+  --row-hover: #172540;
+  
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.25);
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+  --diff-bg: rgba(14, 165, 233, 0.07);
+  --diff-border: #38bdf8;
+  --diff-badge-bg: rgba(14, 165, 233, 0.18);
+  --diff-badge-text: #38bdf8;
+
+  --winner-bg: rgba(16, 185, 129, 0.12);
+  --winner-border: #10b981;
+  --winner-text: #34d399;
+
+  --tag-bg: #1a2438;
+  --tag-border: rgba(255, 255, 255, 0.12);
+  --tag-text: #e2e8f0;
+
+  --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 16px 36px -4px rgba(0, 0, 0, 0.6);
+  --sticky-shadow: 4px 0 16px -2px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base Surfaces */
+.theme-card {
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.theme-card:hover {
+  border-color: var(--border-medium);
+}
+
+.theme-nav {
+  background-color: var(--surface-nav);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-subtle);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Sticky Column for Feature Names (Mobile & Desktop) */
+.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 20;
+  background-color: var(--surface-sticky-col) !important;
+  color: var(--text-primary) !important;
+  border-right: 1px solid var(--border-medium) !important;
+  box-shadow: var(--sticky-shadow);
+}
+
+/* Zebra Striping for Table Rows */
+.table-row-even {
+  background-color: var(--row-even);
+}
+
+.table-row-odd {
+  background-color: var(--row-odd);
+}
+
+.table-row-even:hover,
+.table-row-odd:hover {
+  background-color: var(--row-hover) !important;
+}
+
+/* Difference Row Highlight */
+.diff-row.is-diff {
+  position: relative;
+  background-color: var(--diff-bg) !important;
+  border-left: 3px solid var(--diff-border) !important;
+}
+
+.diff-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 9999px;
+  background: var(--diff-badge-bg);
+  color: var(--diff-badge-text);
+  border: 1px solid var(--diff-border);
+}
+
+/* Winner Pill */
+.winner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  background: var(--winner-bg);
+  color: var(--winner-text);
+  border: 1px solid var(--winner-border);
+}
+
+/* Specification Tags & Chips (e.g. ABS, EBD, ESC) */
+.spec-tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background-color: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  color: var(--tag-text);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s ease;
+}
+
+.spec-tag:hover {
+  transform: translateY(-1px);
+  border-color: var(--vf-blue);
+}
+
+/* Structured Bullet Items */
+.spec-bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+  text-align: left;
+}
+
+.spec-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.spec-bullet-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.spec-bullet-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--vf-blue);
+  margin-top: 0.45rem;
+  flex-shrink: 0;
+}
+
+/* Color Circle Chip Active State */
+.color-chip {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+}
+
+.color-chip:hover {
+  transform: scale(1.25);
+}
+
+.color-chip.active {
+  transform: scale(1.3);
+  box-shadow: 0 0 0 2px var(--vf-blue), 0 4px 10px rgba(28, 82, 216, 0.4);
+}
+
+/* Sticky Compare Bar on Scroll */
+#sticky-compare-bar {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+#sticky-compare-bar.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#sticky-compare-bar.is-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Print / PDF Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+  .no-print, nav, header, footer, #sticky-compare-bar {
+    display: none !important;
+  }
+  .theme-card {
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+}
