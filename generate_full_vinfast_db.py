@@ -1,0 +1,2210 @@
+import json
+import os
+
+assets_cars = "assets/cars"
+
+cars = [
+    # 1. VF 2
+    {
+        'id': 'vf2',
+        'name': 'VinFast VF 2',
+        'shortName': 'VF 2',
+        'segment': 'Minicar 4 chỗ cá nhân',
+        'category': 'Đô thị & Minicar',
+        'price': 188000000,
+        'priceText': '188.000.000 VNĐ (Kèm pin)',
+        'batteryFeeText': 'Đã bao gồm pin (Rẻ nhất thị trường)',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_2_BEIGE.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-vf2',
+        'badgeColor': 'blue',
+        'highlights': ['Giá chỉ 188 triệu kèm pin', 'Tầm hoạt động 210 km (NEDC)', 'Kích thước siêu nhỏ luồn ngõ hẹp', 'Bảo hành pin 7 năm'],
+        'colors': [
+            {'name': 'Beige Vàng Cát', 'hex': '#D4C3A3', 'image': 'assets/crops/VF_2_BEIGE.png'},
+            {'name': 'Trắng Băng Tuyết', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_2_BEIGE.png'},
+            {'name': 'Xanh Electric', 'hex': '#2563EB', 'image': 'assets/crops/VF_2_BEIGE.png'}
+        ],
+        'radar': {'power': 45, 'space': 55, 'range': 65, 'safety': 60, 'tech': 58, 'economy': 100},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '3.090 x 1.496 x 1.663,2 mm',
+                'segment': 'Minicar đô thị hạng siêu nhỏ (2 cửa, 4 chỗ)',
+                'wheelbase': '2.065 mm',
+                'groundClearance': '155 mm',
+                'turningRadius': '4,45 m',
+                'weight': '810 kg (không tải)',
+                'grossWeight': '1.150 kg (toàn tải)',
+                'dragCoeff': '~0,35 Cd',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~28°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '30 Lít (vừa balo, túi xách)',
+                'trunkMax': '250 Lít (khi gập hàng ghế sau 50:50)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa hậu mở cơ trợ lực ty thủy lực, khoang sàn phẳng dễ bốc xếp'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu sau (RWD)',
+                'maxPower': '30 kW (~40 mã lực)',
+                'maxTorque': '65 Nm (đạt tức thì từ 0 rpm)',
+                'acceleration': 'Tốc độ tối đa giới hạn an toàn 80 km/h',
+                'batteryType': 'Lithium Iron Phosphate (LFP) chống cháy nổ',
+                'batteryCapacity': '18,3 kWh',
+                'range': '210 km (chuẩn NEDC)',
+                'fastCharge': '34 phút (10% lên 70% tại trạm V-Green)',
+                'acCharge': '5 - 6 giờ (bộ sạc di động 3,3 kW tại nhà)',
+                'suspension': 'Trước: MacPherson | Sau: Dầm xoắn',
+                'brakes': 'Trước: Đĩa | Sau: Tang trống (tích hợp phanh tái sinh)',
+                'wheels': '13 - 14 inch mâm hợp kim/thép'
+            },
+            'cat4_equipment': {
+                'headlights': 'Halogen / LED phản xạ',
+                'brandLighting': 'Đồ họa cánh chim chữ V nhận diện VinFast',
+                'mirrors': 'Chỉnh cơ / Chỉnh điện cơ bản',
+                'seating': '4 chỗ ngồi (2 cửa), bọc nỉ hoặc giả da kháng bẩn',
+                'seatAdjustment': 'Ghế lái & ghế phụ chỉnh cơ 4 hướng, cơ cấu gập trượt vào hàng sau',
+                'gearShifter': 'Cần số gạt cơ bản, phanh tay cơ truyền thống',
+                'climate': 'Chỉnh cơ 1 vùng làm mát nhanh, có màng lọc gió điều hòa',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': '2 cửa bên mở rộng + 1 cửa cốp hậu'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Màn hình kỹ thuật số 7 inch sau vô lăng',
+                'infotainment': 'Tích hợp vào màn hình trung tâm thông tin tiếng Việt',
+                'hud': 'Không trang bị',
+                'sound': '2 loa công suất lớn (Radio FM/AM & Bluetooth)',
+                'viviAI': 'Hỗ trợ tính năng thông tin xe cơ bản',
+                'connectivity': 'Bluetooth, cổng USB sạc điện thoại',
+                'smartFeatures': 'Đồng bộ điện thoại thông minh',
+                'appControl': 'VinFast App: kiểm tra pin, định vị xe, trạng thái sạc từ xa'
+            },
+            'cat6_safety': {
+                'airbags': '01 túi khí bảo vệ người lái',
+                'activeSafety': 'Hệ thống chống bó cứng phanh ABS, phân phối lực phanh điện tử EBD',
+                'adasPackage': 'Kiểm soát lực kéo TCS chống trượt bánh',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Không trang bị',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Không trang bị',
+                'cameraSensors': 'Cảm biến lùi phía sau cảnh báo khoảng cách âm thanh',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Tự ngắt nguồn cao áp khi va chạm, chuẩn chống nước pin IP67'
+            },
+            'cat7_economics': {
+                'price': '188.000.000 VNĐ (đã gồm pin)',
+                'energyCost': '~250 đ/km (tiêu hao ~9 kWh/100km, rẻ hơn xe máy tay ga)',
+                'warrantyCar': '5 năm hoặc 130.000 km',
+                'warrantyBattery': '7 năm hoặc 160.000 km',
+                'maintenance': 'Mỗi 12.000 km hoặc 1 năm, chi phí chỉ ~300.000 đ',
+                'chargingNetwork': 'Hệ thống trạm sạc V-Green phủ khắp 63 tỉnh thành',
+                'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-vf2'
+            }
+        }
+    },
+
+    # 2. VF 3 Eco
+    {
+        'id': 'vf3_eco',
+        'name': 'VinFast VF 3 Eco',
+        'shortName': 'VF 3 Eco',
+        'segment': 'Mini-SUV việt dã (Bản Eco)',
+        'category': 'Đô thị & Minicar',
+        'price': 240000000,
+        'priceText': '240 - 322 triệu VNĐ',
+        'batteryFeeText': 'Thuê pin: 900.000 đ/tháng | Kèm pin: 322 tr',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf3_eco.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3',
+        'badgeColor': 'yellow',
+        'highlights': ['Mâm thép 16 inch thực dụng bền bỉ', 'Mini-SUV dáng vuông Boxy việt dã', 'Khoảng sáng gầm 175 mm lội ngập', 'Màn hình cảm ứng 10 inch CarPlay'],
+        'colors': [
+            {'name': 'Vàng Nóc Trắng (Summer Yellow)', 'hex': '#EAB308', 'image': 'assets/cars/vf3_eco.png'},
+            {'name': 'Trắng Nóc Đen (Infinity Blanc)', 'hex': '#F8FAFC', 'image': 'assets/cars/vf3_eco.png'},
+            {'name': 'Xanh Nóc Trắng (Aquatic Azure)', 'hex': '#0284C7', 'image': 'assets/cars/vf3_eco.png'}
+        ],
+        'radar': {'power': 50, 'space': 60, 'range': 68, 'safety': 63, 'tech': 65, 'economy': 100},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '3.190 x 1.679 x 1.622 mm',
+                'segment': 'Mini-SUV đô thị 2 cửa, 4 chỗ việt dã',
+                'wheelbase': '2.075 mm',
+                'groundClearance': '175 mm (cực cao, thoải mái leo lề)',
+                'turningRadius': '~4,5 m',
+                'weight': '857 kg (không tải đã gồm pin LFP)',
+                'grossWeight': '1.207 kg (toàn tải 350 kg)',
+                'dragCoeff': '~0,38 Cd (thiết kế Boxy hầm hố)',
+                'offroadAngles': 'Góc tới: ~23° | Góc thoát: ~31°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '36 Lít (đủ chứa balo, túi xách nhỏ)',
+                'trunkMax': '285 Lít (gập phẳng hoàn toàn hàng ghế sau)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp mở lật lên cao trợ lực, khoang sàn phẳng dễ bốc xếp'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu sau (RWD)',
+                'maxPower': '32 kW (~43 mã lực)',
+                'maxTorque': '110 Nm (đề-pa 0-50 km/h cực lẹ)',
+                'acceleration': 'Tốc độ tối đa 100 km/h',
+                'batteryType': 'Lithium Iron Phosphate (LFP) siêu bền chống cháy nổ',
+                'batteryCapacity': '18,64 kWh',
+                'range': '215 km (chuẩn NEDC)',
+                'fastCharge': '36 phút (10% lên 70% tại trạm sạc nhanh)',
+                'acCharge': '~5 giờ với bộ sạc 3,3 kW tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Dầm xoắn',
+                'brakes': 'Trước: Đĩa | Sau: Tang trống (phanh tái sinh nạp điện)',
+                'wheels': '16 inch mâm thép (Lốp 175/75 R16, mâm đen cơ bản mộc mạc)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Halogen cỡ lớn phản xạ đa chiều gom sáng tốt',
+                'brandLighting': 'Cánh chim VinFast mạ chrome/sơn bạc nổi bật trước/sau',
+                'mirrors': 'Gương chiếu hậu chỉnh cơ truyền thống',
+                'seating': 'Bọc nỉ cao cấp phối 2 tông màu thời thượng, 4 chỗ ngồi rộng',
+                'seatAdjustment': 'Ghế trước chỉnh cơ, gập trượt vào hàng ghế 2',
+                'gearShifter': 'Cần số điện tử sau vô lăng (Column shifter) giải phóng bệ tì tay',
+                'climate': 'Chỉnh cơ 1 vùng làm mát sâu và nhanh',
+                'sunroof': 'Trần kim loại cách nhiệt',
+                'doors': '2 cửa lớn + 1 cửa cốp sau'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp trực tiếp lên màn hình trung tâm 10 inch',
+                'infotainment': 'Màn hình cảm ứng 10 inch độ nét cao, giao diện tiếng Việt',
+                'hud': 'Không trang bị',
+                'sound': '2 loa công suất cao âm thanh trung thực',
+                'viviAI': 'Trợ lý ảo điều khiển thông tin xe',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, USB, Bluetooth',
+                'smartFeatures': 'Dẫn đường Google Maps, nghe nhạc Spotify trực tuyến',
+                'appControl': 'VinFast App: định vị, theo dõi mức pin, lịch sử sạc từ xa'
+            },
+            'cat6_safety': {
+                'airbags': '01 túi khí an toàn người lái',
+                'activeSafety': 'Phanh ABS, Phân phối lực phanh điện tử EBD, Hỗ trợ phanh khẩn cấp BA',
+                'adasPackage': 'Hệ thống ngắt điện rơ-le cao áp tự động khi có sự cố',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Không trang bị',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Không trang bị',
+                'cameraSensors': 'Cảm biến lùi cảnh báo âm thanh (không trang bị camera lùi)',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Cụm pin đạt tiêu chuẩn chống nước IP67'
+            },
+            'cat7_economics': {
+                'price': '240.000.000 VNĐ (thuê pin) | 322.000.000 VNĐ (kèm pin)',
+                'energyCost': '~250 - 300 đ/km (tiết kiệm hàng triệu tiền xăng mỗi tháng)',
+                'warrantyCar': '7 năm hoặc 160.000 km',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Hệ thống trạm sạc V-Green phủ khắp toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3'
+            }
+        }
+    },
+
+    # 3. VF 3 Plus
+    {
+        'id': 'vf3_plus',
+        'name': 'VinFast VF 3 Plus',
+        'shortName': 'VF 3 Plus',
+        'segment': 'Mini-SUV việt dã (Bản Plus)',
+        'category': 'Đô thị & Minicar',
+        'price': 240000000,
+        'priceText': '240 - 322 triệu VNĐ',
+        'batteryFeeText': 'Thuê pin: 900.000 đ/tháng | Kèm pin: 322 tr',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf3_plus.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3',
+        'badgeColor': 'yellow',
+        'highlights': ['Ốp mâm đa chấu thể thao khí động học', 'Camera lùi có sẵn hiển thị màn 10 inch', 'Gương chiếu hậu chỉnh điện, gập điện', 'Khoảng sáng gầm 175 mm lội ngập'],
+        'colors': [
+            {'name': 'Vàng Nóc Trắng (Summer Yellow)', 'hex': '#EAB308', 'image': 'assets/cars/vf3_plus.png'},
+            {'name': 'Hồng Nóc Trắng (Iris Berry)', 'hex': '#F472B6', 'image': 'assets/cars/vf3_plus.png'},
+            {'name': 'Trắng Nóc Đen (Infinity Blanc)', 'hex': '#F8FAFC', 'image': 'assets/cars/vf3_plus.png'}
+        ],
+        'radar': {'power': 50, 'space': 60, 'range': 68, 'safety': 68, 'tech': 70, 'economy': 98},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '3.190 x 1.679 x 1.622 mm',
+                'segment': 'Mini-SUV đô thị 2 cửa, 4 chỗ việt dã',
+                'wheelbase': '2.075 mm',
+                'groundClearance': '175 mm (cực cao, thoải mái leo lề)',
+                'turningRadius': '~4,5 m',
+                'weight': '857 kg (không tải đã gồm pin LFP)',
+                'grossWeight': '1.207 kg (toàn tải 350 kg)',
+                'dragCoeff': '~0,38 Cd (thiết kế Boxy hầm hố)',
+                'offroadAngles': 'Góc tới: ~23° | Góc thoát: ~31°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '36 Lít (đủ chứa balo, túi xách nhỏ)',
+                'trunkMax': '285 Lít (gập phẳng hoàn toàn hàng ghế sau)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp mở lật lên cao trợ lực, khoang sàn phẳng dễ bốc xếp'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu sau (RWD)',
+                'maxPower': '32 kW (~43 mã lực)',
+                'maxTorque': '110 Nm (đề-pa 0-50 km/h cực lẹ)',
+                'acceleration': 'Tốc độ tối đa 100 km/h',
+                'batteryType': 'Lithium Iron Phosphate (LFP) siêu bền chống cháy nổ',
+                'batteryCapacity': '18,64 kWh',
+                'range': '215 km (chuẩn NEDC)',
+                'fastCharge': '36 phút (10% lên 70% tại trạm sạc nhanh)',
+                'acCharge': '~5 giờ với bộ sạc 3,3 kW tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Dầm xoắn',
+                'brakes': 'Trước: Đĩa | Sau: Tang trống (phanh tái sinh nạp điện)',
+                'wheels': '16 inch kèm ốp khí động học thể thao đa chấu thời trang (Lốp 175/75 R16)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Halogen cỡ lớn phản xạ đa chiều gom sáng tốt',
+                'brandLighting': 'Cánh chim VinFast mạ chrome/sơn bạc nổi bật trước/sau',
+                'mirrors': 'Gương chiếu hậu chỉnh điện, gập điện tiện lợi',
+                'seating': 'Bọc nỉ cao cấp phối 2 tông màu thời thượng, 4 chỗ ngồi rộng',
+                'seatAdjustment': 'Ghế trước chỉnh cơ, gập trượt vào hàng ghế 2',
+                'gearShifter': 'Cần số điện tử sau vô lăng (Column shifter) giải phóng bệ tì tay',
+                'climate': 'Chỉnh cơ 1 vùng làm mát sâu và nhanh',
+                'sunroof': 'Trần kim loại cách nhiệt',
+                'doors': '2 cửa lớn + 1 cửa cốp sau'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp trực tiếp lên màn hình trung tâm 10 inch',
+                'infotainment': 'Màn hình cảm ứng 10 inch độ nét cao, giao diện tiếng Việt',
+                'hud': 'Không trang bị',
+                'sound': '2 loa công suất cao âm thanh trung thực',
+                'viviAI': 'Trợ lý ảo điều khiển thông tin xe',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, USB, Bluetooth',
+                'smartFeatures': 'Dẫn đường Google Maps, nghe nhạc Spotify trực tuyến',
+                'appControl': 'VinFast App: định vị, theo dõi mức pin, lịch sử sạc từ xa'
+            },
+            'cat6_safety': {
+                'airbags': '01 túi khí an toàn người lái',
+                'activeSafety': 'Phanh ABS, Phân phối lực phanh điện tử EBD, Hỗ trợ phanh khẩn cấp BA',
+                'adasPackage': 'Hệ thống ngắt điện rơ-le cao áp tự động khi có sự cố',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Không trang bị',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Không trang bị',
+                'cameraSensors': 'Camera lùi góc rộng hiển thị vạch căn khoảng cách + Cảm biến lùi',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Cụm pin đạt tiêu chuẩn chống nước IP67'
+            },
+            'cat7_economics': {
+                'price': '240.000.000 VNĐ (thuê pin) | 322.000.000 VNĐ (kèm pin)',
+                'energyCost': '~250 - 300 đ/km (tiết kiệm hàng triệu tiền xăng mỗi tháng)',
+                'warrantyCar': '7 năm hoặc 160.000 km',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Hệ thống trạm sạc V-Green phủ khắp toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf3'
+            }
+        }
+    },
+
+    # 4. VF 5 Plus
+    {
+        'id': 'vf5_plus',
+        'name': 'VinFast VF 5 Plus',
+        'shortName': 'VF 5 Plus',
+        'segment': 'A-SUV đô thị đa dụng',
+        'category': 'Đô thị & Minicar',
+        'price': 468000000,
+        'priceText': '468 - 548 triệu VNĐ',
+        'batteryFeeText': 'Thuê pin: 1.200.000 đ/tháng | Kèm pin: 548 tr',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_5_GREY.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf5-plus',
+        'badgeColor': 'emerald',
+        'highlights': ['Công suất 134 HP mạnh gấp rưỡi xe xăng hạng A', '6 túi khí & Cảnh báo điểm mù BSW', 'Trục cơ sở 2.514 mm khoang ngồi rất rộng', 'Sạc siêu nhanh 10-70% chỉ 30 phút'],
+        'colors': [
+            {'name': 'Xám Đậm (Zenith Grey)', 'hex': '#475569', 'image': 'assets/crops/VF_5_GREY.png'},
+            {'name': 'Trắng Băng (Infinity Blanc)', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_5_GREY.png'},
+            {'name': 'Xanh VinFast Blue', 'hex': '#1C52D8', 'image': 'assets/crops/VF_5_GREY.png'},
+            {'name': 'Đỏ Năng Lượng (Crimson Red)', 'hex': '#DC2626', 'image': 'assets/crops/VF_5_GREY.png'}
+        ],
+        'radar': {'power': 70, 'space': 75, 'range': 75, 'safety': 82, 'tech': 78, 'economy': 95},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '3.967 x 1.723 x 1.578 mm',
+                'segment': 'A-SUV đô thị gầm cao 5 cửa, 5 chỗ ngồi',
+                'wheelbase': '2.514 mm (chân hàng 2 rất thoáng)',
+                'groundClearance': '168 mm (không tải 182 mm)',
+                'turningRadius': '5,0 m (xoay xở linh hoạt phố đông)',
+                'weight': '1.360 kg (đầm chắc vượt trội xe xăng)',
+                'grossWeight': '1.665 kg (tải trọng chở 325 kg)',
+                'dragCoeff': '~0,32 Cd',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~26°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '260 Lít (xếp vừa 2 - 3 vali du lịch)',
+                'trunkMax': '900 Lít (gập hàng ghế 2 tỷ lệ 60:40)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa hậu mở góc rộng, sàn cốp sâu, khay che hành lý tháo rời'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD)',
+                'maxPower': '100 kW (~134 mã lực)',
+                'maxTorque': '135 Nm (tăng tốc mượt mà, phản hồi tức thì)',
+                'acceleration': 'Chế độ lái Eco / Sport bốc',
+                'batteryType': 'Lithium Iron Phosphate (LFP) thế hệ mới',
+                'batteryCapacity': '37,23 kWh',
+                'range': '326 km (chuẩn NEDC)',
+                'fastCharge': '30 phút (10% lên 70% tại trạm DC)',
+                'acCharge': '6 - 9 giờ qua đêm bộ sạc treo tường',
+                'suspension': 'Trước: MacPherson | Sau: Dầm xoắn',
+                'brakes': 'Phanh đĩa tản nhiệt trước, phanh đĩa sau (4 phanh đĩa)',
+                'wheels': '17 inch (Lốp 205/55 R17 mâm hợp kim phay bóng)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Halogen Projector tự động bật/tắt thấu kính gom sáng',
+                'brandLighting': 'Dải trang trí tạo hình cánh chim chữ V VinFast',
+                'mirrors': 'Chỉnh điện, gập điện tích hợp đèn báo rẽ',
+                'seating': 'Bọc da giả da cao cấp 2 tông màu sang trọng, dễ vệ sinh',
+                'seatAdjustment': 'Ghế lái chỉnh cơ 6 hướng, ghế phụ 4 hướng',
+                'gearShifter': 'Núm xoay điện tử thông minh trên bệ trung tâm',
+                'climate': 'Chỉnh điện tích hợp màng lọc bụi mịn PM2.5',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': '5 cửa mở rộng'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Màn hình kỹ thuật số 7 inch hiển thị đầy đủ thông tin lái',
+                'infotainment': 'Màn hình cảm ứng trung tâm 8 inch mượt mà',
+                'hud': 'Không trang bị',
+                'sound': '4 loa chất lượng cao',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt điều khiển giọng nói tự nhiên',
+                'connectivity': 'Bluetooth, USB, cổng sạc điện thoại',
+                'smartFeatures': 'Cập nhật phần mềm từ xa FOTA (Firmware Over The Air)',
+                'appControl': 'VinFast App: định vị, cảnh báo xâm nhập, đặt lịch bảo dưỡng'
+            },
+            'cat6_safety': {
+                'airbags': '06 túi khí trước, hông và rèm',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, Kiểm soát lực kéo TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Cảnh báo điểm mù BSW, Cảnh báo phương tiện cắt ngang phía sau RCTA',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Ga tự động Cruise Control',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Có BSW (Blind Spot Warning) & RCTA',
+                'cameraSensors': 'Cảm biến áp suất lốp dTPMS, Camera lùi, Cảm biến lùi',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Khóa cửa tự động khi xe chạy, rơ-le ngắt nguồn va chạm'
+            },
+            'cat7_economics': {
+                'price': '468.000.000 VNĐ (thuê pin) | 548.000.000 VNĐ (kèm pin)',
+                'energyCost': '~330 đ/km (tiêu hao ~12 kWh/100km, tiết kiệm 70% so với xe xăng)',
+                'warrantyCar': '7 năm hoặc 160.000 km',
+                'warrantyBattery': '8 năm không giới hạn km (đổi pin mới nếu dung lượng <70%)',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực rẻ',
+                'chargingNetwork': 'Hơn 150.000 cổng sạc V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf5-plus'
+            }
+        }
+    },
+
+    # 5. VF 6S
+    {
+        'id': 'vf6_s',
+        'name': 'VinFast VF 6S (Base)',
+        'shortName': 'VF 6S',
+        'segment': 'B-SUV thời thượng gia đình',
+        'category': 'SUV & Crossover',
+        'price': 675000000,
+        'priceText': '675 - 765 triệu VNĐ',
+        'batteryFeeText': 'Thuê pin: 1.800.000 đ/tháng | Kèm pin: 765 tr',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_6_GREEN.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf6',
+        'badgeColor': 'cyan',
+        'highlights': ['Thiết kế chắp bút bởi Torino Design Ý', 'Trục cơ sở 2.730 mm rộng nhất phân khúc B', 'Màn hình 12.9 inch hướng về tài xế', 'Treo sau liên kết đa điểm êm ái'],
+        'colors': [
+            {'name': 'Xanh Rêu Forest Green', 'hex': '#15803D', 'image': 'assets/crops/VF_6_GREEN.png'},
+            {'name': 'Trắng Băng Infinity Blanc', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_6_RED.png'},
+            {'name': 'Đỏ Năng Lượng Crimson Red', 'hex': '#DC2626', 'image': 'assets/crops/VF_6_RED.png'}
+        ],
+        'radar': {'power': 76, 'space': 84, 'range': 80, 'safety': 82, 'tech': 80, 'economy': 90},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.238 x 1.820 x 1.594 mm',
+                'segment': 'B-SUV cao cấp thế thao gia đình',
+                'wheelbase': '2.730 mm (khoang hành khách rộng thênh thang)',
+                'groundClearance': '170 mm',
+                'turningRadius': '~5,2 m',
+                'weight': '1.680 kg',
+                'grossWeight': '2.050 kg',
+                'dragCoeff': '~0,30 Cd',
+                'offroadAngles': 'Góc tới: ~19° | Góc thoát: ~28°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '350 Lít',
+                'trunkMax': '1.275 Lít (gập phẳng hàng ghế thứ 2)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp mở cơ trợ lực, khay che hành lý tháo rời'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD)',
+                'maxPower': '130 kW (~174 mã lực)',
+                'maxTorque': '250 Nm',
+                'acceleration': 'Tăng tốc mượt mà, phản hồi tức thì',
+                'batteryType': 'Lithium Iron Phosphate (LFP) siêu bền',
+                'batteryCapacity': '59,6 kWh',
+                'range': '399 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '24,6 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '7 - 8 giờ qua đêm sạc tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Độc lập đa liên kết',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh có tái sinh điện',
+                'wheels': '17 inch hợp kim nhôm thể thao'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED tự động bật/tắt',
+                'brandLighting': 'Cánh chim LED VinFast trước & sau',
+                'mirrors': 'Chỉnh/gập điện, sấy gương',
+                'seating': 'Ghế bọc nỉ kết hợp da công nghiệp cao cấp',
+                'seatAdjustment': 'Ghế lái chỉnh điện 6 hướng',
+                'gearShifter': 'Cần số nút bấm phím sang trọng trên bệ trung tâm',
+                'climate': 'Tự động 1 vùng, có cửa gió hàng ghế sau',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': '5 cửa chống ồn tiêu chuẩn châu Âu'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình cảm ứng trung tâm 12.9 inch',
+                'infotainment': 'Màn hình cảm ứng 12,9 inch độ nét 2K xoay về tài xế',
+                'hud': 'Không trang bị',
+                'sound': '6 loa chất lượng cao',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt điều khiển giọng nói',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, USB-C',
+                'smartFeatures': 'Cập nhật từ xa OTA',
+                'appControl': 'VinFast App điều khiển điều hòa, định vị, kiểm tra sạc xe'
+            },
+            'cat6_safety': {
+                'airbags': '04 túi khí an toàn',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Hệ thống an toàn chủ động tiêu chuẩn',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Ga tự động Cruise Control',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Không trang bị',
+                'cameraSensors': 'Camera lùi và cảm biến đỗ xe phía sau',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Khung vỏ chịu lực cao, chuẩn chống nước pin IP67'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 675.000.000 VNĐ (thuê pin) | 765.000.000 VNĐ (kèm pin)',
+                'energyCost': '~400 đ/km (tiêu hao ~14 kWh/100km)',
+                'warrantyCar': '7 năm hoặc 160.000 km',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Hạ tầng trạm sạc V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf6'
+            }
+        }
+    },
+
+    # 6. VF 6 Plus
+    {
+        'id': 'vf6_plus',
+        'name': 'VinFast VF 6 Plus',
+        'shortName': 'VF 6 Plus',
+        'segment': 'B-SUV thời thượng gia đình',
+        'category': 'SUV & Crossover',
+        'price': 765000000,
+        'priceText': '765 - 855 triệu VNĐ',
+        'batteryFeeText': 'Thuê pin: 1.800.000 đ/tháng | Kèm pin: 855 tr',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_6_RED.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf6',
+        'badgeColor': 'cyan',
+        'highlights': ['Công suất 201 HP & Mô-men xoắn 310 Nm', 'Trọn bộ ADAS Cấp độ 2 tiên tiến', 'HUD kính lái hiển thị tốc độ & dẫn đường', 'Treo sau độc lập đa liên kết êm ái'],
+        'colors': [
+            {'name': 'Đỏ Năng Lượng Crimson Red', 'hex': '#DC2626', 'image': 'assets/crops/VF_6_RED.png'},
+            {'name': 'Xanh Rêu Forest Green', 'hex': '#15803D', 'image': 'assets/crops/VF_6_GREEN.png'},
+            {'name': 'Trắng Băng Infinity Blanc', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_6_RED.png'}
+        ],
+        'radar': {'power': 85, 'space': 84, 'range': 80, 'safety': 92, 'tech': 90, 'economy': 88},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.238 x 1.820 x 1.594 mm',
+                'segment': 'B-SUV cao cấp thế thao gia đình',
+                'wheelbase': '2.730 mm (khoang hành khách rộng thênh thang)',
+                'groundClearance': '170 mm',
+                'turningRadius': '~5,2 m',
+                'weight': '1.743 kg (đầm chắc vượt trội)',
+                'grossWeight': '2.100 kg',
+                'dragCoeff': '~0,30 Cd',
+                'offroadAngles': 'Góc tới: ~19° | Góc thoát: ~28°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '350 Lít (đủ chứa 3 - 4 vali du lịch)',
+                'trunkMax': '1.275 Lít (gập phẳng hàng ghế thứ 2)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp đóng mở điện thông minh, khay che hành lý tháo rời'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD)',
+                'maxPower': '150 kW (~201 mã lực) ngang động cơ 2.0 Turbo',
+                'maxTorque': '310 Nm (gia tốc dính ghế, vượt xe an toàn)',
+                'acceleration': 'Tăng tốc 0-100 km/h chỉ trong ~8.0s',
+                'batteryType': 'Lithium Iron Phosphate (LFP) siêu an toàn',
+                'batteryCapacity': '59,6 kWh',
+                'range': '381 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '24,6 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '7 - 8 giờ qua đêm sạc tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Độc lập đa liên kết (Multi-link êm dịu)',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh có tái sinh điện',
+                'wheels': '19 inch (Lốp 235/45 R19 mâm phay kim cương thể thao)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED Projector tự động bật tắt và điều khiển góc chiếu',
+                'brandLighting': 'Cánh chim LED phát sáng kiêu hãnh ban đêm trước & sau',
+                'mirrors': 'Chỉnh/gập điện, sấy gương, tự động cụp phía hành khách khi lùi',
+                'seating': 'Ghế bọc da Vegan cao cấp mềm mại, thoáng mát và sang trọng',
+                'seatAdjustment': 'Ghế lái chỉnh điện 8 hướng tiện nghi',
+                'gearShifter': 'Cần số nút bấm phím sang trọng trên bệ trung tâm',
+                'climate': 'Tự động 2 vùng độc lập, có cửa gió sau và lọc bụi mịn PM2.5',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': '5 cửa chống ồn tiêu chuẩn châu Âu'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 12.9 inch và hiển thị HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 12,9 inch độ nét 2K xoay về tài xế',
+                'hud': 'Trang bị màn hình HUD màu chiếu kính lái cao cấp',
+                'sound': '8 loa cao cấp âm trầm chắc nịch, âm cao trong trẻo',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt AI ra lệnh giọng nói mượt mà',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, USB-C 65W sạc nhanh laptop',
+                'smartFeatures': 'Cập nhật từ xa OTA, quản lý toàn diện qua smartphone',
+                'appControl': 'VinFast App điều khiển điều hòa, định vị, kiểm tra sạc xe'
+            },
+            'cat6_safety': {
+                'airbags': '08 túi khí bảo vệ toàn diện các vị trí',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 Toàn Diện hàng đầu phân khúc B',
+                'highwayAssist': 'Hỗ trợ lái trên cao tốc và hỗ trợ di chuyển khi ùn tắc Stop & Go',
+                'laneKeep': 'Hỗ trợ giữ làn LKA và cảnh báo chệch làn LDW',
+                'cruiseControl': 'Ga tự động thích ứng ACC Stop & Go từ 0 - 130 km/h',
+                'autoBrake': 'Phanh khẩn cấp tự động AEB trước/sau nhận diện người đi bộ/xe',
+                'blindSpot': 'Cảnh báo điểm mù BSW, Cảnh báo phương tiện cắt ngang RCTA, Cảnh báo mở cửa DOW',
+                'cameraSensors': 'Camera 360 độ mô phỏng 3D sắc nét quan sát toàn cảnh',
+                'smartParking': 'Cảm biến đỗ xe trước & sau',
+                'batterySafety': 'Khung vỏ chịu lực cao, chuẩn chống nước pin IP67'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 765.000.000 VNĐ (thuê pin) | 855.000.000 VNĐ (kèm pin)',
+                'energyCost': '~420 đ/km (tiêu hao ~14,5 kWh/100km)',
+                'warrantyCar': '7 năm hoặc 160.000 km (bảo hành lâu nhất phân khúc B)',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ, hạ tầng V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi/dat-coc-xe-dien-vf6'
+            }
+        }
+    },
+
+    # 7. VF 7S (Base)
+    {
+        'id': 'vf7_s',
+        'name': 'VinFast VF 7S (Base)',
+        'shortName': 'VF 7S',
+        'segment': 'C-SUV thể thao tương lai',
+        'category': 'SUV & Crossover',
+        'price': 850000000,
+        'priceText': '850 - 999 triệu VNĐ',
+        'batteryFeeText': 'Thuê pin: 2.900.000 đ/tháng | Kèm pin: 999 tr',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf7_s_white.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF7',
+        'badgeColor': 'purple',
+        'highlights': ['Thiết kế phi thuyền tiêm kích Torino Design', 'Trục cơ sở 2.840 mm dài tương đương xe hạng D', 'Màn hình 12.9 inch hướng tài xế', 'Cần số phím đàn Piano độc bản'],
+        'colors': [
+            {'name': 'Trắng Băng Infinity Blanc', 'hex': '#F8FAFC', 'image': 'assets/cars/vf7_s_white.png'},
+            {'name': 'Đen Jet Black', 'hex': '#0F172A', 'image': 'assets/cars/vf7_s_white.png'}
+        ],
+        'radar': {'power': 78, 'space': 88, 'range': 82, 'safety': 86, 'tech': 85, 'economy': 88},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.545 x 1.890 x 1.635 mm',
+                'segment': 'C-SUV thể thao phong cách tương lai',
+                'wheelbase': '2.840 mm (dài tương đương các dòng SUV hạng D)',
+                'groundClearance': '190 mm (gầm rất cao, dáng thể thao bệ vệ)',
+                'turningRadius': '~5,3 m',
+                'weight': '1.850 kg (không tải)',
+                'grossWeight': '2.250 kg',
+                'dragCoeff': '~0,28 Cd (tay nắm cửa ẩn phẳng tối ưu khí động)',
+                'offroadAngles': 'Góc tới: ~21° | Góc thoát: ~29°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '~400 Lít (chứa thoải mái 4 - 5 vali cỡ lớn)',
+                'trunkMax': '~1.300 Lít (gập phẳng hàng ghế sau 60:40)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp đóng mở điện, sàn cốp rộng rãi tiện ích'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD)',
+                'maxPower': '130 kW (~174 mã lực)',
+                'maxTorque': '250 Nm',
+                'acceleration': 'Tăng tốc 0 - 100 km/h trong ~8,5 giây',
+                'batteryType': 'Lithium Iron Phosphate (LFP) siêu bền',
+                'batteryCapacity': '59,6 kWh',
+                'range': '375 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '24 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '7 - 8 giờ qua đêm sạc tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Độc lập đa liên kết',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh có tái sinh năng lượng',
+                'wheels': '19 inch (Lốp 235/50 R19 mâm hợp kim thể thao)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED tự động bật tắt và điều chỉnh góc chiếu',
+                'brandLighting': 'Cánh chim VinFast LED sắc lẹm phong cách tương lai',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, tích hợp xi-nhan',
+                'seating': 'Ghế bọc da nhân tạo cao cấp, 5 chỗ ngồi rộng rãi',
+                'seatAdjustment': 'Ghế lái chỉnh điện 8 hướng',
+                'gearShifter': 'Cần số nút bấm phím đàn Piano độc bản trên bệ trung tâm',
+                'climate': 'Tự động 2 vùng Combi 1.0, lọc sạch bụi mịn PM2.5',
+                'sunroof': 'Trần kim loại tiêu chuẩn cách nhiệt',
+                'doors': 'Tay nắm cửa ẩn phẳng thân xe tự thò thụt'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình cảm ứng trung tâm 12.9 inch',
+                'infotainment': 'Màn hình cảm ứng 12,9 inch độ phân giải 2K hướng tài xế',
+                'hud': 'Không trang bị',
+                'sound': '8 loa cao cấp âm thanh vòm sống động',
+                'viviAI': 'Trợ lý ảo ViVi giao tiếp tiếng Việt thông minh',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, sạc không dây, USB-C 65W',
+                'smartFeatures': 'Cập nhật phần mềm qua mạng OTA, mở khóa điện thoại',
+                'appControl': 'Quản lý xe từ xa toàn diện qua VinFast App'
+            },
+            'cat6_safety': {
+                'airbags': '06 túi khí an toàn',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Hệ thống an toàn chủ động tiêu chuẩn',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Ga tự động Cruise Control',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Không trang bị',
+                'cameraSensors': 'Camera lùi và cảm biến đỗ xe trước/sau',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Khung gầm bảo vệ pin cao áp, chuẩn IP67'
+            },
+            'cat7_economics': {
+                'price': '850.000.000 VNĐ (thuê pin) | 999.000.000 VNĐ (kèm pin)',
+                'energyCost': '~450 đ/km (tiêu hao ~15 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km (bảo hành dẫn đầu phân khúc C)',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ, hạ tầng V-Green toàn quốc',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF7'
+            }
+        }
+    },
+
+    # 8. VF 7 Plus (Trần kim loại)
+    {
+        'id': 'vf7_plus_steel',
+        'name': 'VinFast VF 7 Plus (Trần kim loại)',
+        'shortName': 'VF 7 Plus Trần Thép',
+        'segment': 'C-SUV thể thao tương lai',
+        'category': 'SUV & Crossover',
+        'price': 999000000,
+        'priceText': '999 - 1.199 triệu VNĐ',
+        'batteryFeeText': 'Thuê pin: 2.900.000 đ/tháng | Kèm pin: 1,199 tỷ',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf7_plus_red.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF7',
+        'badgeColor': 'purple',
+        'highlights': ['2 Motor điện AWD công suất khủng 349 HP & 500 Nm', 'Tăng tốc 0 - 100 km/h chỉ 5.8s', 'Trần kim loại tiêu chuẩn cách nhiệt tối đa', 'Mâm 20 inch phay kim cương thể thao'],
+        'colors': [
+            {'name': 'Đỏ Crimson Red', 'hex': '#DC2626', 'image': 'assets/cars/vf7_plus_red.png'},
+            {'name': 'Trắng Infinity Blanc', 'hex': '#F8FAFC', 'image': 'assets/cars/vf7_s_white.png'},
+            {'name': 'Đen Jet Black', 'hex': '#0F172A', 'image': 'assets/cars/vf7_plus_red.png'}
+        ],
+        'radar': {'power': 95, 'space': 88, 'range': 86, 'safety': 96, 'tech': 94, 'economy': 86},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.545 x 1.890 x 1.635 mm',
+                'segment': 'C-SUV thể thao 2 cầu AWD hiệu suất cao',
+                'wheelbase': '2.840 mm',
+                'groundClearance': '190 mm',
+                'turningRadius': '~5,3 m',
+                'weight': '1.980 kg (đầm chắc bám đường)',
+                'grossWeight': '2.400 kg',
+                'dragCoeff': '~0,28 Cd',
+                'offroadAngles': 'Góc tới: ~21° | Góc thoát: ~29°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '~400 Lít (để vừa 4 vali lớn)',
+                'trunkMax': '~1.300 Lít (gập phẳng hàng ghế sau)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp đóng mở điện thông minh, chống kẹt'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD 2 cầu toàn thời gian thông minh',
+                'maxPower': '260 kW (~349 mã lực) sức mạnh vượt trội',
+                'maxTorque': '500 Nm (bứt tốc dính lưng ghế)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h chỉ trong 5,8 giây',
+                'batteryType': 'Ternary Lithium cao cấp dung lượng lớn',
+                'batteryCapacity': '75,3 kWh',
+                'range': '431 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '24,6 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '8 - 9 giờ qua đêm sạc tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Độc lập đa liên kết thể thao',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh hiệu suất cao',
+                'wheels': '20 inch (Lốp 245/45 R20 mâm phay kim cương thể thao)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED Projector ma trận thích ứng tự động chia luồng',
+                'brandLighting': 'Cánh chim VinFast LED sắc lẹm kiêu hãnh',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, tự động chỉnh khi lùi, nhớ vị trí',
+                'seating': 'Ghế bọc da cao cấp 2 tông màu thể thao sang trọng',
+                'seatAdjustment': 'Ghế lái chỉnh điện 8 hướng có sưởi và thông gió đệm',
+                'gearShifter': 'Cần số nút bấm phím đàn Piano độc bản',
+                'climate': 'Tự động 2 vùng độc lập, lọc bụi mịn PM2.5, ion âm',
+                'sunroof': 'Trần kim loại tiêu chuẩn cách nhiệt tối đa',
+                'doors': 'Tay nắm cửa ẩn phẳng thân xe tự thò thụt'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 12.9 inch và hiển thị HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 12,9 inch độ nét 2K hướng tài xế',
+                'hud': 'Trang bị màn hình HUD màu chiếu kính lái cao cấp',
+                'sound': '8 loa cao cấp âm trầm sống động',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt điều khiển thông minh',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, sạc không dây 15W',
+                'smartFeatures': 'Cập nhật từ xa FOTA, mở khóa xe bằng điện thoại',
+                'appControl': 'VinFast App điều khiển điều hòa, định vị, kiểm tra sạc xe'
+            },
+            'cat6_safety': {
+                'airbags': '08 túi khí bảo vệ toàn diện',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 Toàn Diện hàng đầu phân khúc',
+                'highwayAssist': 'Hỗ trợ lái trên cao tốc Highway Assist & Stop & Go',
+                'laneKeep': 'Hỗ trợ giữ làn LKA, Cảnh báo chệch làn LDW',
+                'cruiseControl': 'Ga tự động thích ứng ACC Stop & Go từ 0 - 130 km/h',
+                'autoBrake': 'Phanh khẩn cấp tự động AEB trước/sau nhận diện người/xe',
+                'blindSpot': 'Cảnh báo điểm mù BSW, Cảnh báo cắt ngang lùi RCTA, Cảnh báo mở cửa DOW',
+                'cameraSensors': 'Camera 360 độ 3D sắc nét + Cảm biến đỗ xe trước & sau',
+                'smartParking': 'Hỗ trợ đỗ xe thông minh',
+                'batterySafety': 'Khung vỏ chịu lực cao, chuẩn chống nước pin IP67'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 999.000.000 VNĐ (thuê pin) | 1.199.000.000 VNĐ (kèm pin)',
+                'energyCost': '~500 đ/km (tiêu hao ~16,5 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ, hạ tầng V-Green toàn quốc',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF7'
+            }
+        }
+    },
+
+    # 9. VF 7 Plus (Trần kính toàn cảnh Panorama)
+    {
+        'id': 'vf7_plus_panorama',
+        'name': 'VinFast VF 7 Plus (Trần kính Panorama)',
+        'shortName': 'VF 7 Plus Panorama',
+        'segment': 'C-SUV thể thao tương lai',
+        'category': 'SUV & Crossover',
+        'price': 1019000000,
+        'priceText': '1,019 - 1,219 tỷ VNĐ',
+        'batteryFeeText': 'Thuê pin: 2.900.000 đ/tháng | Kèm pin: 1,219 tỷ (Tùy chọn +20 tr)',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf7_plus_red.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF7',
+        'badgeColor': 'purple',
+        'highlights': ['Trần kính toàn cảnh Panorama mở rộng tầm nhìn', '2 Motor điện AWD công suất khủng 349 HP & 500 Nm', 'Tăng tốc 0 - 100 km/h chỉ 5.8s', 'Trọn bộ ADAS Cấp độ 2 tiên tiến'],
+        'colors': [
+            {'name': 'Đỏ Crimson Red', 'hex': '#DC2626', 'image': 'assets/cars/vf7_plus_red.png'},
+            {'name': 'Trắng Infinity Blanc', 'hex': '#F8FAFC', 'image': 'assets/cars/vf7_s_white.png'},
+            {'name': 'Đen Jet Black', 'hex': '#0F172A', 'image': 'assets/cars/vf7_plus_red.png'}
+        ],
+        'radar': {'power': 95, 'space': 90, 'range': 86, 'safety': 96, 'tech': 96, 'economy': 85},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.545 x 1.890 x 1.635 mm',
+                'segment': 'C-SUV thể thao 2 cầu AWD hiệu suất cao',
+                'wheelbase': '2.840 mm',
+                'groundClearance': '190 mm',
+                'turningRadius': '~5,3 m',
+                'weight': '1.995 kg (trần kính cao cấp)',
+                'grossWeight': '2.400 kg',
+                'dragCoeff': '~0,28 Cd',
+                'offroadAngles': 'Góc tới: ~21° | Góc thoát: ~29°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '~400 Lít (để vừa 4 vali lớn)',
+                'trunkMax': '~1.300 Lít (gập phẳng hàng ghế sau)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp đóng mở điện thông minh, chống kẹt'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD 2 cầu toàn thời gian thông minh',
+                'maxPower': '260 kW (~349 mã lực) sức mạnh vượt trội',
+                'maxTorque': '500 Nm (bứt tốc dính lưng ghế)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h chỉ trong 5,8 giây',
+                'batteryType': 'Ternary Lithium cao cấp dung lượng lớn',
+                'batteryCapacity': '75,3 kWh',
+                'range': '431 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '24,6 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '8 - 9 giờ qua đêm sạc tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Độc lập đa liên kết thể thao',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh hiệu suất cao',
+                'wheels': '20 inch (Lốp 245/45 R20 mâm phay kim cương thể thao)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED Projector ma trận thích ứng tự động chia luồng',
+                'brandLighting': 'Cánh chim VinFast LED sắc lẹm kiêu hãnh',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, tự động chỉnh khi lùi, nhớ vị trí',
+                'seating': 'Ghế bọc da cao cấp 2 tông màu thể thao sang trọng',
+                'seatAdjustment': 'Ghế lái chỉnh điện 8 hướng có sưởi và thông gió đệm',
+                'gearShifter': 'Cần số nút bấm phím đàn Piano độc bản',
+                'climate': 'Tự động 2 vùng độc lập, lọc bụi mịn PM2.5, ion âm',
+                'sunroof': 'Trần kính toàn cảnh Panoramic cao cấp chống 99% tia UV',
+                'doors': 'Tay nắm cửa ẩn phẳng thân xe tự thò thụt'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 12.9 inch và hiển thị HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 12,9 inch độ nét 2K hướng tài xế',
+                'hud': 'Trang bị màn hình HUD màu chiếu kính lái cao cấp',
+                'sound': '8 loa cao cấp âm trầm sống động',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt điều khiển thông minh',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, sạc không dây 15W',
+                'smartFeatures': 'Cập nhật từ xa FOTA, mở khóa xe bằng điện thoại',
+                'appControl': 'VinFast App điều khiển điều hòa, định vị, kiểm tra sạc xe'
+            },
+            'cat6_safety': {
+                'airbags': '08 túi khí bảo vệ toàn diện',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 Toàn Diện hàng đầu phân khúc',
+                'highwayAssist': 'Hỗ trợ lái trên cao tốc Highway Assist & Stop & Go',
+                'laneKeep': 'Hỗ trợ giữ làn LKA, Cảnh báo chệch làn LDW',
+                'cruiseControl': 'Ga tự động thích ứng ACC Stop & Go từ 0 - 130 km/h',
+                'autoBrake': 'Phanh khẩn cấp tự động AEB trước/sau nhận diện người/xe',
+                'blindSpot': 'Cảnh báo điểm mù BSW, Cảnh báo cắt ngang lùi RCTA, Cảnh báo mở cửa DOW',
+                'cameraSensors': 'Camera 360 độ 3D sắc nét + Cảm biến đỗ xe trước & sau',
+                'smartParking': 'Hỗ trợ đỗ xe thông minh',
+                'batterySafety': 'Khung vỏ chịu lực cao, chuẩn chống nước pin IP67'
+            },
+            'cat7_economics': {
+                'price': '1.019.000.000 VNĐ (thuê pin) | 1.219.000.000 VNĐ (kèm pin)',
+                'energyCost': '~500 đ/km (tiêu hao ~16,5 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ, hạ tầng V-Green toàn quốc',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF7'
+            }
+        }
+    },
+
+    # 10. VF 8 Eco
+    {
+        'id': 'vf8_eco',
+        'name': 'VinFast VF 8 Eco',
+        'shortName': 'VF 8 Eco',
+        'segment': 'D-SUV 5 chỗ đẳng cấp',
+        'category': 'SUV & Crossover',
+        'price': 1090000000,
+        'priceText': '1,090 - 1,170 tỷ VNĐ',
+        'batteryFeeText': 'Thuê pin: 2.900.000 đ/tháng | Kèm pin: 1,170 tỷ',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf8_eco_white.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF8',
+        'badgeColor': 'sky',
+        'highlights': ['Thiết kế Pininfarina Ý thanh lịch', 'Công suất 349 HP & Mô-men xoắn 500 Nm', 'Mâm 19 inch khí động học tối ưu cự ly', 'Pin 87,7 kWh tầm 471 km (WLTP)'],
+        'colors': [
+            {'name': 'Trắng Brahminy White', 'hex': '#F8FAFC', 'image': 'assets/cars/vf8_eco_white.png'},
+            {'name': 'Đỏ Crimson Red', 'hex': '#DC2626', 'image': 'assets/cars/vf8_eco_red.png'}
+        ],
+        'radar': {'power': 90, 'space': 92, 'range': 88, 'safety': 95, 'tech': 94, 'economy': 88},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.750 x 1.934 x 1.667 mm',
+                'segment': 'D-SUV 5 chỗ hạng trung cao cấp toàn cầu (Pininfarina Ý)',
+                'wheelbase': '2.950 mm (khoang hành khách rộng rãi bậc nhất)',
+                'groundClearance': '179 mm',
+                'turningRadius': '~5,8 m',
+                'weight': '2.540 kg',
+                'grossWeight': '3.000 kg',
+                'dragCoeff': '0,28 Cd',
+                'offroadAngles': 'Góc tới: ~19° | Góc thoát: ~26°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '376 Lít (để vừa 3 bộ túi Golf hoặc 4 vali lớn)',
+                'trunkMax': '1.373 Lít (gập phẳng hàng ghế thứ 2)',
+                'frunk': '77,6 Lít (khoang chứa đồ riêng dưới nắp capo)',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cốp điện thông minh + Đá cốp rảnh tay'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD toàn thời gian thông minh',
+                'maxPower': '260 kW (349 mã lực)',
+                'maxTorque': '500 Nm (bứt tốc dính lưng ghế)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h trong 5,9 giây',
+                'batteryType': 'CATL 87,7 kWh dung lượng lớn công nghệ cao',
+                'batteryCapacity': '87,7 kWh',
+                'range': '471 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '31 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '10 - 11 giờ qua đêm sạc tại nhà',
+                'suspension': 'Trước: Độc lập MacPherson | Sau: Đa liên kết',
+                'brakes': 'Phanh đĩa thông gió 4 bánh tản nhiệt cao cấp',
+                'wheels': '19 inch (Lốp 225/55 R19 mâm hợp kim nhôm khí động học)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED tự động bật/tắt và điều chỉnh góc chiếu',
+                'brandLighting': 'Cánh chim VinFast LED phát sáng kiêu hãnh',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, tự động chỉnh khi lùi, nhớ vị trí',
+                'seating': 'Ghế bọc giả da cao cấp êm ái, thoáng khí',
+                'seatAdjustment': 'Ghế lái chỉnh điện 8 hướng',
+                'gearShifter': 'Cần số nút bấm phím đàn trên bệ trung tâm',
+                'climate': 'Tự động 2 vùng độc lập, lọc bụi mịn PM2.5',
+                'sunroof': 'Trần kim loại tiêu chuẩn cách nhiệt',
+                'doors': 'Kính cách âm 2 lớp chống tia UV'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 15.6 inch và HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 15,6 inch độ nét 2K cao cấp',
+                'hud': 'HUD màu chiếu kính lái hiển thị vận tốc, dẫn đường và ADAS',
+                'sound': '8 loa cao cấp âm thanh vòm chi tiết',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt điều khiển thông minh toàn xe',
+                'connectivity': 'Apple CarPlay / Android Auto, sạc không dây, USB Type-C',
+                'smartFeatures': 'Chế độ cắm trại Camp Mode, Pet Mode, Car Wash Mode, cấp nguồn V2L 220V',
+                'appControl': 'VinFast App: mở khóa xe, điều khiển từ xa, theo dõi trạng thái xe'
+            },
+            'cat6_safety': {
+                'airbags': '11 túi khí bảo vệ tối đa toàn diện',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 nâng cao',
+                'highwayAssist': 'Highway Assist Level 2 tự đánh lái, giữ ga trên cao tốc',
+                'laneKeep': 'Hỗ trợ giữ làn LKA, Hỗ trợ chuyển làn tự động',
+                'cruiseControl': 'Kiểm soát hành trình thích ứng ACC Stop & Go',
+                'autoBrake': 'Phanh khẩn cấp tự động tốc độ cao nhận diện vật cản',
+                'blindSpot': 'Cảnh báo điểm mù BSW, Cảnh báo phương tiện cắt ngang RCTA',
+                'cameraSensors': 'Camera lùi độ nét cao và cảm biến trước sau',
+                'smartParking': 'Hỗ trợ đỗ xe thông minh',
+                'batterySafety': 'Tiêu chuẩn an toàn 5 sao NHTSA và Euro NCAP'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 1.090.000.000 VNĐ (thuê pin) | 1.170.000.000 VNĐ (kèm pin)',
+                'energyCost': '~550 đ/km (tiêu hao ~19 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ, hạ tầng trạm sạc toàn quốc',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF8'
+            }
+        }
+    },
+
+    # 11. VF 8 Plus
+    {
+        'id': 'vf8_plus',
+        'name': 'VinFast VF 8 Plus',
+        'shortName': 'VF 8 Plus',
+        'segment': 'D-SUV 5 chỗ đẳng cấp',
+        'category': 'SUV & Crossover',
+        'price': 1270000000,
+        'priceText': '1,270 - 1,350 tỷ VNĐ',
+        'batteryFeeText': 'Thuê pin: 2.900.000 đ/tháng | Kèm pin: 1,350 tỷ',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf8_plus_white.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF8',
+        'badgeColor': 'sky',
+        'highlights': ['Công suất khủng 402 HP & Mô-men 620 Nm', 'Cửa sổ trời Panorama & Da Nappa cao cấp', 'Sưởi & Làm mát cả 2 hàng ghế trước/sau', 'Mâm 20 inch phay kim cương thể thao'],
+        'colors': [
+            {'name': 'Trắng Brahminy White', 'hex': '#F8FAFC', 'image': 'assets/cars/vf8_plus_white.png'},
+            {'name': 'Đỏ Crimson Red', 'hex': '#DC2626', 'image': 'assets/cars/vf8_plus_red.png'}
+        ],
+        'radar': {'power': 98, 'space': 92, 'range': 87, 'safety': 99, 'tech': 98, 'economy': 85},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.750 x 1.934 x 1.667 mm',
+                'segment': 'D-SUV 5 chỗ hạng trung cao cấp toàn cầu (Pininfarina Ý)',
+                'wheelbase': '2.950 mm (khoang hành khách rộng rãi bậc nhất)',
+                'groundClearance': '179 mm',
+                'turningRadius': '~5,8 m',
+                'weight': '2.600 kg (đầm chắc tuyệt hảo)',
+                'grossWeight': '3.030 kg',
+                'dragCoeff': '0,28 Cd',
+                'offroadAngles': 'Góc tới: ~19° | Góc thoát: ~26°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '376 Lít (để vừa 3 bộ túi Golf hoặc 4 vali lớn)',
+                'trunkMax': '1.373 Lít (gập phẳng hàng ghế thứ 2)',
+                'frunk': '77,6 Lít (khoang chứa đồ riêng dưới nắp capo)',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cốp điện thông minh + Đá cốp rảnh tay + Nhớ vị trí'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD toàn thời gian thông minh',
+                'maxPower': '300 kW (402 mã lực) sức mạnh tương đương động cơ V8',
+                'maxTorque': '620 Nm (bứt tốc dính lưng ghế ngay lập tức)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h chỉ 5,5 giây',
+                'batteryType': 'CATL 87,7 kWh dung lượng lớn công nghệ cao',
+                'batteryCapacity': '87,7 kWh',
+                'range': '457 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '31 phút (10% lên 70% trụ sạc nhanh DC 250 kW)',
+                'acCharge': '10 - 11 giờ qua đêm sạc tại nhà',
+                'suspension': 'Trước: Độc lập MacPherson | Sau: Đa liên kết',
+                'brakes': 'Phanh đĩa thông gió 4 bánh tản nhiệt cao cấp',
+                'wheels': '20 inch (Lốp 245/45 R20 mâm phay kim cương thể thao)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED Matrix thông minh tự động chống lóa và mở rộng góc chiếu',
+                'brandLighting': 'Cánh chim VinFast LED phát sáng kiêu hãnh',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, tự động chỉnh khi lùi, nhớ vị trí',
+                'seating': 'Ghế bọc da thật / da Nappa cao cấp êm ái, thoáng khí',
+                'seatAdjustment': 'Ghế lái chỉnh điện 12 hướng nhớ vị trí + Ghế phụ điện 10 hướng',
+                'gearShifter': 'Cần số nút bấm phím đàn trên bệ trung tâm',
+                'climate': 'Tự động 2 vùng độc lập, Ionizer khử khuẩn, lọc bụi mịn PM2.5',
+                'sunroof': 'Cửa sổ trời toàn cảnh Panorama chỉnh điện',
+                'doors': 'Kính cách âm 2 lớp tối màu chống tia UV'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 15.6 inch và HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 15,6 inch độ nét 2K cao cấp',
+                'hud': 'HUD màu chiếu kính lái hiển thị vận tốc, dẫn đường và ADAS',
+                'sound': '10 loa cao cấp có Subwoofer rời âm thanh rạp hát',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt điều khiển thông minh toàn xe',
+                'connectivity': 'Apple CarPlay / Android Auto, sạc không dây, USB Type-C',
+                'smartFeatures': 'Chế độ cắm trại Camp Mode, Pet Mode, Car Wash Mode, cấp nguồn V2L 220V',
+                'appControl': 'VinFast App: mở khóa xe, điều khiển từ xa, theo dõi trạng thái xe'
+            },
+            'cat6_safety': {
+                'airbags': '11 túi khí bảo vệ tối đa toàn diện',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 nâng cao đầy đủ nhất',
+                'highwayAssist': 'Highway Assist Level 2 tự đánh lái, giữ ga trên cao tốc',
+                'laneKeep': 'Hỗ trợ giữ làn LKA, Hỗ trợ chuyển làn tự động',
+                'cruiseControl': 'Kiểm soát hành trình thích ứng ACC Stop & Go',
+                'autoBrake': 'Phanh khẩn cấp tự động tốc độ cao nhận diện vật cản',
+                'blindSpot': 'Cảnh báo điểm mù BSW, Cảnh báo phương tiện cắt ngang RCTA',
+                'cameraSensors': 'Camera 360 độ 3D sắc nét + 12 cảm biến siêu âm',
+                'smartParking': 'Đỗ xe tự động Smart Parking Assist & Triệu hồi xe Summon tiến/lùi bằng điện thoại',
+                'batterySafety': 'Tiêu chuẩn an toàn 5 sao NHTSA và Euro NCAP'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 1.270.000.000 VNĐ (thuê pin) | 1.350.000.000 VNĐ (kèm pin)',
+                'energyCost': '~600 đ/km (tiêu hao ~20 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ, hạ tầng trạm sạc toàn quốc',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF8'
+            }
+        }
+    },
+
+    # 12. VF 8 All-New 2026
+    {
+        'id': 'vf8_all_new',
+        'name': 'VinFast VF 8 All-New 2026',
+        'shortName': 'VF 8 All-New',
+        'segment': 'D-SUV thế hệ mới (SDV & FSD)',
+        'category': 'SUV & Crossover',
+        'price': 899000000,
+        'priceText': '~899 triệu VNĐ',
+        'batteryFeeText': 'Chương trình Vì tương lai xanh ưu đãi đặc biệt',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf8_all_new_white.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF8',
+        'badgeColor': 'sky',
+        'highlights': ['Kiến trúc xe phần mềm SDV với máy tính CVC', 'Hệ thống treo thích ứng FSD êm ái triệt tiêu rung', 'Quản lý nhiệt ITM tăng 15% hiệu quả dùng pin', 'Sạc siêu nhanh 10-70% chỉ 22 - 25 phút'],
+        'colors': [
+            {'name': 'Trắng Tech White', 'hex': '#F8FAFC', 'image': 'assets/cars/vf8_all_new_white.png'},
+            {'name': 'Đỏ Ruby Red', 'hex': '#DC2626', 'image': 'assets/cars/vf8_all_new_red.png'}
+        ],
+        'radar': {'power': 86, 'space': 93, 'range': 90, 'safety': 98, 'tech': 100, 'economy': 92},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.750 x 1.934 x 1.667 mm',
+                'segment': 'D-SUV thế hệ mới (Ngôn ngữ Dòng chảy công nghệ Tech Fluid)',
+                'wheelbase': '2.950 mm (khoang nội thất rộng rãi hàng đầu phân khúc D)',
+                'groundClearance': '179 mm',
+                'turningRadius': '~5,6 m',
+                'weight': '~2.250 kg (tối ưu hóa cấu trúc thân vỏ)',
+                'grossWeight': '2.750 kg',
+                'dragCoeff': '0,265 Cd (tối ưu cản gió gầm phẳng)',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~27°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '~410 Lít (sâu và rộng hơn thế hệ trước)',
+                'trunkMax': '~1.400 Lít (gập phẳng hàng ghế sau)',
+                'frunk': '75 Lít (khoang chứa cáp sạc và vật dụng cá nhân)',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Bệ trung tâm 2 tầng thông thoáng, hộc chứa đồ lớn dưới bệ tì tay'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': 'Mô-tơ điện hiệu suất cao thế hệ mới (FWD / AWD)',
+                'maxPower': '170 kW (~228 mã lực) êm ái và tiết kiệm năng lượng',
+                'maxTorque': '350 Nm (phản hồi chân ga tức thì không trễ)',
+                'acceleration': 'Tăng tốc mượt mà, vận hành bền bỉ',
+                'batteryType': 'Pin thế hệ mới ITM (Integrated Thermal Management tăng 15% hiệu quả)',
+                'batteryCapacity': '~60 - 70 kWh thế hệ mới',
+                'range': '~500 km / lần sạc đầy (chuẩn WLTP)',
+                'fastCharge': '22 - 25 phút (10% lên 70% đường cong nạp điện tối ưu)',
+                'acCharge': '6 - 7 giờ sạc qua đêm tại nhà',
+                'suspension': 'Hệ thống treo thích ứng FSD (Frequency Selective Dampers đổi độ cứng/mềm theo mặt đường)',
+                'brakes': 'Phanh đĩa tản nhiệt thế hệ mới tích hợp tái sinh thông minh',
+                'wheels': '19 - 20 inch khí động học mới'
+            },
+            'cat4_equipment': {
+                'headlights': 'Cụm đèn trước Full LED thanh thoát thế hệ mới',
+                'brandLighting': 'Dải LED cánh chim công nghệ mới trải rộng mặt ca-lăng đen bóng',
+                'mirrors': 'Chỉnh/gập điện, sấy gương, tự động chỉnh khi lùi, nhớ vị trí',
+                'seating': 'Ghế ngồi công thái học Ergonomic bọc da thân thiện môi trường cao cấp',
+                'seatAdjustment': 'Chỉnh điện đa hướng, nhớ vị trí, sưởi và làm mát chống mỏi lưng',
+                'gearShifter': 'Cần số lẫy điện tử sau vô lăng (Column shifter) sang trọng',
+                'climate': 'Tự động 2 vùng tích hợp lọc Combi 1.0, lọc 99% bụi mịn PM2.5 và Ionizer',
+                'sunroof': 'Trần kính toàn cảnh chống tia UV',
+                'doors': 'Tay nắm cửa thông minh phẳng thân xe'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình OLED và HUD hiển thị thế hệ mới',
+                'infotainment': 'Màn hình cảm ứng OLED 12,9 - 15,6 inch viền mỏng tần số quét cao chống bám vân tay',
+                'hud': 'HUD kính lái hiển thị đồ họa thực tế ảo tăng cường AR',
+                'sound': '8 - 10 loa công nghệ âm thanh vòm kỹ thuật số chi tiết',
+                'viviAI': 'Trợ lý ảo ViVi AI thế hệ mới tích hợp trí tuệ nhân tạo GenAI',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, sạc không dây 50W',
+                'smartFeatures': 'Kiến trúc xe phần mềm SDV với máy tính trung tâm CVC xử lý đa nhiệm',
+                'appControl': 'VinFast App điều khiển toàn bộ xe từ xa, cập nhật phần mềm liên tục'
+            },
+            'cat6_safety': {
+                'airbags': '11 túi khí tiêu chuẩn an toàn cao nhất',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Radar sóng milimet độ nét cao + Camera AI góc rộng nhận diện trong sương mù',
+                'highwayAssist': 'Adaptive Cruise Control bám đuôi nhịp nhàng hơn, phanh êm dịu không giật cục',
+                'laneKeep': 'Hỗ trợ giữ làn khẩn cấp và căn giữa làn đường chủ động',
+                'cruiseControl': 'ACC thông minh thế hệ mới',
+                'autoBrake': 'Hỗ trợ đánh lái tránh va chạm khẩn cấp Emergency Evasive Steering Assist',
+                'blindSpot': 'Cảnh báo điểm mù, phương tiện cắt ngang và cảnh báo mở cửa DOW',
+                'cameraSensors': 'Camera AI góc rộng và cảm biến xung quanh xe',
+                'smartParking': 'Đỗ xe tự động thế hệ mới',
+                'batterySafety': 'Khung gầm bảo vệ pin đa tầng, ngắt điện tự động trong mili-giây'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 899.000.000 VNĐ (mức giá cực kỳ hấp dẫn cho SUV cỡ D)',
+                'energyCost': '~450 đ/km (nhờ công nghệ quản lý nhiệt ITM tối ưu)',
+                'warrantyCar': '7 năm hoặc 160.000 km',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Ưu đãi sạc pin miễn phí tại V-Green theo chính sách hãng',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF8'
+            }
+        }
+    },
+
+    # 13. VF 9 Eco (7 chỗ)
+    {
+        'id': 'vf9_eco',
+        'name': 'VinFast VF 9 Eco (7 chỗ)',
+        'shortName': 'VF 9 Eco',
+        'segment': 'E-SUV Full-size Flagship',
+        'category': 'SUV & Crossover',
+        'price': 1589000000,
+        'priceText': '1,589 - 2,114 tỷ VNĐ',
+        'batteryFeeText': 'Thuê pin: 3.900.000 đ/tháng | Kèm pin: 2,114 tỷ',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/cars/vf9_eco_grey.webp',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF9',
+        'badgeColor': 'rose',
+        'highlights': ['SUV Full-size 5.12m uy nghi chuẩn chủ tịch', 'Pin khủng 123 kWh tầm 626 km (WLTP)', 'Treo khí nén thích ứng nâng hạ gầm', 'Cửa hít tự động 4 cánh & 11 túi khí'],
+        'colors': [
+            {'name': 'Xám Đậm Charcoal', 'hex': '#334155', 'image': 'assets/cars/vf9_eco_grey.webp'},
+            {'name': 'Trắng Brahminy White', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_9_WHITE.png'}
+        ],
+        'radar': {'power': 95, 'space': 100, 'range': 98, 'safety': 99, 'tech': 96, 'economy': 82},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '5.118 x 2.070 x 1.696 mm',
+                'segment': 'E-SUV Full-size hạng sang Flagship đầu bảng',
+                'wheelbase': '3.150 mm (khoang nội thất siêu rộng rãi 3 hàng ghế)',
+                'groundClearance': '197 mm (treo khí nén tự động hạ khi chạy nhanh, nâng khi leo dốc)',
+                'turningRadius': '~6,2 m',
+                'weight': '2.830 kg (khung gầm đồ sộ cách âm tĩnh lặng)',
+                'grossWeight': '3.400 kg (chở 7 người lớn cùng đầy đủ hành lý)',
+                'dragCoeff': '0,29 Cd (hốc thoát gió nắp capo và cánh gió mui)',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~24°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '520 Lít (xếp thoải mái 3 túi gậy golf hoặc 4 vali lớn khi đủ 3 hàng ghế)',
+                'trunkMax': '>1.500 Lít (gập phẳng hàng ghế 3 & 2 thành khoang mênh mông)',
+                'frunk': '88 Lít (khoang chứa đồ rộng rãi dưới nắp capo)',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cốp điện chống kẹt thông minh, nút bấm hạ phuộc sau bốc dỡ hàng dễ dàng'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD toàn thời gian siêu khỏe',
+                'maxPower': '300 kW (402 mã lực) lướt êm ái dù xác xe gần 3 tấn',
+                'maxTorque': '620 Nm (sức kéo tức thời vượt dốc đèo nhẹ nhàng)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h trong ~6,5 giây',
+                'batteryType': 'CATL 123 kWh (cụm pin dung lượng khổng lồ hàng đầu thế giới)',
+                'batteryCapacity': '123 kWh',
+                'range': '626 km / lần sạc (chuẩn WLTP xuyên Việt thảnh thơi)',
+                'fastCharge': '35 phút (10% lên 70% hỗ trợ sạc công suất cực đại 250 kW)',
+                'acCharge': '11 kW 3 pha (sạc đầy qua đêm)',
+                'suspension': 'Treo phuộc hơi điện tử tự cân bằng (khí nén êm dịu mềm mượt)',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh có tái sinh năng lượng',
+                'wheels': '20 inch (Lốp 275/45 R20 mâm hợp kim sang trọng)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED Matrix thông minh tự động chống lóa và mở rộng góc chiếu',
+                'brandLighting': 'Cánh chim VinFast LED phát sáng kiêu hãnh',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, tự động chỉnh khi lùi, nhớ vị trí',
+                'seating': '7 chỗ ngồi (bố trí 2 - 3 - 2), da cao cấp thượng hạng',
+                'seatAdjustment': 'Ghế lái chỉnh điện 12 hướng nhớ vị trí, sưởi và thông gió ghế',
+                'gearShifter': 'Cần số nút bấm phím đàn trên bệ trung tâm',
+                'climate': 'Tự động 3 vùng độc lập có ion âm khử khuẩn',
+                'sunroof': 'Trần kim loại cách nhiệt cao cấp',
+                'doors': 'Cửa hít tự động 4 cánh êm ái không gây ồn khoang cabin'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 15.6 inch và HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 15,6 inch sắc nét 2K điều khiển toàn bộ xe',
+                'hud': 'HUD màu đa thông tin chiếu kính chắn gió',
+                'sound': '13 loa cao cấp có Subwoofer âm thanh rạp hát vĩ đại',
+                'viviAI': 'Trợ lý ảo ViVi nhận diện vị trí người nói trong xe',
+                'connectivity': 'Apple CarPlay / Android Auto, điều khiển nhà thông minh Smart Home',
+                'smartFeatures': 'Chế độ cắm trại Camp Mode, Pet Mode, Car Wash Mode, cấp nguồn V2L ngoài xe',
+                'appControl': 'VinFast App điều khiển toàn bộ xe từ xa 24/7'
+            },
+            'cat6_safety': {
+                'airbags': '11 túi khí bảo vệ toàn diện chuẩn 5 sao',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 Đỉnh Cao',
+                'highwayAssist': 'Hỗ trợ lái trên cao tốc Highway Assist, giữ làn và đổi làn tự động',
+                'laneKeep': 'Hỗ trợ khi ùn tắc Traffic Jam Assist tự bám đuôi dừng đỗ',
+                'cruiseControl': 'ACC Stop & Go kiểm soát hành trình thích ứng',
+                'autoBrake': 'Phanh khẩn cấp tự động tốc độ cao nhận diện người/xe',
+                'blindSpot': 'Cảnh báo điểm mù BSW, cảnh báo phương tiện cắt ngang RCTA, mở cửa DOW',
+                'cameraSensors': 'Camera 360 độ 3D và camera giám sát mắt tài xế bằng AI',
+                'smartParking': 'Đỗ xe tự động thông minh và cảm biến quanh xe',
+                'batterySafety': 'Tiêu chuẩn an toàn 5 sao NHTSA và Euro NCAP'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 1.589.000.000 VNĐ (thuê pin) | 2.114.000.000 VNĐ (kèm pin)',
+                'energyCost': '~650 đ/km (tiêu hao ~22 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km (đặc quyền cứu hộ VIP 24/7)',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ trị giá hàng trăm triệu',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF9'
+            }
+        }
+    },
+
+    # 14. VF 9 Plus (7 chỗ)
+    {
+        'id': 'vf9_plus_7seat',
+        'name': 'VinFast VF 9 Plus (7 chỗ)',
+        'shortName': 'VF 9 Plus 7 Chỗ',
+        'segment': 'E-SUV Full-size Flagship',
+        'category': 'SUV & Crossover',
+        'price': 1786000000,
+        'priceText': '1,786 - 2,303 tỷ VNĐ',
+        'batteryFeeText': 'Thuê pin: 3.900.000 đ/tháng | Kèm pin: 2,303 tỷ',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_9_WHITE.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF9',
+        'badgeColor': 'rose',
+        'highlights': ['Cấu hình 7 chỗ rộng rãi gia đình đông người', 'Trần kính Panorama toàn cảnh sang trọng', 'Mâm 21 inch kim cương & Treo khí nén', 'Pin 123 kWh tầm 602 km & Cửa hít 4 cánh'],
+        'colors': [
+            {'name': 'Trắng Brahminy White', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_9_WHITE.png'},
+            {'name': 'Đen Jet Black', 'hex': '#0F172A', 'image': 'assets/cars/vf9_eco_grey.webp'}
+        ],
+        'radar': {'power': 96, 'space': 100, 'range': 96, 'safety': 100, 'tech': 98, 'economy': 82},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '5.118 x 2.070 x 1.696 mm',
+                'segment': 'E-SUV Full-size 7 chỗ sang trọng đầu bảng',
+                'wheelbase': '3.150 mm (khoang nội thất siêu rộng rãi 3 hàng ghế)',
+                'groundClearance': '197 mm (treo khí nén điện tử tự cân bằng)',
+                'turningRadius': '~6,2 m',
+                'weight': '2.880 kg',
+                'grossWeight': '3.400 kg',
+                'dragCoeff': '0,29 Cd',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~24°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '520 Lít (để vừa 3 túi golf hoặc 4 vali lớn)',
+                'trunkMax': '>1.500 Lít (gập phẳng hàng ghế sau)',
+                'frunk': '88 Lít (khoang đồ tiện ích dưới nắp capo)',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cốp điện chống kẹt + Hạ gầm đuôi xe hỗ trợ bốc đồ nặng'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD toàn thời gian siêu khỏe',
+                'maxPower': '300 kW (402 mã lực) lướt êm ái mạnh mẽ',
+                'maxTorque': '620 Nm (sức kéo tức thời vượt dốc đèo nhẹ nhàng)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h trong ~6,5 giây',
+                'batteryType': 'CATL 123 kWh (pin dung lượng khổng lồ hàng đầu)',
+                'batteryCapacity': '123 kWh',
+                'range': '602 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '35 phút (10% lên 70% sạc siêu nhanh DC 250 kW)',
+                'acCharge': '11 kW 3 pha sạc qua đêm',
+                'suspension': 'Treo khí nén thích ứng phuộc hơi điện tử tự động nâng hạ gầm',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh có tái sinh năng lượng',
+                'wheels': '21 inch (Lốp 275/40 R21 mâm phay kim cương quyền uy)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED Matrix thông minh tự chia luồng chống chói',
+                'brandLighting': 'Cánh chim VinFast LED phát sáng kiêu hãnh',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, chống chói tự động, nhớ vị trí',
+                'seating': '7 chỗ (bố trí 2 - 3 - 2, hàng ghế 2 dạng ghế băng 3 chỗ)',
+                'seatAdjustment': 'Ghế trước chỉnh điện 12 hướng, sưởi và thông gió đệm',
+                'gearShifter': 'Cần số nút bấm phím đàn trên bệ trung tâm',
+                'climate': 'Tự động 3 vùng độc lập có ion âm khử khuẩn',
+                'sunroof': 'Trần kính Panorama toàn cảnh chống tia cực tím UV',
+                'doors': 'Cửa hít tự động 4 cánh êm ái cách âm tuyệt hảo'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 15.6 inch và HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 15,6 inch độ nét 2K',
+                'hud': 'HUD màu đa thông tin chiếu kính lái',
+                'sound': '13 loa cao cấp có Subwoofer âm thanh rạp hát vĩ đại',
+                'viviAI': 'Trợ lý ảo ViVi nhận diện vị trí người nói',
+                'connectivity': 'Apple CarPlay / Android Auto, điều khiển nhà thông minh Smart Home',
+                'smartFeatures': 'Chế độ cắm trại Camp Mode, Pet Mode, Car Wash Mode, cấp nguồn V2L ngoài xe',
+                'appControl': 'VinFast App điều khiển toàn bộ xe từ xa 24/7'
+            },
+            'cat6_safety': {
+                'airbags': '11 túi khí bảo vệ toàn diện',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 Toàn Diện cao cấp',
+                'highwayAssist': 'Hỗ trợ lái trên cao tốc Highway Assist, giữ làn và đổi làn tự động',
+                'laneKeep': 'Hỗ trợ khi ùn tắc Traffic Jam Assist tự bám đuôi dừng đỗ',
+                'cruiseControl': 'ACC Stop & Go kiểm soát hành trình thích ứng',
+                'autoBrake': 'Phanh khẩn cấp tự động tốc độ cao nhận diện người/xe',
+                'blindSpot': 'Cảnh báo điểm mù BSW, cảnh báo phương tiện cắt ngang RCTA, mở cửa DOW',
+                'cameraSensors': 'Camera 360 độ 3D và camera giám sát mắt tài xế bằng AI',
+                'smartParking': 'Đỗ xe tự động thông minh và cảm biến quanh xe',
+                'batterySafety': 'Tiêu chuẩn an toàn 5 sao NHTSA và Euro NCAP'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 1.786.000.000 VNĐ (thuê pin) | 2.303.000.000 VNĐ (kèm pin)',
+                'energyCost': '~650 đ/km (tiêu hao ~22 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ trị giá hàng trăm triệu',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF9'
+            }
+        }
+    },
+
+    # 15. VF 9 Plus (6 chỗ VIP Ghế Cơ Trưởng)
+    {
+        'id': 'vf9_plus_6seat',
+        'name': 'VinFast VF 9 Plus (6 chỗ VIP)',
+        'shortName': 'VF 9 Plus VIP 6 Chỗ',
+        'segment': 'E-SUV Full-size Flagship',
+        'category': 'SUV & Crossover',
+        'price': 1797000000,
+        'priceText': '1,797 - 2,314 tỷ VNĐ',
+        'batteryFeeText': 'Thuê pin: 3.900.000 đ/tháng | Kèm pin: 2,314 tỷ (Tùy chọn VIP +11 tr)',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_9_GREY.png',
+        'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF9',
+        'badgeColor': 'rose',
+        'highlights': ['Hàng ghế cơ trưởng VIP massage sưởi/làm mát', 'Màn hình cảm ứng 8 inch điều khiển riêng cho VIP', 'Mâm 21 inch kim cương & Trần kính Panorama', 'Pin 123 kWh & Treo khí nén nâng hạ gầm'],
+        'colors': [
+            {'name': 'Đen Jet Black', 'hex': '#0F172A', 'image': 'assets/crops/VF_9_GREY.png'},
+            {'name': 'Trắng Brahminy White', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_9_WHITE.png'},
+            {'name': 'Xám Đậm Charcoal', 'hex': '#334155', 'image': 'assets/cars/vf9_eco_grey.webp'}
+        ],
+        'radar': {'power': 96, 'space': 100, 'range': 96, 'safety': 100, 'tech': 100, 'economy': 82},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '5.118 x 2.070 x 1.696 mm',
+                'segment': 'E-SUV Full-size 6 chỗ Chủ tịch đầu bảng',
+                'wheelbase': '3.150 mm (khoang cơ trưởng rộng thênh thang)',
+                'groundClearance': '197 mm (treo khí nén điện tử tự cân bằng)',
+                'turningRadius': '~6,2 m',
+                'weight': '2.890 kg',
+                'grossWeight': '3.400 kg',
+                'dragCoeff': '0,29 Cd',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~24°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '520 Lít (để vừa 3 túi golf hoặc 4 vali lớn)',
+                'trunkMax': '>1.500 Lít (gập hàng ghế sau)',
+                'frunk': '88 Lít (khoang đồ tiện ích dưới nắp capo)',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cốp điện chống kẹt + Hạ gầm đuôi xe hỗ trợ bốc đồ nặng'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD toàn thời gian siêu khỏe',
+                'maxPower': '300 kW (402 mã lực) lướt êm ái mạnh mẽ',
+                'maxTorque': '620 Nm (sức kéo tức thời vượt dốc đèo nhẹ nhàng)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h trong ~6,5 giây',
+                'batteryType': 'CATL 123 kWh (pin dung lượng khổng lồ hàng đầu)',
+                'batteryCapacity': '123 kWh',
+                'range': '602 km / lần sạc (chuẩn WLTP)',
+                'fastCharge': '35 phút (10% lên 70% sạc siêu nhanh DC 250 kW)',
+                'acCharge': '11 kW 3 pha sạc qua đêm',
+                'suspension': 'Treo khí nén thích ứng phuộc hơi điện tử tự động nâng hạ gầm',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh có tái sinh năng lượng',
+                'wheels': '21 inch (Lốp 275/40 R21 mâm phay kim cương quyền uy)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED Matrix thông minh tự chia luồng chống chói',
+                'brandLighting': 'Cánh chim VinFast LED phát sáng kiêu hãnh',
+                'mirrors': 'Chỉnh/gập điện, sấy mặt gương, chống chói tự động, nhớ vị trí',
+                'seating': '6 chỗ (bố trí 2 - 2 - 2), hàng ghế 2 Cơ trưởng Captain Seats độc lập',
+                'seatAdjustment': 'Ghế VIP massage đa điểm, sưởi ấm, làm mát, chỉnh điện đa hướng + Bệ tỳ tay riêng',
+                'gearShifter': 'Cần số nút bấm phím đàn trên bệ trung tâm',
+                'climate': 'Tự động 3 vùng độc lập có ion âm khử khuẩn, bảng chỉnh riêng cho VIP',
+                'sunroof': 'Trần kính Panorama toàn cảnh chống tia cực tím UV',
+                'doors': 'Cửa hít tự động 4 cánh êm ái cách âm tuyệt hảo'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 15.6 inch và HUD kính lái',
+                'infotainment': 'Màn hình cảm ứng 15,6 inch độ nét 2K',
+                'hud': 'HUD màu đa thông tin chiếu kính lái',
+                'sound': '13 loa cao cấp có Subwoofer âm thanh rạp hát vĩ đại',
+                'viviAI': 'Trợ lý ảo ViVi nhận diện vị trí người nói',
+                'connectivity': 'Apple CarPlay / Android Auto, điều khiển nhà thông minh Smart Home',
+                'smartFeatures': 'Màn hình cảm ứng 8 inch điều khiển riêng cho hàng ghế VIP, cấp nguồn V2L',
+                'appControl': 'VinFast App điều khiển toàn bộ xe từ xa 24/7'
+            },
+            'cat6_safety': {
+                'airbags': '11 túi khí bảo vệ toàn diện',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Trọn bộ ADAS Cấp Độ 2 Toàn Diện cao cấp',
+                'highwayAssist': 'Hỗ trợ lái trên cao tốc Highway Assist, giữ làn và đổi làn tự động',
+                'laneKeep': 'Hỗ trợ khi ùn tắc Traffic Jam Assist tự bám đuôi dừng đỗ',
+                'cruiseControl': 'ACC Stop & Go kiểm soát hành trình thích ứng',
+                'autoBrake': 'Phanh khẩn cấp tự động tốc độ cao nhận diện người/xe',
+                'blindSpot': 'Cảnh báo điểm mù BSW, cảnh báo phương tiện cắt ngang RCTA, mở cửa DOW',
+                'cameraSensors': 'Camera 360 độ 3D và camera giám sát mắt tài xế bằng AI',
+                'smartParking': 'Đỗ xe tự động thông minh và cảm biến quanh xe',
+                'batterySafety': 'Tiêu chuẩn an toàn 5 sao NHTSA và Euro NCAP'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 1.797.000.000 VNĐ (thuê pin) | 2.314.000.000 VNĐ (kèm pin)',
+                'energyCost': '~650 đ/km (tiêu hao ~22 kWh/100km)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km (đặc quyền cứu hộ VIP 24/7)',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Miễn 100% lệ phí trước bạ trị giá hàng trăm triệu',
+                'officialLink': 'https://shop.vinfastauto.com/vn_vi/dat-coc-o-to-dien-vinfast.html?modelId=Products-Car-VF9'
+            }
+        }
+    },
+
+    # 16. VF WILD
+    {
+        'id': 'vf_wild',
+        'name': 'VinFast VF WILD',
+        'shortName': 'VF WILD',
+        'segment': 'Bán tải điện cỡ trung (REEV)',
+        'category': 'Bán Tải & Chuyên Dụng',
+        'price': 850000000,
+        'priceText': '~850 triệu VNĐ (Dự kiến)',
+        'batteryFeeText': 'Bán tải điện mở rộng cự ly (REEV)',
+        'fuelType': 'Điện thuần / Mở rộng (REEV)',
+        'image': 'assets/crops/VF_WILD.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi/vf-wild',
+        'badgeColor': 'amber',
+        'highlights': ['Thùng hàng thông minh mở rộng vào cabin (Mid-gate)', 'Tầm vận hành khủng > 1.000 km (REEV)', 'Dẫn động 4 bánh toàn thời gian 2 Motor', 'Kính chiếu hậu kỹ thuật số Digital Mirror'],
+        'colors': [
+            {'name': 'Xám Đất Nung Wild Terracotta', 'hex': '#9A3412', 'image': 'assets/crops/VF_WILD.png'},
+            {'name': 'Xám Titan Mờ', 'hex': '#475569', 'image': 'assets/crops/VF_WILD.png'}
+        ],
+        'radar': {'power': 95, 'space': 96, 'range': 100, 'safety': 95, 'tech': 94, 'economy': 86},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '5.324 x 1.997 x 1.765 mm',
+                'segment': 'Bán tải điện cỡ trung dã ngoại thể thao',
+                'wheelbase': '3.250 mm',
+                'groundClearance': '215 mm (gầm cao vượt mọi địa hình hiểm trở)',
+                'turningRadius': '~6,1 m',
+                'weight': '~2.400 kg',
+                'grossWeight': '3.200 kg (tải trọng chở hàng ~800 kg)',
+                'dragCoeff': '~0,32 Cd',
+                'offroadAngles': 'Góc tới: ~30° | Góc thoát: ~26° | Lội nước: 800 mm'
+            },
+            'cat2_storage': {
+                'trunkStandard': 'Thùng xe tiêu chuẩn dài 1.524 mm',
+                'trunkMax': 'Dài 2.438 mm khi gập vách ngăn Mid-gate thông vào cabin',
+                'frunk': 'Cốp trước Frunk dung tích lớn chứa dụng cụ dã ngoại',
+                'cargoBed': 'Kích thước thùng hàng linh hoạt nhất thế giới',
+                'trunkUtility': 'Cửa thùng trợ lực điện, ổ cắm nguồn công suất lớn 220V cấp điện đồ gia dụng'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '02 mô-tơ điện AWD 2 cầu toàn thời gian',
+                'maxPower': '300 kW (~402 mã lực)',
+                'maxTorque': '640 Nm (sức kéo vượt bùn lầy, kéo rơ-moóc)',
+                'acceleration': 'Tăng tốc 0 - 100 km/h trong ~6,0 giây',
+                'batteryType': 'Hệ truyền động điện mở rộng cự ly REEV',
+                'batteryCapacity': 'Dung lượng lớn kết hợp máy phát điện bổ trợ',
+                'range': '> 1.000 km tổng cự ly hành trình',
+                'fastCharge': 'Sạc siêu nhanh DC tại hệ thống trạm V-Green',
+                'acCharge': 'Sạc chậm AC gia đình',
+                'suspension': 'Trước: Tay đòn kép độc lập | Sau: Nhíp lá hoặc liên kết đa điểm chịu tải',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh',
+                'wheels': '18 - 20 inch mâm lốp All-Terrain việt dã hầm hố'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED chiếu xa cường độ cao',
+                'brandLighting': 'Cánh chim VinFast LED đồ họa dã ngoại',
+                'mirrors': 'Gương chiếu hậu kỹ thuật số camera quan sát',
+                'seating': '5 chỗ ngồi, da thể thao kháng nước bụi',
+                'seatAdjustment': 'Chỉnh điện, thông gió đệm ghế',
+                'gearShifter': 'Cần số điện tử thể thao',
+                'climate': 'Tự động 2 vùng độc lập, lọc gió dã ngoại',
+                'sunroof': 'Trần kính toàn cảnh chịu lực dã ngoại',
+                'doors': '4 cửa mở rộng phong cách việt dã'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Màn hình kỹ thuật số hiển thị góc nghiêng địa hình',
+                'infotainment': 'Màn hình cảm ứng giải trí 15 inch siêu nét',
+                'hud': 'HUD hiển thị thông tin dã ngoại',
+                'sound': 'Hệ thống âm thanh dã ngoại công suất lớn',
+                'viviAI': 'Trợ lý ảo ViVi hướng dẫn cung đường phượt',
+                'connectivity': 'Kết nối vệ tinh, Apple CarPlay / Android Auto, cổng 220V',
+                'smartFeatures': 'Chế độ Camping Mode, cấp nguồn V2L cắm bếp từ, máy pha cà phê',
+                'appControl': 'VinFast App giám sát thùng hàng và điều khiển xe'
+            },
+            'cat6_safety': {
+                'airbags': '08 túi khí an toàn',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, Kiểm soát chống lật ROM, Hỗ trợ đổ đèo HDC',
+                'adasPackage': 'Hệ thống trợ lái ADAS Level 2 hỗ trợ kéo rơ-moóc',
+                'highwayAssist': 'Hỗ trợ giữ làn và ga tự động trên xa lộ',
+                'laneKeep': 'Cảnh báo lệch làn đường dã ngoại',
+                'cruiseControl': 'ACC thích ứng mọi dải tốc độ',
+                'autoBrake': 'Phanh tự động khẩn cấp nhận diện chướng ngại vật',
+                'blindSpot': 'Cảnh báo điểm mù mở rộng góc thùng xe',
+                'cameraSensors': 'Camera 360 độ kèm camera soi gầm xe quan sát đá tảng',
+                'smartParking': 'Cảm biến đỗ xe trước sau',
+                'batterySafety': 'Tấm bảo vệ gầm pin thép siêu cường chống va đập đá sỏi, chuẩn IP67'
+            },
+            'cat7_economics': {
+                'price': 'Dự kiến khoảng 750.000.000 - 950.000.000 VNĐ',
+                'energyCost': 'Rẻ hơn 60% so với bán tải máy dầu diesel cùng kích cỡ',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Chi phí bảo dưỡng định kỳ cực thấp',
+                'chargingNetwork': 'Hệ sinh thái trạm sạc V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi/vf-wild'
+            }
+        }
+    },
+
+    # 17. VF MPV 7
+    {
+        'id': 'vf_mpv7',
+        'name': 'VinFast VF MPV 7',
+        'shortName': 'VF MPV 7',
+        'segment': 'MPV 7 chỗ gia đình',
+        'category': 'Bán Tải & Chuyên Dụng',
+        'price': 750000000,
+        'priceText': '~750 triệu VNĐ (Dự kiến)',
+        'batteryFeeText': 'MPV điện 7 chỗ thực dụng cho gia đình',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_MPV_7.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi',
+        'badgeColor': 'emerald',
+        'highlights': ['MPV thuần điện 7 chỗ tối ưu không gian', 'Cửa trượt điện thông minh thuận tiện đón trả', 'Hàng ghế 2 và 3 gập phẳng linh hoạt', 'Sạc siêu nhanh DC cho chuyến đi xa'],
+        'colors': [
+            {'name': 'Trắng Băng Tuyết', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_MPV_7.png'},
+            {'name': 'Bạc Sang Trọng', 'hex': '#CBD5E1', 'image': 'assets/crops/VF_MPV_7.png'}
+        ],
+        'radar': {'power': 75, 'space': 95, 'range': 80, 'safety': 85, 'tech': 82, 'economy': 92},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.780 x 1.850 x 1.730 mm',
+                'segment': 'MPV 7 chỗ gia đình và đưa đón chuyên nghiệp',
+                'wheelbase': '2.900 mm (bố trí 3 hàng ghế rộng rãi cho người lớn)',
+                'groundClearance': '165 mm',
+                'turningRadius': '~5,5 m',
+                'weight': '~1.950 kg',
+                'grossWeight': '2.500 kg',
+                'dragCoeff': '~0,31 Cd',
+                'offroadAngles': 'Góc tới: ~18° | Góc thoát: ~22°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '380 Lít (đủ chứa vali khi đi đủ 7 người)',
+                'trunkMax': '>1.300 Lít (gập phẳng hàng ghế 3)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Sàn cốp thấp dễ bốc đồ, nhiều ngăn chứa đồ gia đình'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD)',
+                'maxPower': '150 kW (~201 mã lực) vận hành êm ái đầm chắc',
+                'maxTorque': '310 Nm',
+                'acceleration': 'Tăng tốc mượt mà không say xe',
+                'batteryType': 'LFP siêu an toàn độ bền cao',
+                'batteryCapacity': '65 - 75 kWh',
+                'range': '~420 km / lần sạc đầy',
+                'fastCharge': '28 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '8 giờ sạc qua đêm tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Đa liên kết êm ái cho gia đình',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh',
+                'wheels': '18 inch mâm hợp kim sang trọng'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED tự động bật tắt',
+                'brandLighting': 'Cánh chim VinFast LED đặc trưng',
+                'mirrors': 'Chỉnh điện, gập điện, sấy gương',
+                'seating': '7 chỗ ngồi rộng rãi, đệm ghế công thái học',
+                'seatAdjustment': 'Chỉnh điện ghế lái, hàng 2 trượt ngả thoải mái',
+                'gearShifter': 'Cần số điện tử gọn gàng',
+                'climate': 'Tự động 2 vùng độc lập, cửa gió điều hòa âm trần các hàng ghế',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': 'Cửa trượt điện 2 bên thuận tiện ra vào nơi chật hẹp'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Màn hình kỹ thuật số sau vô lăng',
+                'infotainment': 'Màn hình cảm ứng 12.9 inch kết nối Apple CarPlay / Android Auto',
+                'hud': 'Không trang bị',
+                'sound': '6 - 8 loa âm thanh gia đình',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt điều khiển tiện nghi xe',
+                'connectivity': 'Cổng sạc USB ở mọi hàng ghế',
+                'smartFeatures': 'Cập nhật từ xa OTA',
+                'appControl': 'VinFast App quản lý xe từ xa'
+            },
+            'cat6_safety': {
+                'airbags': '06 - 08 túi khí an toàn',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Gói hỗ trợ lái ADAS cơ bản và an toàn chủ động',
+                'highwayAssist': 'Hỗ trợ ga tự động Cruise Control',
+                'laneKeep': 'Cảnh báo lệch làn đường',
+                'cruiseControl': 'Ga tự động thông minh',
+                'autoBrake': 'Phanh khẩn cấp tự động',
+                'blindSpot': 'Cảnh báo điểm mù',
+                'cameraSensors': 'Camera lùi / Camera 360 và cảm biến đỗ xe',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Khung gầm bảo vệ pin đa tầng, chuẩn chống nước IP67'
+            },
+            'cat7_economics': {
+                'price': 'Dự kiến khoảng 650.000.000 - 850.000.000 VNĐ',
+                'energyCost': '~450 đ/km (tiết kiệm hơn 3 lần so với MPV máy xăng)',
+                'warrantyCar': '7 năm hoặc 160.000 km',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Chi phí bảo dưỡng định kỳ cực thấp',
+                'chargingNetwork': 'Hạ tầng trạm sạc V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi'
+            }
+        }
+    },
+
+    # 18. Minio Green
+    {
+        'id': 'minio_green',
+        'name': 'VinFast Minio Green',
+        'shortName': 'Minio Green',
+        'segment': 'Minicar dịch vụ taxi đô thị',
+        'category': 'Dịch Vụ Green Series',
+        'price': 269000000,
+        'priceText': '~269 triệu VNĐ',
+        'batteryFeeText': 'Chính sách trả góp chỉ từ 2 - 3 triệu đồng/tháng',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_2_BEIGE.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi',
+        'badgeColor': 'emerald',
+        'highlights': ['Chi phí điện chỉ 250 đ/km tiết kiệm 80% so với taxi xăng', 'Thay thế xe ôm công nghệ che mưa che nắng', 'Pin LFP 14.7 - 18.3 kWh bền bỉ cày cuốc', 'Chính sách trả góp cực rẻ'],
+        'colors': [
+            {'name': 'Xanh Taxi Green', 'hex': '#059669', 'image': 'assets/crops/VF_2_BEIGE.png'},
+            {'name': 'Trắng Băng Tuyết', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_2_BEIGE.png'}
+        ],
+        'radar': {'power': 40, 'space': 55, 'range': 60, 'safety': 60, 'tech': 55, 'economy': 100},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '3.090 x 1.496 x 1.625 mm',
+                'segment': 'Minicar dịch vụ vận tải đô thị (Green Series 4 chỗ)',
+                'wheelbase': '2.065 mm (bố trí 4 chỗ ngồi gọn gàng)',
+                'groundClearance': '155 - 165 mm (linh hoạt leo lề và xoay xở ngõ nhỏ)',
+                'turningRadius': '4,45 m (quay đầu trong 1 lần đỏ lái)',
+                'weight': '~800 kg (xác xe nhẹ tiêu hao ít điện)',
+                'grossWeight': '1.140 kg',
+                'dragCoeff': '~0,35 Cd',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~28°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '~35 Lít (để vừa balo và đồ đạc hành khách)',
+                'trunkMax': '~260 Lít (gập hàng sau chứa bưu phẩm, thùng hàng giao nhanh)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Vật liệu nhựa nhám chống trầy, ghế bọc nỉ/giả da kháng bẩn dễ lau chùi'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ đặt cầu sau (RWD) khỏe khoắn khi đủ 4 người',
+                'maxPower': '20 kW (~27 mã lực) tốc độ tối đa giới hạn an toàn 80 - 85 km/h',
+                'maxTorque': '65 Nm (khởi hành êm ru không rung giật máy)',
+                'acceleration': 'Vận hành êm ái đô thị',
+                'batteryType': 'Lithium Iron Phosphate (LFP) bền bỉ sạc xả hàng nghìn chu kỳ',
+                'batteryCapacity': '14,7 kWh (Eco) / 18,3 kWh (Plus)',
+                'range': '170 km (chuẩn NEDC chạy taxi cả ngày)',
+                'fastCharge': '34 phút (10% lên 70% tranh thủ giờ nghỉ trưa sạc đầy)',
+                'acCharge': '5 - 6 giờ sạc qua đêm tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Dầm xoắn (bền bỉ, chi phí rẻ)',
+                'brakes': 'Phanh đĩa trước, tang trống sau',
+                'wheels': '13 - 14 inch vành thép lốp dày'
+            },
+            'cat4_equipment': {
+                'headlights': 'Halogen phản xạ',
+                'brandLighting': 'Nhận diện thương hiệu VinFast Green Series',
+                'mirrors': 'Chỉnh cơ',
+                'seating': '4 chỗ ngồi, ghế bọc nỉ hoặc giả da kháng bẩn',
+                'seatAdjustment': 'Chỉnh cơ bền bỉ',
+                'gearShifter': 'Cần số cơ bản, phanh tay cơ',
+                'climate': 'Chỉnh cơ công suất lớn làm mát cực nhanh và siêu bền bỉ',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': '2 cửa lớn vào khoang lái và hành khách'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Đồng hồ điện tử 7 inch hiển thị rõ ràng tốc độ và pin',
+                'infotainment': 'Tích hợp vào đồng hồ kỹ thuật số',
+                'hud': 'Không trang bị',
+                'sound': '2 loa Radio và Bluetooth',
+                'viviAI': 'Hỗ trợ tính năng cơ bản',
+                'connectivity': 'Cổng USB sạc điện thoại cho tài xế và khách',
+                'smartFeatures': 'Định vị xe phục vụ đón trả khách',
+                'appControl': 'VinFast App quản lý xe và lịch sử sạc'
+            },
+            'cat6_safety': {
+                'airbags': '01 túi khí',
+                'activeSafety': 'Phanh ABS, Phân phối lực phanh điện tử EBD, Cảm biến lùi',
+                'adasPackage': 'An toàn cơ bản chạy đô thị',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Không trang bị',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Không trang bị',
+                'cameraSensors': 'Cảm biến lùi cảnh báo va chạm',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Tự ngắt nguồn cao áp khi va chạm, chuẩn chống nước IP67'
+            },
+            'cat7_economics': {
+                'price': 'Khoảng 269.000.000 VNĐ (trả góp chỉ từ 2 - 3 triệu/tháng)',
+                'energyCost': '~250 đ/km (tiết kiệm hơn 80% so với taxi xăng/xe máy)',
+                'warrantyCar': '5 năm hoặc 130.000 km an tâm cày cuốc dịch vụ',
+                'warrantyBattery': '7 năm hoặc 160.000 km',
+                'maintenance': 'Mỗi 12.000 km hoặc 1 năm, chi phí mỗi lần chỉ ~300.000 đ',
+                'chargingNetwork': 'Hỗ trợ gói sạc ưu đãi tại trạm V-Green',
+                'officialLink': 'https://vinfastauto.com/vn_vi'
+            }
+        }
+    },
+
+    # 19. Herio Green
+    {
+        'id': 'herio_green',
+        'name': 'VinFast Herio Green',
+        'shortName': 'Herio Green',
+        'segment': 'A-SUV dịch vụ phổ thông',
+        'category': 'Dịch Vụ Green Series',
+        'price': 499000000,
+        'priceText': '499 - 579 triệu VNĐ',
+        'batteryFeeText': 'Dòng xe chủ lực của Xanh SM Taxi trên toàn quốc',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/HERIO_GREEN.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi',
+        'badgeColor': 'emerald',
+        'highlights': ['Mẫu xe Taxi điện quốc dân Xanh SM', 'Khách ngồi êm ái không mùi xăng không say xe', 'Chạy 330 km mỗi lần sạc', 'Chi phí nhiên liệu siêu rẻ sinh lời tối đa'],
+        'colors': [
+            {'name': 'Xanh Lục Cyan Xanh SM', 'hex': '#06B6D4', 'image': 'assets/crops/HERIO_GREEN.png'},
+            {'name': 'Trắng Băng Tuyết', 'hex': '#F8FAFC', 'image': 'assets/crops/HERIO_GREEN.png'}
+        ],
+        'radar': {'power': 70, 'space': 75, 'range': 75, 'safety': 80, 'tech': 75, 'economy': 98},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '3.967 x 1.723 x 1.578 mm',
+                'segment': 'A-SUV đô thị chuyên dụng dịch vụ vận tải hành khách',
+                'wheelbase': '2.514 mm (hàng ghế 2 rộng rãi cho khách ngồi thoải mái)',
+                'groundClearance': '168 mm (leo vỉa hè, lội nước đường mưa ngập dễ dàng)',
+                'turningRadius': '5,0 m (quay đầu linh hoạt phố đông)',
+                'weight': '1.360 kg (đầm chắc)',
+                'grossWeight': '1.665 kg',
+                'dragCoeff': '~0,32 Cd',
+                'offroadAngles': 'Góc tới: ~20° | Góc thoát: ~26°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '260 Lít (để vừa 2 vali lớn của khách đi sân bay)',
+                'trunkMax': '900 Lít (gập hàng ghế sau khi chở hàng cồng kềnh)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Sàn cốp sâu, khay lót cốp nhựa kháng bẩn dễ vệ sinh'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD)',
+                'maxPower': '100 kW (~134 mã lực) vọt lẹ hơn hẳn xe xăng 1.2L',
+                'maxTorque': '135 Nm (đáp ứng chân ga tức thì)',
+                'acceleration': 'Vận hành êm ái, bốc khi chở đủ tải',
+                'batteryType': 'Lithium Iron Phosphate (LFP) siêu bền tuổi thọ cao',
+                'batteryCapacity': '37,23 kWh',
+                'range': '326 km (chuẩn NEDC đủ chạy tour cả ngày)',
+                'fastCharge': '30 phút (10% lên 70% tại trạm sạc nhanh DC)',
+                'acCharge': '6 - 8 giờ sạc qua đêm',
+                'suspension': 'Trước: MacPherson | Sau: Dầm xoắn gia cố chịu tải',
+                'brakes': 'Phanh đĩa tản nhiệt trước, phanh sau đĩa/tang trống',
+                'wheels': '17 inch (Lốp 205/55 R17)'
+            },
+            'cat4_equipment': {
+                'headlights': 'Halogen Projector thấu kính gom sáng tốt',
+                'brandLighting': 'Dải trang trí nhận diện Green Series',
+                'mirrors': 'Chỉnh điện, gập điện',
+                'seating': 'Ghế bọc giả da chuyên dụng cao cấp, chống bám mùi, dễ lau chùi',
+                'seatAdjustment': 'Ghế lái chỉnh cơ 6 hướng tư thế ngồi cao ráo',
+                'gearShifter': 'Núm xoay chuyển số điện tử hiện đại',
+                'climate': 'Điều hòa làm mát cực nhanh có lọc bụi PM2.5',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': '5 cửa mở rộng đón trả khách thuận tiện'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Đồng hồ điện tử 7 inch hiển thị rõ ràng tốc độ và pin',
+                'infotainment': 'Màn hình cảm ứng 8 inch hỗ trợ bản đồ dẫn đường',
+                'hud': 'Không trang bị',
+                'sound': '4 loa âm thanh trung thực',
+                'viviAI': 'Trợ lý ảo tiếng Việt điều khiển tiện nghi',
+                'connectivity': 'Bluetooth, cổng sạc USB cho khách',
+                'smartFeatures': 'Đồng bộ hệ thống quản lý cước và định vị hãng xe',
+                'appControl': 'VinFast App và ứng dụng tài xế Xanh SM'
+            },
+            'cat6_safety': {
+                'airbags': '04 - 06 túi khí bảo vệ tài xế và hành khách',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, Kiểm soát lực kéo TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Hệ thống an toàn chủ động vận tải hành khách',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Ga tự động Cruise Control',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Cảnh báo điểm mù BSW hỗ trợ lái an toàn phố đông',
+                'cameraSensors': 'Camera lùi hiển thị trên màn hình trung tâm và cảm biến lùi',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Khóa cửa tự động khi xe chạy, rơ-le ngắt nguồn va chạm'
+            },
+            'cat7_economics': {
+                'price': '499.000.000 VNĐ (thuê pin) | 579.000.000 VNĐ (kèm pin)',
+                'energyCost': '~330 đ/km (tiết kiệm hàng chục triệu tiền nhiên liệu mỗi tháng)',
+                'warrantyCar': '7 năm hoặc 160.000 km bảo hành uy tín chính hãng',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, phụ tùng sẵn có giá hợp lý',
+                'chargingNetwork': 'Hệ sinh thái trạm sạc V-Green phủ kín 63 tỉnh thành',
+                'officialLink': 'https://vinfastauto.com/vn_vi'
+            }
+        }
+    },
+
+    # 20. Nerio Green
+    {
+        'id': 'nerio_green',
+        'name': 'VinFast Nerio Green',
+        'shortName': 'Nerio Green',
+        'segment': 'C-SUV dịch vụ cao cấp',
+        'category': 'Dịch Vụ Green Series',
+        'price': 750000000,
+        'priceText': '750 - 890 triệu VNĐ',
+        'batteryFeeText': 'Dòng xe Taxi cao cấp Xanh SM Luxury đón tiếp VIP',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/VF_7_WHITE.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi',
+        'badgeColor': 'emerald',
+        'highlights': ['C-SUV đẳng cấp đón tiếp chuyên gia & khách VIP', 'Khoang hành khách rộng rãi hàng ghế 2 ngả sâu', 'Tầm hoạt động ~410 km sạc siêu nhanh', 'Hình ảnh doanh nghiệp sang trọng xanh'],
+        'colors': [
+            {'name': 'Xanh Cyan Xanh SM Luxury', 'hex': '#06B6D4', 'image': 'assets/crops/VF_7_WHITE.png'},
+            {'name': 'Trắng Băng Tuyết', 'hex': '#F8FAFC', 'image': 'assets/crops/VF_7_WHITE.png'}
+        ],
+        'radar': {'power': 85, 'space': 88, 'range': 84, 'safety': 90, 'tech': 88, 'economy': 90},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.545 x 1.890 x 1.635 mm',
+                'segment': 'C-SUV dịch vụ cao cấp Luxury Car',
+                'wheelbase': '2.840 mm (trục cơ sở dài tương đương xe hạng D)',
+                'groundClearance': '190 mm (dáng cao ráo sang trọng)',
+                'turningRadius': '~5,3 m',
+                'weight': '1.850 kg',
+                'grossWeight': '2.250 kg',
+                'dragCoeff': '~0,28 Cd',
+                'offroadAngles': 'Góc tới: ~21° | Góc thoát: ~29°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '~400 Lít (chứa thoải mái 4 vali cỡ lớn)',
+                'trunkMax': '~1.300 Lít (gập phẳng hàng ghế sau)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cốp điện mở rảnh tay thông minh'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD) hoặc AWD',
+                'maxPower': '150 kW (~201 mã lực) vận hành mạnh mẽ',
+                'maxTorque': '310 Nm',
+                'acceleration': 'Tăng tốc mượt mà, phản hồi chân ga nhạy bén',
+                'batteryType': 'LFP siêu an toàn chống cháy nổ',
+                'batteryCapacity': '59,6 - 75,3 kWh',
+                'range': '~410 km / lần sạc đầy',
+                'fastCharge': '24 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '7 - 8 giờ qua đêm tại nhà',
+                'suspension': 'Trước: MacPherson | Sau: Độc lập đa liên kết êm ái cách âm tốt',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh có tái sinh điện',
+                'wheels': '19 inch mâm hợp kim thể thao sang trọng'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED tự động bật/tắt và cân bằng góc chiếu',
+                'brandLighting': 'Cánh chim VinFast LED sắc sảo nhận diện thương hiệu',
+                'mirrors': 'Chỉnh/gập điện, sấy gương',
+                'seating': 'Ghế bọc da cao cấp êm ái, bệ tì tay trung tâm hàng ghế 2',
+                'seatAdjustment': 'Ghế lái chỉnh điện 8 hướng',
+                'gearShifter': 'Cần số phím đàn sang trọng',
+                'climate': 'Tự động 2 vùng độc lập, lọc bụi mịn PM2.5',
+                'sunroof': 'Trần kim loại tiêu chuẩn cách nhiệt',
+                'doors': 'Tay nắm cửa phẳng thân xe sang trọng'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Tích hợp vào màn hình 12.9 inch độ nét 2K',
+                'infotainment': 'Màn hình cảm ứng 12,9 inch hướng tài xế',
+                'hud': 'Không trang bị',
+                'sound': '8 loa cao cấp',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt',
+                'connectivity': 'Apple CarPlay / Android Auto không dây, sạc không dây',
+                'smartFeatures': 'Cập nhật phần mềm từ xa OTA',
+                'appControl': 'VinFast App và ứng dụng quản lý dịch vụ'
+            },
+            'cat6_safety': {
+                'airbags': '06 - 08 túi khí an toàn bảo vệ toàn diện',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, TCS, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Hệ thống hỗ trợ lái nâng cao ADAS',
+                'highwayAssist': 'Hỗ trợ lái trên cao tốc',
+                'laneKeep': 'Hỗ trợ giữ làn và cảnh báo chệch làn',
+                'cruiseControl': 'Ga tự động thích ứng ACC',
+                'autoBrake': 'Phanh khẩn cấp tự động AEB',
+                'blindSpot': 'Cảnh báo điểm mù BSW và cảnh báo mở cửa DOW',
+                'cameraSensors': 'Camera 360 độ và cảm biến hỗ trợ đỗ xe',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Khung vỏ chịu lực cao, chuẩn chống nước IP67'
+            },
+            'cat7_economics': {
+                'price': '750.000.000 - 890.000.000 VNĐ',
+                'energyCost': '~420 đ/km (tối ưu hóa lợi nhuận kinh doanh vận tải cao cấp)',
+                'warrantyCar': '10 năm hoặc 200.000 km',
+                'warrantyBattery': '10 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Hạ tầng trạm sạc V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi'
+            }
+        }
+    },
+
+    # 21. Limo Green
+    {
+        'id': 'limo_green',
+        'name': 'VinFast Limo Green',
+        'shortName': 'Limo Green',
+        'segment': 'MPV 7 chỗ dịch vụ vận tải',
+        'category': 'Dịch Vụ Green Series',
+        'price': 799000000,
+        'priceText': '799 - 950 triệu VNĐ',
+        'batteryFeeText': 'Dòng xe 7 chỗ chuyên tuyến sân bay và du lịch',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/LIMO_GREEN.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi',
+        'badgeColor': 'emerald',
+        'highlights': ['7 chỗ ngồi rộng rãi chở cả gia đình kèm hành lý', 'Chuyên tuyến đưa đón sân bay & khách sạn', 'Cửa trượt điện lên xuống thuận tiện', 'Chi phí nhiên liệu rẻ hơn xe xăng 70%'],
+        'colors': [
+            {'name': 'Xanh Cyan Xanh SM', 'hex': '#06B6D4', 'image': 'assets/crops/LIMO_GREEN.png'},
+            {'name': 'Trắng Băng Tuyết', 'hex': '#F8FAFC', 'image': 'assets/crops/LIMO_GREEN.png'}
+        ],
+        'radar': {'power': 75, 'space': 96, 'range': 82, 'safety': 85, 'tech': 80, 'economy': 95},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '4.780 x 1.850 x 1.730 mm',
+                'segment': 'MPV 7 chỗ chuyên dụng vận tải du lịch và sân bay',
+                'wheelbase': '2.900 mm (khoảng để chân các hàng ghế rất thoáng)',
+                'groundClearance': '165 mm',
+                'turningRadius': '~5,5 m',
+                'weight': '~1.950 kg',
+                'grossWeight': '2.500 kg',
+                'dragCoeff': '~0,31 Cd',
+                'offroadAngles': 'Góc tới: ~18° | Góc thoát: ~22°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '380 Lít (để vừa 4 vali cỡ lớn của hành khách)',
+                'trunkMax': '>1.300 Lít (gập phẳng hàng ghế thứ 3)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Không áp dụng',
+                'trunkUtility': 'Cửa cốp sau mở cao, sàn thấp dễ xếp dỡ vali nặng'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu trước (FWD)',
+                'maxPower': '150 kW (~201 mã lực) khỏe khoắn chở đủ tải',
+                'maxTorque': '310 Nm',
+                'acceleration': 'Chạy êm ái, đầm chắc, triệt tiêu say xe',
+                'batteryType': 'LFP siêu bền bỉ hoạt động liên tục',
+                'batteryCapacity': '65 - 75 kWh',
+                'range': '~450 km / lần sạc đầy',
+                'fastCharge': '28 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '8 giờ sạc qua đêm',
+                'suspension': 'Trước: MacPherson | Sau: Đa liên kết êm ái',
+                'brakes': 'Phanh đĩa tản nhiệt 4 bánh',
+                'wheels': '18 inch mâm hợp kim lốp êm'
+            },
+            'cat4_equipment': {
+                'headlights': 'Full LED tự động',
+                'brandLighting': 'Cánh chim VinFast LED nhận diện',
+                'mirrors': 'Chỉnh/gập điện',
+                'seating': '7 chỗ ngồi, da công nghiệp kháng nước dễ lau chùi',
+                'seatAdjustment': 'Chỉnh điện ghế lái, hàng 2 ngả lưng trượt cơ',
+                'gearShifter': 'Cần số điện tử gọn gàng',
+                'climate': 'Tự động 2 vùng, cửa gió trần các hàng ghế làm mát sâu',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': 'Cửa trượt điện 2 bên thuận tiện đón trả khách nơi đông đúc'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Màn hình kỹ thuật số sau vô lăng',
+                'infotainment': 'Màn hình cảm ứng 12.9 inch kết nối bản đồ dẫn đường',
+                'hud': 'Không trang bị',
+                'sound': '6 loa âm thanh',
+                'viviAI': 'Trợ lý ảo ViVi tiếng Việt',
+                'connectivity': 'Cổng sạc USB ở các hàng ghế cho hành khách',
+                'smartFeatures': 'Định vị phục vụ đón trả khách liên tục',
+                'appControl': 'VinFast App và ứng dụng tài xế Xanh SM'
+            },
+            'cat6_safety': {
+                'airbags': '06 túi khí bảo vệ toàn xe',
+                'activeSafety': 'Phanh ABS, EBD, BA, Cân bằng điện tử ESC, Khởi hành ngang dốc HSA',
+                'adasPackage': 'Hệ thống an toàn chủ động vận tải hành khách',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Cảnh báo lệch làn đường',
+                'cruiseControl': 'Ga tự động Cruise Control',
+                'autoBrake': 'Phanh khẩn cấp tự động',
+                'blindSpot': 'Cảnh báo điểm mù BSW',
+                'cameraSensors': 'Camera lùi và cảm biến hỗ trợ đỗ xe',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Khung gầm bảo vệ pin đa tầng, chuẩn chống nước IP67'
+            },
+            'cat7_economics': {
+                'price': '799.000.000 - 950.000.000 VNĐ',
+                'energyCost': '~450 đ/km (tiết kiệm hàng chục triệu đồng mỗi tháng so với Innova/Carnival)',
+                'warrantyCar': '7 năm hoặc 160.000 km',
+                'warrantyBattery': '8 năm không giới hạn km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp',
+                'chargingNetwork': 'Hạ tầng trạm sạc V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi'
+            }
+        }
+    },
+
+    # 22. ECVAN
+    {
+        'id': 'ecvan',
+        'name': 'VinFast ECVAN',
+        'shortName': 'ECVAN',
+        'segment': 'Tải van điện đô thị 2 chỗ',
+        'category': 'Bán Tải & Chuyên Dụng',
+        'price': 285000000,
+        'priceText': '285 - 350 triệu VNĐ',
+        'batteryFeeText': 'Xe tải van điện 2 chỗ chở hàng 24/7 không cấm giờ',
+        'fuelType': 'Điện thuần (BEV)',
+        'image': 'assets/crops/EC_VAN.png',
+        'officialLink': 'https://vinfastauto.com/vn_vi',
+        'badgeColor': 'amber',
+        'highlights': ['Vào phố 24/7 không cấm giờ theo quy định mới', 'Khoang chở hàng 2.600 Lít tải trọng ~500 kg', 'Chi phí nhiên liệu chỉ bằng 1/4 xe tải xăng', 'Cửa trượt bên hông xếp dỡ hàng cực nhanh'],
+        'colors': [
+            {'name': 'Trắng Chở Hàng Cargo White', 'hex': '#F8FAFC', 'image': 'assets/crops/EC_VAN.png'},
+            {'name': 'Bạc Bền Bỉ', 'hex': '#CBD5E1', 'image': 'assets/crops/EC_VAN.png'}
+        ],
+        'radar': {'power': 50, 'space': 90, 'range': 65, 'safety': 65, 'tech': 58, 'economy': 100},
+        'specs': {
+            'cat1_dimensions': {
+                'd_r_c': '3.700 x 1.600 x 1.850 mm',
+                'segment': 'Tải van điện đô thị 2 chỗ ngồi chở hàng',
+                'wheelbase': '2.400 mm (thùng hàng vuông vức tối ưu thể tích)',
+                'groundClearance': '165 mm (dễ leo dốc kho bãi)',
+                'turningRadius': '~4,8 m (xoay xở ngõ nhỏ đô thị)',
+                'weight': '~1.100 kg',
+                'grossWeight': '1.600 kg (tải trọng chở hàng cho phép ~500 kg)',
+                'dragCoeff': '~0,36 Cd',
+                'offroadAngles': 'Góc tới: ~22° | Góc thoát: ~26°'
+            },
+            'cat2_storage': {
+                'trunkStandard': '2.600 Lít (khoang chở hàng thùng kín rộng mênh mông)',
+                'trunkMax': '2.600 Lít (vách ngăn lửng thép bảo vệ khoang lái)',
+                'frunk': 'Không trang bị',
+                'cargoBed': 'Dài 1.950 x Rộng 1.350 x Cao 1.250 mm',
+                'trunkUtility': 'Cửa sau mở 2 cánh 180° + Cửa trượt bên hông dễ bốc dỡ hàng hóa trên phố hẹp'
+            },
+            'cat3_powertrain': {
+                'motorDrivetrain': '01 mô-tơ điện đặt tại cầu sau (RWD) sức kéo khỏe khi đủ tải',
+                'maxPower': '35 kW (~47 mã lực)',
+                'maxTorque': '120 Nm (sức kéo tức thời chở nặng không ì ạch)',
+                'acceleration': 'Tốc độ tối đa giới hạn an toàn 85 km/h',
+                'batteryType': 'Lithium Iron Phosphate (LFP) siêu bền',
+                'batteryCapacity': '22 - 28 kWh',
+                'range': '~210 km / lần sạc đầy',
+                'fastCharge': '35 phút (10% lên 70% sạc siêu nhanh DC)',
+                'acCharge': '6 giờ sạc qua đêm tại kho bãi',
+                'suspension': 'Trước: MacPherson | Sau: Nhíp lá chịu tải nặng',
+                'brakes': 'Trước: Đĩa | Sau: Tang trống phanh tái sinh',
+                'wheels': '14 inch mâm thép gia cường lốp chở tải'
+            },
+            'cat4_equipment': {
+                'headlights': 'Halogen phản xạ',
+                'brandLighting': 'Đồ họa cánh chim VinFast nhận diện',
+                'mirrors': 'Gương chiếu hậu chỉnh cơ mặt gương lớn hạn chế điểm mù',
+                'seating': '2 chỗ ngồi khoang lái, bọc giả da kháng bẩn chống rách',
+                'seatAdjustment': 'Ghế lái chỉnh cơ 4 hướng',
+                'gearShifter': 'Cần số cơ bản, phanh tay cơ truyền thống',
+                'climate': 'Chỉnh cơ công suất lớn làm mát nhanh cho tài xế',
+                'sunroof': 'Trần kim loại tiêu chuẩn',
+                'doors': '2 cửa khoang lái + 1 cửa trượt hông + cửa sau mở 2 cánh'
+            },
+            'cat5_tech': {
+                'driverDisplay': 'Đồng hồ điện tử hiển thị tốc độ, mức pin và cự ly',
+                'infotainment': 'Radio FM/AM, cổng USB nghe nhạc và sạc điện thoại',
+                'hud': 'Không trang bị',
+                'sound': '2 loa Radio',
+                'viviAI': 'Không trang bị',
+                'connectivity': 'Cổng sạc USB cho điện thoại và máy quét mã vạch',
+                'smartFeatures': 'Hỗ trợ kết nối giám sát hành trình hộp đen',
+                'appControl': 'VinFast App quản lý trạng thái pin và xe'
+            },
+            'cat6_safety': {
+                'airbags': '01 túi khí an toàn người lái',
+                'activeSafety': 'Phanh ABS chống bó cứng, Phân phối lực phanh điện tử EBD',
+                'adasPackage': 'An toàn tiêu chuẩn xe tải nhẹ',
+                'highwayAssist': 'Không trang bị',
+                'laneKeep': 'Không trang bị',
+                'cruiseControl': 'Không trang bị',
+                'autoBrake': 'Không trang bị',
+                'blindSpot': 'Không trang bị',
+                'cameraSensors': 'Cảm biến lùi phía sau cảnh báo khoảng cách',
+                'smartParking': 'Không trang bị',
+                'batterySafety': 'Cụm pin đặt an toàn dưới sàn xe khung thép, chuẩn chống nước IP67'
+            },
+            'cat7_economics': {
+                'price': '285.000.000 - 350.000.000 VNĐ',
+                'energyCost': '~300 đ/km (tiết kiệm hàng chục triệu tiền xăng/dầu mỗi tháng cho đơn vị giao vận)',
+                'warrantyCar': '5 năm hoặc 150.000 km',
+                'warrantyBattery': '7 năm hoặc 160.000 km',
+                'maintenance': 'Bảo dưỡng định kỳ 12.000 km/lần, chi phí cực thấp không lo hỏng vặt',
+                'chargingNetwork': 'Hạ tầng trạm sạc V-Green toàn quốc',
+                'officialLink': 'https://vinfastauto.com/vn_vi'
+            }
+        }
+    }
+]
+
+# Write to JSON
+json_path = 'data/cars_database.json'
+with open(json_path, 'w', encoding='utf-8') as f:
+    json.dump({'cars': cars}, f, ensure_ascii=False, indent=2)
+print(f"Successfully generated {json_path} with {len(cars)} cars!")
+
+# Write to JS
+js_path = 'js/cars_data.js'
+with open(js_path, 'w', encoding='utf-8') as f:
+    f.write("// Master Official VinFast Lineup Database\n")
+    f.write("// 100% Pure Electric VinFast Portfolio (22 Models & Variants)\n")
+    f.write("window.CARS_DATABASE = ")
+    json.dump(cars, f, ensure_ascii=False, indent=2)
+    f.write(";\n")
+print(f"Successfully generated {js_path}!")

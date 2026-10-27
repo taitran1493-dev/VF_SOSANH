@@ -7,14 +7,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
-  // State
+  // State (Default: Pure Light Mode, Focus on VF 3 & VF 8 Lineup)
   const state = {
-    selectedCarIds: ['vf3', 'vf5_plus', 'vf6_plus'],
+    selectedCarIds: ['vf3_eco', 'vf3_plus', 'vf8_eco', 'vf8_plus'],
     showDiffOnly: false,
     highlightAdvantages: true,
     searchQuery: '',
     selectedCategory: 'all',
-    isDarkMode: true,
+    isDarkMode: false,
     carColorOverrides: {},
     modalTargetIndex: -1 // Index of car slot to replace or -1 for append
   };
@@ -422,24 +422,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Render Preset Quick Comparison Scenarios (Curated for the 15 official VinFast models)
+   * Render Preset Quick Comparison Scenarios (Curated for the 15 official VinFast models & variants)
    */
   function renderPresets() {
     const presets = [
       {
-        label: '⚡ Minicar Đô Thị Phổ Thông',
-        desc: 'VF 2 vs VF 3 vs Minio Green (Giá từ 188 triệu)',
-        carIds: ['vf2', 'vf3', 'minio_green']
+        label: '⚡ VF 3: Eco vs Plus',
+        desc: 'Mâm thép đen vs Mâm ốp khí động học, camera lùi, gương chỉnh điện',
+        carIds: ['vf3_eco', 'vf3_plus']
       },
       {
-        label: '🚀 Cặp Đôi Hạng B & C Thể Thao',
-        desc: 'VF 6 Plus (201 hp) vs VF 7 Plus AWD (349 hp)',
-        carIds: ['vf6_plus', 'vf7_plus']
+        label: '👑 VF 8: Eco vs Plus vs All-New 2026',
+        desc: 'Mâm 19" (349 hp) vs Mâm 20" (402 hp) vs Thế Hệ Mới 2026',
+        carIds: ['vf8_eco', 'vf8_plus', 'vf8_all_new']
       },
       {
-        label: '👑 D-SUV & E-SUV Đẳng Cấp Flagship',
-        desc: 'VF 8 All-New 2026 vs VF 9 Plus (6 chỗ VIP)',
-        carIds: ['vf8_all_new', 'vf9_plus']
+        label: '🏰 VF 9: Eco vs Plus 7 chỗ vs Plus 6 chỗ VIP',
+        desc: 'Ghế băng liền vs Trần kính Panorama vs Ghế Cơ Trưởng hạng thương gia',
+        carIds: ['vf9_eco', 'vf9_plus_7seat', 'vf9_plus_6seat']
+      },
+      {
+        label: '🚀 VF 7: Base vs Plus Thép vs Plus Panorama',
+        desc: '174 hp FWD vs 349 hp AWD Trần Thép vs Trần Kính Toàn Cảnh',
+        carIds: ['vf7_s', 'vf7_plus_steel', 'vf7_plus_panorama']
+      },
+      {
+        label: '🔋 Bộ Đôi Crossover Đô Thị',
+        desc: 'VF 5 Plus vs VF 6 Plus (Bán chạy nhất phân khúc A & B)',
+        carIds: ['vf5_plus', 'vf6_plus']
       },
       {
         label: '🚖 Đội Xe Dịch Vụ Vận Tải Green',
@@ -447,14 +457,9 @@ document.addEventListener('DOMContentLoaded', () => {
         carIds: ['herio_green', 'nerio_green', 'limo_green']
       },
       {
-        label: '🏕️ Chuyên Dụng & Độc Bản',
+        label: '🏕️ Bán Tải & Chuyên Dụng',
         desc: 'Bán tải VF WILD vs VF MPV 7 vs Tải van ECVAN',
         carIds: ['vf_wild', 'vf_mpv7', 'ecvan']
-      },
-      {
-        label: '🔋 Bộ Ba SUV Gia Đình Bán Chạy',
-        desc: 'VF 5 Plus vs VF 6S vs VF 7S (Giá từ 468 - 850 triệu)',
-        carIds: ['vf5_plus', 'vf6_s', 'vf7_s']
       }
     ];
 
@@ -500,9 +505,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filterSegment !== 'all') {
       if (filterSegment === 'urban') {
-        cars = cars.filter(c => c.category === 'Đô thị & Minicar' || c.id === 'minio_green' || c.id === 'vf2' || c.id === 'vf3' || c.id === 'vf5_plus');
+        cars = cars.filter(c => c.category === 'Đô thị & Minicar' || c.id.startsWith('vf3') || c.id === 'vf2' || c.id === 'vf5_plus' || c.id === 'minio_green');
       } else if (filterSegment === 'suv') {
-        cars = cars.filter(c => c.category === 'SUV Cỡ Lớn & Thể Thao' || c.segment.toLowerCase().includes('suv'));
+        cars = cars.filter(c => c.category === 'SUV Cỡ Lớn & Thể Thao' || c.segment.toLowerCase().includes('suv') || c.id.startsWith('vf6') || c.id.startsWith('vf7') || c.id.startsWith('vf8') || c.id.startsWith('vf9'));
       } else if (filterSegment === 'green') {
         cars = cars.filter(c => c.category === 'Dịch Vụ Green Series' || c.id.includes('green'));
       } else if (filterSegment === 'utility') {
@@ -565,15 +570,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function initTheme() {
     const params = new URLSearchParams(window.location.search);
     const themeParam = params.get('theme');
-    if (themeParam === 'light') {
-      state.isDarkMode = false;
-      localStorage.setItem('theme', 'light');
-    } else if (themeParam === 'dark') {
+    if (themeParam === 'dark') {
       state.isDarkMode = true;
       localStorage.setItem('theme', 'dark');
+    } else if (themeParam === 'light') {
+      state.isDarkMode = false;
+      localStorage.setItem('theme', 'light');
     } else {
       const stored = localStorage.getItem('theme');
-      state.isDarkMode = stored !== 'light';
+      // Default to Light mode per user instruction
+      state.isDarkMode = stored === 'dark';
     }
     applyTheme();
   }

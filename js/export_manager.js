@@ -59,7 +59,7 @@ window.ExportManager = (function () {
   }
 
   /**
-   * Pre-renders clean Infographic DOM for PNG/PDF capture
+   * Pre-renders clean Infographic DOM for PNG/PDF capture (Pure Light Mode)
    */
   function buildInfographicElement(cars, options = {}) {
     const container = document.createElement('div');
@@ -67,12 +67,12 @@ window.ExportManager = (function () {
     container.style.position = 'fixed';
     container.style.left = '-9999px';
     container.style.top = '0';
-    container.style.width = cars.length > 2 ? '1420px' : '1100px';
-    container.style.backgroundColor = '#0b0f19';
-    container.style.color = '#f8fafc';
-    container.style.fontFamily = "'Plus Jakarta Sans', sans-serif";
+    container.style.width = cars.length > 2 ? '1440px' : '1140px';
+    container.style.backgroundColor = '#ffffff';
+    container.style.color = '#0f172a';
+    container.style.fontFamily = "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
     container.style.padding = '40px';
-    container.style.borderRadius = '0px';
+    container.style.boxSizing = 'border-box';
 
     const dateStr = new Date().toLocaleDateString('vi-VN', {
       day: '2-digit',
@@ -83,24 +83,24 @@ window.ExportManager = (function () {
     let carsHeaderHtml = '';
     cars.forEach(car => {
       carsHeaderHtml += `
-        <div class="flex-1 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 text-center flex flex-col justify-between">
+        <div style="flex: 1; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.06);">
           <div>
-            <div class="text-[11px] uppercase font-bold tracking-wider text-blue-400 mb-1">${car.segment}</div>
-            <h2 class="text-xl font-extrabold text-white mb-1">${car.name}</h2>
-            <div class="text-lg font-bold text-emerald-400 mb-1">${car.priceText}</div>
-            <div class="text-[10px] text-slate-400 mb-3">${car.batteryFeeText || car.fuelType}</div>
+            <div style="display: inline-block; font-size: 11px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.05em; color: #1d4ed8; background: #eff6ff; border: 1px solid #bfdbfe; padding: 3px 12px; border-radius: 9999px; margin-bottom: 8px;">${car.segment.split('(')[0].trim()}</div>
+            <h2 style="font-size: 20px; font-weight: 900; color: #0f172a; margin: 0 0 4px 0; line-height: 1.2;">${car.name}</h2>
+            <div style="font-size: 18px; font-weight: 900; color: #059669; margin-bottom: 4px;">${car.priceText}</div>
+            <div style="font-size: 11px; color: #64748b; font-weight: 600; margin-bottom: 14px;">${car.batteryFeeText || car.fuelType}</div>
           </div>
-          <div class="relative w-full h-40 mb-3 flex items-center justify-center overflow-hidden">
-            <img src="${car.image}" crossorigin="anonymous" class="max-h-full max-w-full object-contain filter drop-shadow-xl" />
+          <div style="position: relative; width: 100%; height: 160px; margin-bottom: 14px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: radial-gradient(circle, #f8fafc 0%, #f1f5f9 100%); border-radius: 14px; padding: 10px; border: 1px solid #f1f5f9;">
+            <img src="${car.image}" crossorigin="anonymous" style="max-height: 100%; max-width: 100%; object-fit: contain; filter: drop-shadow(0 8px 12px rgba(15, 23, 42, 0.12));" />
           </div>
-          <div class="bg-slate-950/80 rounded-xl p-3 text-left border border-slate-800/80">
-            <div class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1.5">Ưu điểm nổi bật</div>
-            <ul class="text-xs space-y-1 text-slate-200">
-              ${(car.highlights || []).slice(0, 3).map(h => `<li class="flex items-start gap-1.5"><span class="text-blue-400 font-bold">•</span><span>${h}</span></li>`).join('')}
+          <div style="background: #f8fafc; border-radius: 14px; padding: 12px 14px; text-align: left; border: 1px solid #e2e8f0;">
+            <div style="font-size: 10px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px;">Ưu điểm nổi bật</div>
+            <ul style="font-size: 12px; line-height: 1.5; color: #334155; margin: 0; padding: 0; list-style: none;">
+              ${(car.highlights || []).slice(0, 3).map(h => `<li style="display: flex; align-items: flex-start; gap: 6px; margin-bottom: 3px;"><span style="color: #2563eb; font-weight: 900; line-height: 1;">•</span><span>${h}</span></li>`).join('')}
             </ul>
             ${car.brochureRef ? `
-              <div class="mt-2 pt-2 border-t border-slate-800 text-[10px] text-cyan-400 font-medium truncate">
-                Tài liệu: ${car.brochureRef.split('(')[0]}
+              <div style="margin-top: 8px; padding-top: 6px; border-top: 1px solid #e2e8f0; font-size: 10px; color: #0284c7; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                Catalogue: ${car.brochureRef.split('(')[0]}
               </div>
             ` : ''}
           </div>
@@ -121,17 +121,17 @@ window.ExportManager = (function () {
           const isWinner = diffInfo.bestIndex === idx;
           const formattedVal = window.ComparisonEngine.formatSpecValue(rawVal, spec.type, isWinner);
           colsHtml += `
-            <div class="flex-1 p-3 text-xs text-left flex items-start justify-start border-l border-slate-800/60 ${isWinner ? 'bg-emerald-950/20 text-emerald-300 font-bold' : 'text-slate-200'}">
-              <div class="w-full">${formattedVal}</div>
+            <div style="flex: 1; padding: 12px 14px; font-size: 12px; text-align: left; border-left: 1px solid #e2e8f0; display: flex; align-items: flex-start; ${isWinner ? 'background: #ecfdf5; color: #065f46; font-weight: 700;' : 'color: #1e293b;'}">
+              <div style="width: 100%; line-height: 1.45;">${formattedVal}</div>
             </div>
           `;
         });
 
         rowsHtml += `
-          <div class="flex items-stretch border-b border-slate-800/50 ${diffInfo.isDifferent ? 'bg-blue-950/15' : ''}">
-            <div class="w-80 p-3 text-xs font-semibold text-slate-300 flex items-center gap-2">
+          <div style="display: flex; align-items: stretch; border-bottom: 1px solid #e2e8f0; ${diffInfo.isDifferent ? 'background: #f0f9ff;' : 'background: #ffffff;'}">
+            <div style="width: 280px; min-width: 280px; padding: 12px 14px; font-size: 12px; font-weight: 700; color: #334155; background: #f8fafc; border-right: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; gap: 8px;">
               <span>${spec.label}</span>
-              ${diffInfo.isDifferent ? '<span class="text-[9px] uppercase px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 font-bold">Khác biệt</span>' : ''}
+              ${diffInfo.isDifferent ? '<span style="font-size: 9px; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; background: #dbeafe; color: #1e40af; font-weight: 800; border: 1px solid #bfdbfe; white-space: nowrap;">Khác biệt</span>' : ''}
             </div>
             ${colsHtml}
           </div>
@@ -139,10 +139,10 @@ window.ExportManager = (function () {
       });
 
       categoriesHtml += `
-        <div class="mb-5 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60">
-          <div class="bg-gradient-to-r from-blue-900/50 to-slate-900 px-4 py-2 border-b border-slate-800 flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-            <h3 class="text-xs font-bold uppercase tracking-wider text-white">${cat.title}</h3>
+        <div style="margin-bottom: 24px; border-radius: 16px; overflow: hidden; border: 1.5px solid #cbd5e1; background: #ffffff; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);">
+          <div style="background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); padding: 10px 18px; border-bottom: 1.5px solid #cbd5e1; display: flex; align-items: center; gap: 8px;">
+            <span style="width: 8px; height: 8px; border-radius: 9999px; background: #2563eb; display: inline-block;"></span>
+            <h3 style="font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; color: #0f172a; margin: 0;">${cat.title}</h3>
           </div>
           ${rowsHtml}
         </div>
@@ -150,12 +150,12 @@ window.ExportManager = (function () {
     });
 
     container.innerHTML = `
-      <div style="width: 100%;">
+      <div style="width: 100%; background: #ffffff;">
         <!-- Header Banner -->
-        <div class="flex items-center justify-between pb-5 mb-5 border-b border-slate-800">
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-blue-500/20">
-              <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; margin-bottom: 24px; border-bottom: 2px solid #e2e8f0;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 52px; height: 52px; border-radius: 16px; background: linear-gradient(135deg, #1d4ed8 0%, #0284c7 100%); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px -4px rgba(29, 78, 216, 0.3);">
+              <svg style="width: 30px; height: 30px; color: #ffffff;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.7 2 10.8 2 11v5c0 .6.4 1 1 1h2"></path>
                 <circle cx="7" cy="17" r="2"></circle>
                 <path d="M9 17h6"></path>
@@ -163,30 +163,30 @@ window.ExportManager = (function () {
               </svg>
             </div>
             <div>
-              <div class="text-[10px] font-extrabold uppercase tracking-widest text-blue-400">VINFAST SMART COMPARISON PLATFORM • BROCHURE VERIFIED</div>
-              <h1 class="text-2xl font-black text-white">BẢNG SO SÁNH THÔNG SỐ XE CHUẨN XÁC CHÍNH HÃNG</h1>
+              <div style="font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.12em; color: #2563eb; margin-bottom: 2px;">VINFAST SMART COMPARISON PLATFORM • CHÍNH HÃNG 100%</div>
+              <h1 style="font-size: 24px; font-weight: 900; color: #0f172a; margin: 0; line-height: 1.2;">BẢNG SO SÁNH THÔNG SỐ XE VINFAST CHUẨN XÁC</h1>
             </div>
           </div>
-          <div class="text-right">
-            <div class="text-xs text-slate-400">Ngày lập báo cáo: <strong class="text-slate-200">${dateStr}</strong></div>
-            <div class="text-xs text-slate-400">Nguồn kiểm chứng: <strong class="text-emerald-400">Brochure VinFast 2026</strong></div>
+          <div style="text-align: right;">
+            <div style="font-size: 12px; color: #64748b;">Ngày lập: <strong style="color: #0f172a;">${dateStr}</strong></div>
+            <div style="font-size: 12px; color: #64748b;">Nguồn dữ liệu: <strong style="color: #059669;">Catalogue Chính Thức VinFast 2026</strong></div>
           </div>
         </div>
 
         <!-- Vehicle Cards Row -->
-        <div class="flex gap-4 mb-5">
+        <div style="display: flex; gap: 16px; margin-bottom: 24px;">
           ${carsHeaderHtml}
         </div>
 
         <!-- Specifications Table -->
-        <div class="mb-5">
+        <div style="margin-bottom: 24px;">
           ${categoriesHtml}
         </div>
 
         <!-- Footer -->
-        <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+        <div style="padding-top: 16px; border-top: 1.5px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #64748b;">
           <div>* Dữ liệu được trích xuất và đối chiếu chuẩn xác 100% từ hồ sơ kỹ thuật và Catalogue chính thức VinFast (vinfastauto.com/vn_vi).</div>
-          <div class="text-blue-400 font-semibold">vinfastauto.com/vn_vi • VinFast Smart Compare</div>
+          <div style="color: #2563eb; font-weight: 800;">vinfastauto.com/vn_vi • VinFast Smart Compare</div>
         </div>
       </div>
     `;
@@ -219,12 +219,12 @@ window.ExportManager = (function () {
         });
       }));
 
-      // Render with html2canvas
+      // Render with html2canvas (Clean Crisp Light Mode)
       const canvas = await window.html2canvas(container, {
         scale: 2, // 2x high resolution
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#0b0f19',
+        backgroundColor: '#ffffff',
         logging: false
       });
 
@@ -288,7 +288,7 @@ window.ExportManager = (function () {
         scale: 2,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: '#0b0f19',
+        backgroundColor: '#ffffff',
         logging: false
       });
 
@@ -405,6 +405,7 @@ window.ExportManager = (function () {
   return {
     exportToImage,
     exportToPDF,
+    buildInfographicElement,
     showToast
   };
 })();
