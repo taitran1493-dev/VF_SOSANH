@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>VinFast Smart Compare • Hệ Thống So Sánh Xe Thông Minh</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231c52d8'><path d='M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.7 2 10.8 2 11v5c0 .6.4 1 1 1h2'/><circle cx='7' cy='17' r='2'/><circle cx='17' cy='17' r='2'/></svg>">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            vinfast: {
+              blue: '#1c52d8',
+              accent: '#0284c7',
+              dark: '#0b0f19',
+              surface: '#111827'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Core Libraries (Local Offline with CDN fallbacks) -->
+  <script src="assets/vendor/lucide.min.js"></script>
+  <script src="assets/vendor/chart.min.js"></script>
+  <script src="assets/vendor/html2canvas.min.js"></script>
+  <script src="assets/vendor/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="min-h-screen relative selection:bg-blue-600 selection:text-white transition-colors duration-200">
+
+  <!-- Header / Navigation -->
+  <header class="theme-nav sticky top-0 z-40 w-full transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 p-[1px] shadow-lg shadow-blue-500/20">
+          <div class="w-full h-full bg-slate-950 dark:bg-slate-950 light:bg-blue-600 rounded-[15px] flex items-center justify-center">
+            <svg class="w-5 h-5 text-blue-400 light:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.7 2 10.8 2 11v5c0 .6.4 1 1 1h2"></path>
+              <circle cx="7" cy="17" r="2"></circle>
+              <path d="M9 17h6"></path>
+              <circle cx="17" cy="17" r="2"></circle>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-base font-black tracking-tight text-[var(--text-primary)]">VINFAST COMPARE</span>
+            <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/30">Executive</span>
+          </div>
+          <p class="text-[11px] text-[var(--text-muted)] hidden sm:block">Hệ thống so sánh thông số xe thông minh & chuẩn xác</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        
+        <!-- Lineup strip modal trigger -->
+        <button id="btn-view-lineup" class="hidden md:flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-[var(--surface-card)] hover:bg-[var(--row-hover)] text-[var(--text-secondary)] border border-[var(--border-subtle)] transition shadow-sm">
+          <i data-lucide="layers" class="w-4 h-4 text-cyan-500"></i>
+          <span>Dải sản phẩm</span>
+        </button>
+
+        <!-- Export PNG -->
+        <button id="btn-export-png" class="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white transition shadow-lg shadow-blue-500/25 active:scale-95">
+          <i data-lucide="image" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Xuất Hình Ảnh</span>
+          <span class="sm:hidden">Ảnh</span>
+        </button>
+
+        <!-- Export PDF -->
+        <button id="btn-export-pdf" class="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white transition shadow-lg shadow-emerald-500/25 active:scale-95">
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Xuất PDF</span>
+          <span class="sm:hidden">PDF</span>
+        </button>
+
+        <!-- Share -->
+        <button id="btn-share-link" class="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded-xl bg-[var(--surface-card)] hover:bg-[var(--row-hover)] border border-[var(--border-subtle)] transition" title="Sao chép link so sánh">
+          <i data-lucide="share-2" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="btn-theme-toggle" class="p-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] rounded-xl bg-[var(--surface-card)] hover:bg-[var(--row-hover)] border border-[var(--border-subtle)] transition" title="Đổi chế độ Sáng / Tối">
+          <i id="theme-toggle-icon" data-lucide="sun-moon" class="w-4 h-4 text-amber-500"></i>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Comparison Mini Header Bar (Appears on Scroll) -->
+  <div id="sticky-compare-bar" class="fixed top-18 left-0 right-0 z-30 theme-nav border-b border-[var(--border-subtle)] is-hidden shadow-lg backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between">
+      <div class="w-72 md:w-80 flex items-center gap-2 sticky-col-head">
+        <span class="text-xs font-black uppercase tracking-wider text-[var(--text-primary)]">Thông Số Kỹ Thuật</span>
+        <span id="sticky-diff-counter" class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-blue-500/15 text-blue-600 dark:text-blue-400 border border-blue-500/25"></span>
+      </div>
+      <div id="sticky-cars-row" class="flex-1 flex gap-4 overflow-x-auto scrollbar-none items-center">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+
+    <!-- Hero / Headline -->
+    <div class="text-center max-w-3xl mx-auto mb-8">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+        <span>Đầy đủ 100% Thông số • Đối chiếu Catalogue chính hãng</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black text-[var(--text-primary)] tracking-tight leading-tight">
+        So Sánh Thông Số Xe <span class="bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">Thông Minh</span>
+      </h1>
+      <p class="text-sm sm:text-base text-[var(--text-muted)] mt-3 leading-relaxed">
+        Phân tích chênh lệch công suất, kích thước, công nghệ trợ lái ADAS, chi phí sạc pin vs đổ xăng, và tự động tạo báo cáo hình ảnh/PDF cho khách hàng.
+      </p>
+    </div>
+
+    <!-- Quick Presets Carousel -->
+    <div class="mb-8">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <i data-lucide="compass" class="w-4 h-4 text-blue-500"></i>
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">Gợi Ý So Sánh Thịnh Hành</span>
+        </div>
+        <span class="text-[11px] text-[var(--text-muted)]">Bấm để tải nhanh kịch bản so sánh</span>
+      </div>
+      <div id="preset-pills" class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Active Compared Vehicles Cards (Top Selector) -->
+    <section class="mb-8" id="car-selection-section">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <i data-lucide="sliders" class="w-4 h-4 text-emerald-500"></i>
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">Các Mẫu Xe Đang So Sánh</span>
+        </div>
+        <span class="text-xs text-[var(--text-muted)]">Chọn tối đa 5 xe cùng lúc</span>
+      </div>
+
+      <div id="cars-header-row" class="flex gap-4 overflow-x-auto pb-3 scrollbar-none items-stretch">
+        <!-- Car Header Cards Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- Toolbar: Differences Filter & Search -->
+    <section class="theme-card rounded-2xl p-4 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex flex-wrap items-center gap-6 w-full md:w-auto">
+        
+        <!-- Toggle: Only Differences -->
+        <label class="flex items-center gap-2.5 cursor-pointer select-none">
+          <div class="relative">
+            <input type="checkbox" id="toggle-diff-only" class="sr-only peer">
+            <div class="w-11 h-6 bg-slate-300 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+          </div>
+          <span class="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1.5">
+            <i data-lucide="eye" class="w-4 h-4 text-blue-500"></i>
+            <span>Chỉ hiện điểm khác biệt</span>
+          </span>
+        </label>
+
+        <!-- Toggle: Highlight Advantages -->
+        <label class="flex items-center gap-2.5 cursor-pointer select-none">
+          <div class="relative">
+            <input type="checkbox" id="toggle-highlight" checked class="sr-only peer">
+            <div class="w-11 h-6 bg-slate-300 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+          </div>
+          <span class="text-xs font-bold text-[var(--text-primary)] flex items-center gap-1.5">
+            <i data-lucide="award" class="w-4 h-4 text-emerald-500"></i>
+            <span>Highlight xe vượt trội</span>
+          </span>
+        </label>
+
+      </div>
+
+      <!-- Live Search Specs Input -->
+      <div class="relative w-full md:w-72">
+        <i data-lucide="search" class="w-4 h-4 text-[var(--text-muted)] absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+        <input 
+          type="text" 
+          id="spec-search-input" 
+          placeholder="Tìm nhanh thông số (phanh, pin, gầm...)" 
+          class="w-full bg-[var(--bg-subtle)] border border-[var(--border-subtle)] rounded-xl pl-9 pr-4 py-2 text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+        />
+      </div>
+    </section>
+
+    <!-- Radar Chart & Smart Summary Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8 items-stretch">
+      
+      <!-- Smart Summary (Left/Top) -->
+      <div id="smart-summary-container" class="lg:col-span-7">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Radar Comparison Chart (Right) -->
+      <div class="lg:col-span-5 theme-card rounded-3xl p-6 flex flex-col justify-between">
+        <div class="flex items-center justify-between pb-3 mb-2 border-b border-[var(--border-subtle)]">
+          <div class="flex items-center gap-2">
+            <i data-lucide="pie-chart" class="w-4 h-4 text-indigo-500"></i>
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-[var(--text-primary)]">Biểu Đồ Radar So Sánh Đa Chiều</h3>
+          </div>
+          <span class="text-[10px] text-[var(--text-muted)] font-semibold">Thang điểm 100</span>
+        </div>
+        
+        <div class="relative w-full h-[320px] flex items-center justify-center">
+          <canvas id="radar-canvas"></canvas>
+        </div>
+
+        <div class="pt-3 border-t border-[var(--border-subtle)] text-[11px] text-[var(--text-muted)] text-center">
+          Điểm số được tính toán tự động dựa trên công suất, tầm sạc, độ rộng cốp và trang bị an toàn.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Interactive Fuel & Operating Cost Calculator -->
+    <section class="theme-card rounded-3xl p-6 sm:p-8 mb-8 border-emerald-500/30 bg-gradient-to-r from-emerald-500/5 via-transparent to-blue-500/5 relative overflow-hidden">
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 mb-6 border-b border-[var(--border-subtle)] gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-sm">
+            <i data-lucide="calculator" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-[10px] font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">TÍNH TOÁN KINH TẾ THÔNG MINH</div>
+            <h3 class="text-xl font-black text-[var(--text-primary)]">Ước Tính Chi Phí Nhiên Liệu & Tiết Kiệm (Điện vs Xăng)</h3>
+          </div>
+        </div>
+        <div class="text-xs text-[var(--text-muted)]">
+          Giá xăng tham chiếu: <strong class="text-amber-600 dark:text-amber-400 font-bold">24.000 đ/L</strong> • Giá sạc: <strong class="text-emerald-600 dark:text-emerald-400 font-bold">3.858 đ/kWh</strong>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <!-- Range Slider Column -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <label class="text-xs font-bold uppercase tracking-wider text-[var(--text-secondary)]">Quãng đường di chuyển hàng tháng:</label>
+            <span id="slider-km-val" class="text-lg font-black text-emerald-600 dark:text-emerald-400">1.500 km</span>
+          </div>
+          <input 
+            type="range" 
+            id="calc-km-slider" 
+            min="500" 
+            max="6000" 
+            step="250" 
+            value="1500" 
+            class="w-full h-2 bg-slate-300 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+          />
+          <div class="flex justify-between text-[11px] text-[var(--text-muted)] font-semibold">
+            <span>500 km (Đi ít)</span>
+            <span>1.500 km (Đi phố)</span>
+            <span>3.500 km (Dịch vụ)</span>
+            <span>6.000 km (Chạy tour)</span>
+          </div>
+        </div>
+
+        <!-- Comparison Output Result -->
+        <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="p-4 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] text-center shadow-sm">
+            <div class="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-1">Xe Điện VinFast</div>
+            <div id="cost-ev-month" class="text-lg font-black text-emerald-600 dark:text-emerald-400">600.000 đ</div>
+            <div id="cost-ev-year" class="text-[11px] text-[var(--text-muted)] mt-1">~7.2 triệu / năm</div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[var(--surface-card)] border border-[var(--border-subtle)] text-center shadow-sm">
+            <div class="text-[11px] font-semibold text-[var(--text-muted)] uppercase tracking-wider mb-1">Xe Xăng Cùng Cỡ</div>
+            <div id="cost-ice-month" class="text-lg font-black text-rose-600 dark:text-rose-400">2.340.000 đ</div>
+            <div id="cost-ice-year" class="text-[11px] text-[var(--text-muted)] mt-1">~28.1 triệu / năm</div>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center relative overflow-hidden shadow-sm">
+            <div class="text-[11px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">Số Tiền Tiết Kiệm</div>
+            <div id="cost-savings-year" class="text-xl font-black text-emerald-600 dark:text-emerald-300">+20.9 triệu</div>
+            <div class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold mt-1">Tiết kiệm mỗi năm</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Comparison Table Section -->
+    <section class="mb-12">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-xl font-black text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+            <i data-lucide="table-properties" class="w-5 h-5 text-blue-500"></i>
+            <span>Bảng Thông Số Kỹ Thuật Chi Tiết</span>
+          </h2>
+          <p class="text-xs text-[var(--text-muted)] mt-0.5">Dữ liệu được chuẩn hóa và đối chiếu từ tài liệu kỹ thuật chính hãng</p>
+        </div>
+      </div>
+
+      <!-- Specs Table Container -->
+      <div id="specs-container">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Vehicle Lineup Strip Modal -->
+  <div id="lineup-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative max-w-xl w-full bg-[var(--surface-card)] border border-[var(--border-medium)] rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--surface-table-header)]">
+        <div class="flex items-center gap-2">
+          <i data-lucide="layers" class="w-5 h-5 text-cyan-500"></i>
+          <h3 class="font-bold text-[var(--text-primary)] text-base">Toàn Bộ Dải Sản Phẩm VinFast</h3>
+        </div>
+        <button id="btn-close-lineup-modal" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] p-1 rounded-lg">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto flex-1 flex flex-col items-center justify-center bg-[var(--bg-subtle)]">
+        <p class="text-xs text-[var(--text-muted)] mb-4 text-center">Hình ảnh tổng hợp dải xe VinFast thế hệ mới (Minicar, Hatchback, SUV, MPV, Van, Bán tải)</p>
+        <img src="assets/vinfast_lineup_strip.jpg" alt="Dải sản phẩm VinFast" class="max-w-[280px] w-full rounded-2xl shadow-xl border border-[var(--border-subtle)] object-contain" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Vehicle Selector Modal (Add / Change Vehicle) -->
+  <div id="vehicle-selector-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative max-w-2xl w-full bg-[var(--surface-card)] border border-[var(--border-medium)] rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[85vh]">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-[var(--border-subtle)] bg-[var(--surface-table-header)]">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-blue-500/15 text-blue-500 flex items-center justify-center">
+            <i data-lucide="car" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-[var(--text-primary)] text-base">Chọn Mẫu Xe So Sánh</h3>
+            <p class="text-xs text-[var(--text-muted)]">Chọn xe VinFast hoặc đối thủ cùng phân khúc</p>
+          </div>
+        </div>
+        <button id="btn-close-vehicle-modal" class="text-[var(--text-muted)] hover:text-[var(--text-primary)] p-1 rounded-xl hover:bg-[var(--row-hover)] transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Filter Controls -->
+      <div class="p-4 border-b border-[var(--border-subtle)] bg-[var(--bg-subtle)] space-y-3">
+        <!-- Search Input -->
+        <div class="relative">
+          <i data-lucide="search" class="w-4 h-4 text-[var(--text-muted)] absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            id="modal-search-input" 
+            placeholder="Tìm theo tên xe (VF 3, VF 5, Herio, Wigo, i10, VF Wild...)" 
+            class="w-full bg-[var(--surface-card)] border border-[var(--border-medium)] rounded-xl pl-9 pr-4 py-2.5 text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+          />
+        </div>
+
+        <!-- Segment Tabs -->
+        <div id="modal-segment-tabs" class="flex gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
+          <button class="active-tab px-3 py-1.5 rounded-lg bg-blue-600 text-white font-semibold flex-shrink-0" data-segment="all">Tất cả xe</button>
+          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="vinfast">VinFast thuần điện</button>
+          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="xang">Xe xăng đối thủ</button>
+          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="hạng a">Phân khúc A</button>
+          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="suv">Dòng SUV</button>
+          <button class="px-3 py-1.5 rounded-lg bg-[var(--surface-card)] text-[var(--text-secondary)] font-semibold hover:bg-[var(--row-hover)] flex-shrink-0 border border-[var(--border-subtle)]" data-segment="dịch vụ">Dịch vụ & Tải</button>
+        </div>
+      </div>
+
+      <!-- Car Items List -->
+      <div id="modal-car-list" class="p-4 overflow-y-auto space-y-2.5 flex-1 bg-[var(--bg-page)]">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-[var(--border-subtle)] bg-[var(--surface-card)] py-8 text-center text-xs text-[var(--text-muted)] relative z-10 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span class="font-semibold text-[var(--text-secondary)]">VINFAST COMPARE • Nền tảng so sánh xe hơi thông minh</span>
+      </div>
+      <div>
+        Sẵn sàng xuất ảnh Infographic & PDF gửi trực tiếp khách hàng qua Zalo / Facebook
+      </div>
+    </div>
+  </footer>
+
+  <!-- App Data & Logic -->
+  <script src="js/cars_data.js"></script>
+  <script src="js/comparison_engine.js"></script>
+  <script src="js/export_manager.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
